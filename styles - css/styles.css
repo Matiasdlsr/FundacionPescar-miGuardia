@@ -1,4 +1,73 @@
-h1{
-    color:aqua;
-    
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@100..900&display=swap');
+*{
+    margin: 0;
+    box-sizing: border-box;
+}
+body{
+    font-family: "Inter", sans-serif;
+}
+.title{
+    font-family: "Inter", sans-serif;
+
+}
+p{
+    color: green;
+}
+.logo{
+    border-radius: 50%;
+    width: 40px;
+    height: 40px;
+
+}
+.brand{
+    display: flex;
+    gap: 5px;
+}
+.header{
+    width: 100%;
+    height: 221px;
+    background-color: #23977B;
+    color: black;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+ul{
+    list-style: none;
+}
+li{
+    padding: 4px;
+}
+.anchor{
+    color: black;
+    text-decoration: none;
+}
+.anchor:hover{
+    background-color: #1A5A4E;
+    color: white;
+    padding: 5px 10px;
+    border-radius: 20px;
+}
+.search{
+    width: 98%;
+    display: flex;
+    overflow: hidden;
+}
+.bar{
+    width: 430px;
+    height:52px;
+    outline: none;
+    border-radius: 80px;
+    border: 1px solid black;
+    padding-left: 80px;
+}
+.btn{
+    position: relative;
+    right: 25px;
+    padding: 13px 40px;
+    border-radius: 35px;
+    border: 1px solid black;
+    background-color: #d9d9d9;
+    height: 52px;
 }
