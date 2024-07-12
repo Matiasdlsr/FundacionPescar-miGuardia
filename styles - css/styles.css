@@ -3,7 +3,8 @@ body {
     margin: 0;
     padding: 0;
     background-color: #F1F1F1;
-    color: #333333;
+    color: #3333;  
+
 }
 
 header {
@@ -69,6 +70,12 @@ main {
 .map-section {
     position: relative;
     margin-bottom: 20px;
+   
+    
+}
+
+.map-section:hover{
+    border: none;
 }
 
 #buscador {
@@ -111,7 +118,7 @@ main {
 
 .guardia-card {
     width: 30%;
-    border: 1px solid #2E8B7A;
+    border: 5px solid #2E8B7A;
     border-radius: 5px;
     margin: 10px;
     overflow: hidden;
@@ -129,11 +136,32 @@ main {
     background-color: #fafafa;
 }
 
-.info-section {
+div {
     margin: 20px 0;
     text-align: center;
 }
 
+.info-div{
+    background-color: #e0e0e0;
+    padding: 50px;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    width: 80%;
+    max-width: 800px;
+    margin: 2rem auto;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: black;
+ 
+}
+
+p{
+    font-size: 18px;
+    color: #333;
+    line-height: 1.6;
+    margin: 0;
+}
 
 .footer {
     background-color: #337e71;
