@@ -142,7 +142,7 @@ main {
     padding: 10px;
     background-color: #fafafa;
 }
-.next-button,.prev-button{
+.next-button{
     width: 0;
     height: 0;
     border-top: 30px solid transparent;
@@ -154,11 +154,11 @@ main {
     position: relative;
 }
 .prev-button{
-    border-top: -30px solid transparent;
-    border-bottom: -30px solid transparent;
+    border-top: 30px solid transparent;
+    border-bottom: 30px solid transparent;
     border-right: 50px solid #2A8E79;
 }
-.next-button:focus {
+.prev-button,.next-button:focus {
     outline: none;
 }
 
