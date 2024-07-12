@@ -7,5 +7,119 @@
 </head>
 <body>
     
+<!--Encabezado-->
+<header>
+    <img src="/icon.jpg" alt="MiGuardia" class="logo">
+    <h1>MiGuardia</h1>
+    <nav>
+        <a href="#">Inicio</a>
+        <a href="#">Nosotros</a>
+        <a href="#">Contacto</a>
+    </nav>
+    <div class="user-options">
+        <button>Iniciar Sesión</button>
+        <button>Crear tu cuenta</button>
+    </div>
+</header> 
+
+ <!--Mapa-->  
+ <main>
+    <section class="map-section">         
+        <div id="buscador">
+            <input type="text" id="place-input" placeholder="Busca tu Guardia/Hospital..." class="input">
+            <button id="search-button">Buscar</button>
+        </div>
+        <div id="map"></div>
+    </section> 
+
+   <!--Lista de guardias-->
+    <section class="guardias-section">
+        <article class="guardia-card">
+            <img src="ImagenHospital1.jpg" alt="Hospital 1">     
+            <div class="guardia-info">
+                <h3>Guardia Oftalmológica</h3>
+                <p>Guardia Ginecológica, Guardia Traumatológica</p>
+                <p>Ubicación: Nuñez</p>
+            </div>
+        </article>
+        <article class="guardia-card">
+            <img src="ImagenHospital2.jpg" alt="Hospital 2">
+            <div class="guardia-info">
+                <h3>Guardia Ginecológica</h3>
+                <p>Guardia Pediátrica, Guardia General</p>
+                <p>Ubicación: Martinez</p>
+            </div>
+        </article>
+        <article class="guardia-card">
+            <img src="ImagenHospital3.jpg" alt="Hospital 3">
+            <div class="guardia-info">
+                <h3>Guardia General</h3>
+                <p>Guardia Dermatológica</p>
+                <p>Ubicación: Morón</p>
+            </div>
+        </article>
+    </section>
+    
+     
+    <section class="info-section">
+        <p>
+            Este sitio web nace como una solución a la problemática de encontrar guardias médicas disponibles, ofreciendo soluciones que priorizan la calidad de la atención médica y buscan prevenir demoras y saturación en el servicio...
+        </p>
+    </section>
+</main>
+
+<script src="/scrips - js/scrips.js" type="module"></script>
+<script 
+    src="https://maps.googleapis.com/maps/api/js?key=AIzaSyA4k1NWty0-868d7mZSZhcFNpYUPJrZdtc&loading=async&libraries=places&callback=initMap"
+    async
+    defer
+></script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+    <footer class="footer">
+        <div>
+            <h2>MI GUARDIA</h2>
+            <div class="iconos-web">
+                <a href="#"><img src="/assets/icons/brand-facebook.svg" alt="facebook"></a>
+                <a href="#"><img src="/assets/icons/brand-instagram.svg" alt="instagram"></a>
+                <a href="#"><img src="/assets/icons/brand-linkedin.svg" alt="linkedin"></a>
+                <a href="#"><img src="/assets/icons/brand-youtube.svg" alt="youtube"></a>
+            </div>
+        </div>
+        <div class="columna">
+            <h2>Nosotros</h2>
+            <ul>
+                <li><a href="#">Descripción</a></li>
+                <li><a href="#">Equipo</a></li>
+                <li><a href="#">Herramientas</a></li>
+            </ul>
+        </div>
+        <div class="columna">
+            <h2>Acerca de</h2>
+            <ul>
+                <li><a href="#">Normas</a></li>
+                <li><a href="#">Contacto</a></li>
+            </ul>
+        </div>
+        <div class="columna">
+            <h2>Inicia sesión</h2>
+            <ul>
+                <li><a href="#">Registro</a></li>
+                <li><a href="#">Ayuda</a></li>
+                <li><a href="#">Información</a></li>
+            </ul>
+        </div>
+    </footer>
 </body>
 </html>
