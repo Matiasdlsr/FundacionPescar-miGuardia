@@ -7,7 +7,6 @@
     <link rel="stylesheet" href="/styles - css/styles.css">
 </head>
 <body>
-
      <!--Encabezado-->
      <header>
         <img src="/icon.jpg" alt="MiGuardia" class="logo">
@@ -24,7 +23,7 @@
     </header> 
 
      <!--Mapa-->  
-     <main>
+    <main>
         <section class="map-section">         
             <div id="buscador">
                 <input type="text" id="place-input" placeholder="Busca tu Guardia/Hospital..." class="input">
@@ -34,39 +33,41 @@
         </section> 
 
        <!--Lista de guardias-->
-        <section class="guardias-section">
-            <article class="guardia-card">
-                <img src="ImagenHospital1.jpg" alt="Hospital 1">     
-                <div class="guardia-info">
-                    <h3>Guardia Oftalmológica</h3>
-                    <p>Guardia Ginecológica, Guardia Traumatológica</p>
-                    <p>Ubicación: Nuñez</p>
-                </div>
-            </article>
-            <article class="guardia-card">
-                <img src="ImagenHospital2.jpg" alt="Hospital 2">
-                <div class="guardia-info">
-                    <h3>Guardia Ginecológica</h3>
-                    <p>Guardia Pediátrica, Guardia General</p>
-                    <p>Ubicación: Martinez</p>
-                </div>
-            </article>
-            <article class="guardia-card">
-                <img src="ImagenHospital3.jpg" alt="Hospital 3">
-                <div class="guardia-info">
-                    <h3>Guardia General</h3>
-                    <p>Guardia Dermatológica</p>
-                    <p>Ubicación: Morón</p>
-                </div>
-            </article>
-        </section>
-        
-         
-        <section class="info-section">
-            <p>
-                Este sitio web nace como una solución a la problemática de encontrar guardias médicas disponibles, ofreciendo soluciones que priorizan la calidad de la atención médica y buscan prevenir demoras y saturación en el servicio...
-            </p>
-        </section>
+        <div class="carousel-container">
+            <button class="carousel-button prev-button">&#10094;</button>
+            <section class="guardias-section">
+                <article class="guardia-card">
+                    <img src="ImagenHospital1.jpg" alt="Hospital 1">     
+                    <div class="guardia-info">
+                        <h3>Guardia Oftalmológica</h3>
+                        <p>Guardia Ginecológica, Guardia Traumatológica</p>
+                        <p>Ubicación: Nuñez</p>
+                    </div>
+                </article>
+                <article class="guardia-card">
+                    <img src="ImagenHospital2.jpg" alt="Hospital 2">
+                    <div class="guardia-info">
+                        <h3>Guardia Ginecológica</h3>
+                        <p>Guardia Pediátrica, Guardia General</p>
+                        <p>Ubicación: Martinez</p>
+                    </div>
+                </article>
+                <article class="guardia-card">
+                    <img src="ImagenHospital3.jpg" alt="Hospital 3">
+                    <div class="guardia-info">
+                        <h3>Guardia General</h3>
+                        <p>Guardia Dermatológica</p>
+                        <p>Ubicación: Morón</p>
+                    </div>
+                </article>
+            </section>
+            <button class="carousel-button next-button">&#10095;</button>
+        </div>
+    <section class="info-section">
+        <p>
+            Este sitio web nace como una solución a la problemática de encontrar guardias médicas disponibles, ofreciendo soluciones que priorizan la calidad de la atención médica y buscan prevenir demoras y saturación en el servicio...
+        </p>
+    </section>
     </main>
     <footer class="footer">
         <div>
