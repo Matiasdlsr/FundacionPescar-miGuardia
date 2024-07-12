@@ -142,6 +142,26 @@ main {
     padding: 10px;
     background-color: #fafafa;
 }
+.next-button,.prev-button{
+    width: 0;
+    height: 0;
+    border-top: 30px solid transparent;
+    border-bottom: 30px solid transparent;
+    border-left: 50px solid #2A8E79; /* Color del botón */
+    background-color: transparent;
+    cursor: pointer;
+    outline: none;
+    position: relative;
+}
+.prev-button{
+    border-top: -30px solid transparent;
+    border-bottom: -30px solid transparent;
+    border-right: 50px solid #2A8E79;
+}
+.next-button:focus {
+    outline: none;
+}
+
 
 div {
     margin: 20px 0;
