@@ -18,8 +18,7 @@ window.initMap = function() {
 
 const searchGoogleMap = () => {
     const placeInput = document.getElementById("place-input");
-    
-    
+
     autocomplete = new google.maps.places.Autocomplete(placeInput, {
         types: ['establishment'],
         componentRestrictions: { country: 'ar' },
@@ -67,6 +66,11 @@ document.addEventListener('DOMContentLoaded', () => {
                     });
                 });
             }
-        });
-    });
+        });
+    });
+
+    // Redibuja el mapa al hacer clic en cualquier parte del documento
+    document.addEventListener('click', () => {
+        google.maps.event.trigger(map, 'resize');
+    });
 });
