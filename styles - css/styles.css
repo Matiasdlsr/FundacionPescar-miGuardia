@@ -142,26 +142,29 @@ main {
     padding: 10px;
     background-color: #fafafa;
 }
-.next-button{
+.carousel-button{
     width: 0;
     height: 0;
-    border-top: 30px solid transparent;
-    border-bottom: 30px solid transparent;
-    border-left: 50px solid #2A8E79; /* Color del botón */
-    background-color: transparent;
     cursor: pointer;
     outline: none;
     position: relative;
+    background-color: transparent;
+
+}
+.next-button{
+    border-top: 30px solid transparent;
+    border-bottom: 30px solid transparent;
+    border-left: 50px solid #2A8E79; /* Color del botón */
+    border-right: none; 
 }
 .prev-button{
     border-top: 30px solid transparent;
     border-bottom: 30px solid transparent;
     border-right: 50px solid #2A8E79;
+    border-left:none;
 }
-.prev-button,.next-button:focus {
-    outline: none;
-}
-
+.prev-button:hover{border-style: outset;}/*Le da un efecto de oscurecer al pasar el mouse por los botones */
+.next-button:hover{border-style: inset;}
 
 div {
     margin: 20px 0;
