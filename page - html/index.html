@@ -5,6 +5,13 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>miGuardia</title>
     <link rel="stylesheet" href="/styles - css/styles.css">
+    <link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css" />
+    <style>
+        #map {
+            height: 400px;
+            width: 100%;
+        }
+    </style>
 </head>
 <body>
      <!--Encabezado-->
@@ -103,11 +110,22 @@
             </ul>
         </div>
     </footer>
-    <script src="/scrips - js/scrips.js" type="module"></script>
-    <script 
-        src="https://maps.googleapis.com/maps/api/js?key=AIzaSyA4k1NWty0-868d7mZSZhcFNpYUPJrZdtc&loading=async&libraries=places&callback=initMap"
-        async
-        defer
-    ></script>
+    <script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            var map = L.map('map').setView([-34.6037, -58.3816], 13); // Coordenadas de Buenos Aires
+
+            L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+                maxZoom: 19,
+            }).addTo(map);
+
+            var searchButton = document.getElementById('search-button');
+            searchButton.addEventListener('click', function() {
+                var placeInput = document.getElementById('place-input').value;
+                //la lógica para buscar la guardia/hospital en el mapa, tengo que verlo de momento solo un alert
+                alert('Buscar: ' + placeInput);
+            });
+        });
+    </script>
 </body>
 </html>
