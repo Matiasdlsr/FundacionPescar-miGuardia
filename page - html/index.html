@@ -6,12 +6,6 @@
     <title>miGuardia</title>
     <link rel="stylesheet" href="/styles - css/styles.css">
     <link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css" />
-    <style>
-        #map {
-            height: 400px;
-            width: 100%;
-        }
-    </style>
 </head>
 <body>
      <!--Encabezado-->
@@ -112,8 +106,9 @@
     </footer>
     <script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
     <script>
+        //Esto iria en script.js pero lo dejo a modo de test 
         document.addEventListener('DOMContentLoaded', function() {
-            var map = L.map('map').setView([-34.6037, -58.3816], 13); // Coordenadas de Buenos Aires
+            var map = L.map('map').setView([-34.6037, -58.3816], 13); // Coordenadas de Buenos Aires, podemos cambiar para que tome la actual
 
             L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
                 maxZoom: 19,
