@@ -108,11 +108,36 @@
     <script>
         //Esto iria en script.js pero lo dejo a modo de test 
         document.addEventListener('DOMContentLoaded', function() {
-            var map = L.map('map').setView([-34.6037, -58.3816], 13); // Coordenadas de Buenos Aires, podemos cambiar para que tome la actual
+            if (navigator.geolocation) {
+                navigator.geolocation.getCurrentPosition(function(position) {
+                    var lat = position.coords.latitude;
+                    var lon = position.coords.longitude;
+                    var map = L.map('map').setView([lat, lon], 13);
 
-            L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
-                maxZoom: 19,
-            }).addTo(map);
+                    L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+                        attribution: '© OpenStreetMap contributors'
+                    }).addTo(map);
+            
+                }, function(error) {
+                    console.error('Error en la geolocalización: ' + error.message);
+                    // Centrar en una ubicación por defecto en caso de error
+                    var map = L.map('map').setView([-34.6037, -58.3816], 13);
+                    L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+                        attribution: '© OpenStreetMap contributors'
+                    }).addTo(map);
+                });
+            } else {
+                console.error('Geolocalización no es soportada por este navegador.');
+                // Centrar en una ubicación por defecto si la geolocalización no está disponible
+                var map = L.map('map').setView([-34.6037, -58.3816], 13);
+                L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+                    attribution: '© OpenStreetMap contributors'
+                }).addTo(map);
+            }
+
+           /*L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', { 
+                maxZoom: 20,
+            }).addTo(map);*/ //no funciona esta linea creo 
 
             var searchButton = document.getElementById('search-button');
             searchButton.addEventListener('click', function() {
@@ -120,7 +145,7 @@
                 //la lógica para buscar la guardia/hospital en el mapa, tengo que verlo de momento solo un alert
                 alert('Buscar: ' + placeInput);
             });
-        });
+});        
     </script>
 </body>
 </html>
