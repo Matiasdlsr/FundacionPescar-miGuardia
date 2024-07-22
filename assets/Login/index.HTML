@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>iniciar sesion  - Iniciar Sesión</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <header>
+        <div class="logo">
+            <img src="assets/logo.jpg" alt="MiGuardia">
+            <h1>MiGuardia</h1>
+        </div>
+        <nav>
+            <ul>
+                <li><a href="#">Inicio</a></li>
+                <li><a href="#">Contactanos</a></li>
+                <li><a href="#">Sobre nosotros</a></li>
+            </ul>
+        </nav>
+    </header>
+    <div class="login-container">
+        <div class="register-link">
+            <a href="#">Registro de Usuarios</a>
+        </div>
+        <h2>Iniciar Sesión</h2>
+        <p>Inicia sesión con tu cuenta de Guardia médica</p>
+        <form id="loginForm">
+            <div class="input-group">
+                <label for="email">Email</label>
+                <input type="email" id="email" name="email" required>
+            </div>
+            <div class="input-group">
+                <label for="password">Contraseña</label>
+                <input type="password" id="password" name="password" required>
+            </div>
+            <button type="submit">Ingresar</button>
+        </form>
+        <p class="forgot-password">¿Olvidaste tu contraseña? <a href="#">Recuperar Contraseña</a></p>
+        <p id="error-message" class="error-message"></p>
+    </div>
+    <footer>
+        <div class="footer-container">
+            <div class="footer-section">
+                <h3>Nosotros</h3>
+                <ul>
+                    <li><a href="#">Descripción</a></li>
+                    <li><a href="#">Equipo</a></li>
+                    <li><a href="#">Herramientas</a>
+                    </li>
+                </ul>
+            </div>
+            <div class="footer-section">
+                <h3>Acerca de</h3>
+                <ul>
+                    <li><a href="#normas">Normas</a></li>
+                    <li><a href="#contacto">Contacto</a></li>
+                </ul>
+            </div>
+            <div class="footer-section">
+                <h3>Inicia sesión</h3>
+                <ul>
+                    <li><a href="#">Registro</a></li>
+                    <li><a href="#">Ayuda</a></li>
+                    <li><a href="#">informacion</a></li>
+                </ul>
+            </div>
+        </div>
+    </footer>
+    <script src="script.js"></script>
+</body>
+</html>
