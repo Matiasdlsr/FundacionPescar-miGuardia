@@ -37,30 +37,7 @@
         <div class="carousel-container">
             <button class="carousel-button prev-button" onclick="showPreviousHospitals()"></button>
             <section class="guardias-section">
-                <article class="guardia-card">
-                    <!--<img src="ImagenHospital1.jpg" alt="Hospital 1">     
-                    <div class="guardia-info">
-                        <h3>Guardia Oftalmológica</h3>
-                        <p>Guardia Ginecológica, Guardia Traumatológica</p>
-                        <p>Ubicación: Nuñez</p>
-                    </div>
-                </article>
-                <article class="guardia-card">
-                    <img src="ImagenHospital2.jpg" alt="Hospital 2">
-                    <div class="guardia-info">
-                        <h3>Guardia Ginecológica</h3>
-                        <p>Guardia Pediátrica, Guardia General</p>
-                        <p>Ubicación: Martinez</p>
-                    </div>
-                </article>
-                <article class="guardia-card">
-                    <img src="ImagenHospital3.jpg" alt="Hospital 3">
-                    <div class="guardia-info">
-                        <h3>Guardia General</h3>
-                        <p>Guardia Dermatológica</p>
-                        <p>Ubicación: Morón</p>
-                    </div>-->
-                </article>
+                <article class="guardia-card"></article>
             </section>
             <button class="carousel-button next-button" onclick="showNextHospitals()"></button>
         </div>
@@ -110,10 +87,13 @@
         //Esto iria en script.js pero lo dejo a modo de test 
         document.addEventListener('DOMContentLoaded', function() {
             if (navigator.geolocation) {
-                navigator.geolocation.getCurrentPosition(function(position) {
+                navigator.geolocation.getCurrentPosition( async function(position) {
                     var lat = position.coords.latitude;
                     var lon = position.coords.longitude;
                     var map = L.map('map').setView([lat, lon], 13);
+
+                    hospitalsData = await getNearbyHospitals(lat, lon);
+                    updateCarousel();
 
                     L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
                         attribution: '© OpenStreetMap contributors'
@@ -135,10 +115,6 @@
                     attribution: '© OpenStreetMap contributors'
                 }).addTo(map);
             }
-
-           L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', { 
-                maxZoom: 20,
-            }).addTo(map);
 
             var searchButton = document.getElementById('search-button');
             searchButton.addEventListener('click', function() {
@@ -163,21 +139,8 @@
     return data.elements;
     }
 
-    //CARGA EL CARRUSEL CON LOS HOSPITALES
     let currentPage = 0;
     let hospitalsData = [];
-
-    async function getNearbyHospitals(lat, lon) {  //ESTA FUNCION BUSCA LAS GUARDIAS 10000 A LA REDONDA DE TU UBICACION PERO FALLA
-        const query = `
-            [out:json];
-            node["amenity"="hospital"](around:10000, ${lat}, ${lon});
-            out body;
-        `;
-        const url = `https://overpass-api.de/api/interpreter?data=${encodeURIComponent(query)}`;
-        const response = await fetch(url);
-        const data = await response.json();
-        return data.elements;
-    }
 
     function updateCarousel() {
         const section = document.querySelector('.guardias-section');
@@ -230,15 +193,7 @@
             updateCarousel();
         }
     }
-
-    navigator.geolocation.getCurrentPosition(async (position) => {
-        const lat = position.coords.latitude;
-        const lon = position.coords.longitude;
-        hospitalsData = await getNearbyHospitals(lat, lon);
-        updateCarousel();
-    });
-
-
+    
     </script>
 </body>
 </html>
