@@ -4,4 +4,5 @@ Nosotros somos:
 Matias del Señor,
 Silvio Gonzalez,
 Agustina Nicole Ruiz,
+Axel Leguero
 ...
