@@ -9,28 +9,28 @@ body {
 header {
     display: flex;
     justify-content: space-between;
-    align-items: center; 
+    align-items: center;
     padding: 10px 20px;
     background-color: #2E8B7A;
     color: #fafafa;
 }
 
 header .logo {
-    height: 50px;    
+    height: 50px;
 }
 
 header h1 {
     font-size: 1.5em;
     margin: 15px;
     font-size: 1.7em;
-    text-align: left; 
-    flex: 2; 
+    text-align: left;
+    flex: 2;
 }
 
 header nav {
     flex: 1; /* Esto hará que el nav ocupe el espacio disponible y se centre */
     display: flex;
-    justify-content: center;
+    justify-content: flex-end;
 }
 
 
@@ -40,7 +40,6 @@ header nav a {
     text-decoration: none;
     font-weight: 700;
     font-size: 0.9em;
-  
 }
 
 header .user-options button {
@@ -53,7 +52,7 @@ header .user-options button {
     cursor: pointer;
     font-weight: 700;
 }
- 
+
 header img {
     width: 50px;
     height: 50px;
@@ -69,6 +68,10 @@ main {
 .map-section {
     position: relative;
     margin-bottom: 20px;
+}
+
+.map-section:hover{
+    border: none;
 }
 
 #buscador {
@@ -102,16 +105,26 @@ main {
     border-radius: 5px;
 }
 
+
+.carousel-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    width: 100%;
+}
+
+
 .guardias-section {
     display: flex;
     justify-content: space-around;
     flex-wrap: wrap;
-    
+
 }
 
 .guardia-card {
     width: 30%;
-    border: 1px solid #2E8B7A;
+    border: 5px solid #2E8B7A;
     border-radius: 5px;
     margin: 10px;
     overflow: hidden;
@@ -132,4 +145,89 @@ main {
 .info-section {
     margin: 20px 0;
     text-align: center;
+}
+.carousel-button{
+    width: 0;
+    height: 0;
+    cursor: pointer;
+    outline: none;
+    position: relative;
+    background-color: transparent;
+
+}
+.next-button{
+    border-top: 30px solid transparent;
+    border-bottom: 30px solid transparent;
+    border-left: 50px solid #2A8E79; /* Color del botón */
+    border-right: none;
+}
+.prev-button{
+    border-top: 30px solid transparent;
+    border-bottom: 30px solid transparent;
+    border-right: 50px solid #2A8E79;
+    border-left:none;
+}
+.prev-button:hover{border-style: outset;}/*Le da un efecto de oscurecer al pasar el mouse por los botones */
+.next-button:hover{border-style: inset;}
+
+div {
+    margin: 20px 0;
+    text-align: center;
+}
+
+.info-div{
+    background-color: #e0e0e0;
+    padding: 50px;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    width: 80%;
+    max-width: 800px;
+    margin: 2rem auto;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: black;
+}
+
+p{
+    font-size: 18px;
+    color: #333;
+    line-height: 1.6;
+    margin: 0;
+}
+
+.footer {
+    background-color: #337e71;
+    color: white;
+    padding: 20px;
+    display: flex;
+    justify-content: space-between;
+}
+.footer h2 {
+    margin: 0;
+    margin-bottom: 10px;
+}
+.footer .columna {
+    display: flex;
+    flex-direction: column;
+}
+.footer ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+.footer li {
+    margin: 5px 0;
+}
+.footer a {
+    color: white;
+    text-decoration: none;
+}
+.footer a:hover {
+    text-decoration: underline;
+}
+.footer .iconos-web {
+    display: flex;
+    gap: 10px;
+    margin-top: 10px;
 }
