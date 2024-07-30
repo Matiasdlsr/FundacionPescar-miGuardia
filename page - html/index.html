@@ -4,13 +4,13 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>miGuardia</title>
-    <link rel="stylesheet" href="/styles - css/styles.css">
+    <link rel="stylesheet" href="../styles - css/styles.css">
 </head>
 <body>
-    
+
     <!--Encabezado-->
     <header>
-        <img src="/icon.jpg" alt="MiGuardia" class="logo">
+        <img src="../assets/icons/icon.MiGuardia.jpg" alt="MiGuardia" class="logo">
         <h1>MiGuardia</h1>
         <nav>
             <a href="#">Inicio</a>
@@ -21,22 +21,22 @@
             <button>Iniciar Sesión</button>
             <button>Crear tu cuenta</button>
         </div>
-    </header> 
+    </header>
 
-     <!--Mapa-->  
+     <!--Mapa-->
      <main>
-        <section class="map-section">         
+        <section class="map-section">
             <div id="buscador">
                 <input type="text" id="place-input" placeholder="Busca tu Guardia/Hospital..." class="input">
                 <button id="search-button">Buscar</button>
             </div>
             <div id="map"></div>
-        </section> 
+        </section>
 
        <!--Lista de guardias-->
         <section class="guardias-section">
             <article class="guardia-card">
-                <img src="ImagenHospital1.jpg" alt="Hospital 1">     
+                <img src="../assets/img/hospital.jpeg" alt="Hospital 1">
                 <div class="guardia-info">
                     <h3>Guardia Oftalmológica</h3>
                     <p>Guardia Ginecológica, Guardia Traumatológica</p>
@@ -44,7 +44,7 @@
                 </div>
             </article>
             <article class="guardia-card">
-                <img src="ImagenHospital2.jpg" alt="Hospital 2">
+                <img src="../assets/img/hospital.jpeg" alt="Hospital 2">
                 <div class="guardia-info">
                     <h3>Guardia Ginecológica</h3>
                     <p>Guardia Pediátrica, Guardia General</p>
@@ -52,7 +52,7 @@
                 </div>
             </article>
             <article class="guardia-card">
-                <img src="ImagenHospital3.jpg" alt="Hospital 3">
+                <img src="../assets/img/hospital.jpeg" alt="Hospital 3">
                 <div class="guardia-info">
                     <h3>Guardia General</h3>
                     <p>Guardia Dermatológica</p>
@@ -60,8 +60,8 @@
                 </div>
             </article>
         </section>
-        
-         
+
+
         <section class="info-section">
             <p>
                 Este sitio web nace como una solución a la problemática de encontrar guardias médicas disponibles, ofreciendo soluciones que priorizan la calidad de la atención médica y buscan prevenir demoras y saturación en el servicio...
@@ -102,8 +102,8 @@
             </ul>
         </div>
     </footer>
-    <script src="/scrips - js/scrips.js" type="module"></script>
-    <script 
+    <script src="../scrips - js/scrips.js" type="module"></script>
+    <script
         src="https://maps.googleapis.com/maps/api/js?key=AIzaSyA4k1NWty0-868d7mZSZhcFNpYUPJrZdtc&loading=async&libraries=places&callback=initMap"
         async
         defer
