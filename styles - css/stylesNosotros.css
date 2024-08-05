@@ -1,0 +1,44 @@
+.nosotros-titulo{
+    padding: 20px;
+}
+
+.contenedor-cards {
+    max-width: 1024px;
+    margin: 0 auto;
+
+    padding: 10px;
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    grid-gap: 50px;
+}
+
+.integrante-card{
+    background-color: #2E8B7A;
+    border-radius: 10%;
+    padding: 20px;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+}
+.integrante-card > img {
+    max-width: 50%;
+    border-radius: 80px;
+    object-fit: cover;
+}
+
+.integrante-card > p, .integrante-card > h3, h2{
+    font-family:'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+}
+
+.contenedor-agradecimientos{
+    text-align: center;
+    padding-top: 40px;
+}
+
+.contenedor-logos-fundacion{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
