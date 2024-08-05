@@ -5,5 +5,6 @@ Matias del Señor,
 Silvio Gonzalez,
 Agustina Nicole Ruiz,
 Axel Leguero,
-Lisandro Corrales Cespedes
+Lisandro Corrales Cespedes,
+Angela Ventura.
 ...
