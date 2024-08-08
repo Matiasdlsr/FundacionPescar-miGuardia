@@ -4,8 +4,200 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>miGuardia</title>
+    <link rel="stylesheet" href="../styles - css/styles.css">
+    <link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css" />
 </head>
 <body>
-    
+     <!--Encabezado-->
+     <header>
+        <img src="../assets/icons/icon.MiGuardia.jpg" alt="MiGuardia" class="logo">
+        <h1>MiGuardia</h1>
+        <nav>
+            <a href="#">Inicio</a>
+            <a href="#">Nosotros</a>
+            <a href="#">Contacto</a>
+        </nav>
+        <div class="user-options">
+            <button>Iniciar Sesión</button>
+            <button><a href="registro.html">Crear tu cuenta</a></button>
+        </div>
+    </header>
+
+     <!--Mapa-->
+     <main>
+        <section class="map-section">
+
+     <!--Mapa-->
+    <main>
+        <section class="map-section">
+            <div id="buscador">
+                <input type="text" id="place-input" placeholder="Busca tu Guardia/Hospital..." class="input">
+                <button id="search-button">Buscar</button>
+            </div>
+            <div id="map"></div>
+        </section>
+
+       <!--Lista de guardias-->
+        <div class="carousel-container">
+            <button class="carousel-button prev-button" onclick="showPreviousHospitals()"></button>
+            <section class="guardias-section">
+                <article class="guardia-card"></article>
+            </section>
+            <button class="carousel-button next-button" onclick="showNextHospitals()"></button>
+        </div>
+        <div class="info-div">
+            <p>
+                Esta app web nace como una solución a la problemática de encontrar guardias medicas disponibles, ofreciendo solución que prioriza la calidad de la atención medica, y busca prevenir demoras y saturación en el servicio. Brindamos facilitar el proceso de búsqueda sobre la disponibilidad de los servicios de guardia de manera rápida y eficiente. Ademas, nos comprometemos a apoyar el bienestar tanto de los pacientes como del personal de salud facilitando el tiempo en situaciones de crisis.
+            </p>
+        </div>
+    </main>
+    <footer class="footer">
+        <div>
+            <h2>MI GUARDIA</h2>
+            <div class="iconos-web">
+                <a href="#"><img src="../assets/icons/brand-facebook.svg" alt="facebook"></a>
+                <a href="#"><img src="../assets/icons/brand-instagram.svg" alt="instagram"></a>
+                <a href="#"><img src="../assets/icons/brand-linkedin.svg" alt="linkedin"></a>
+                <a href="#"><img src="../assets/icons/brand-youtube.svg" alt="youtube"></a>
+            </div>
+        </div>
+        <div class="columna">
+            <h2>Nosotros</h2>
+            <ul>
+                <li><a href="#">Descripción</a></li>
+                <li><a href="#">Equipo</a></li>
+                <li><a href="#">Herramientas</a></li>
+            </ul>
+        </div>
+        <div class="columna">
+            <h2>Acerca de</h2>
+            <ul>
+                <li><a href="#">Normas</a></li>
+                <li><a href="#">Contacto</a></li>
+            </ul>
+        </div>
+        <div class="columna">
+            <h2>Inicia sesión</h2>
+            <ul>
+                <li><a href="registro.html">Registro</a></li>
+                <li><a href="#">Ayuda</a></li>
+                <li><a href="#">Información</a></li>
+            </ul>
+        </div>
+    </footer>
+    <script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
+    <script>
+
+        //Esto iria en script.js pero lo dejo a modo de test
+        document.addEventListener('DOMContentLoaded', function() {
+            if (navigator.geolocation) {
+                navigator.geolocation.getCurrentPosition( async function(position) {
+                    var lat = position.coords.latitude;
+                    var lon = position.coords.longitude;
+                    var map = L.map('map').setView([lat, lon], 13);
+
+                    hospitalsData = await getNearbyHospitals(lat, lon);
+                    updateCarousel();
+
+                    L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+                        attribution: '© OpenStreetMap contributors'
+                    }).addTo(map);
+
+                }, function(error) {
+                    console.error('Error en la geolocalización: ' + error.message);
+                    // Centrar en una ubicación por defecto en caso de error
+                    var map = L.map('map').setView([-34.6037, -58.3816], 13);
+                    L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+                        attribution: '© OpenStreetMap contributors'
+                    }).addTo(map);
+                });
+            } else {
+                console.error('Geolocalización no es soportada por este navegador.');
+                // Centrar en una ubicación por defecto si la geolocalización no está disponible
+                var map = L.map('map').setView([-34.6037, -58.3816], 13);
+                L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+                    attribution: '© OpenStreetMap contributors'
+                }).addTo(map);
+            }
+
+            var searchButton = document.getElementById('search-button');
+            searchButton.addEventListener('click', function() {
+                var placeInput = document.getElementById('place-input').value;
+                //la lógica para buscar la guardia/hospital en el mapa, tengo que verlo de momento solo un alert
+                alert('Buscar: ' + placeInput);
+            });
+});
+
+
+    //CARRUSEL
+
+    async function getNearbyHospitals(lat, lon) {
+    const query = `
+        [out:json];
+        node["amenity"="hospital"](around:10000, ${lat}, ${lon});
+        out body;
+    `;
+    const url = `https://overpass-api.de/api/interpreter?data=${encodeURIComponent(query)}`;
+    const response = await fetch(url);
+    const data = await response.json();
+    return data.elements;
+    }
+
+    let currentPage = 0;
+    let hospitalsData = [];
+
+    function updateCarousel() {
+        const section = document.querySelector('.guardias-section');
+        section.innerHTML = ''; // Limpiar contenido existente
+
+        const startIndex = currentPage * 3;
+        const endIndex = Math.min(startIndex + 3, hospitalsData.length);
+
+        for (let i = startIndex; i < endIndex; i++) {
+            const hospital = hospitalsData[i];
+            const article = document.createElement('article');
+            article.className = 'guardia-card';
+
+            const img = document.createElement('img');
+            img.src = 'ImagenHospitalDefault.jpg'; // ACA HABRIA QUE CARGAR LA IMAGEN NO SE TODAVIA BIEN COMO
+            img.alt = `Hospital ${hospital.id}`;
+
+            const infoDiv = document.createElement('div');
+            infoDiv.className = 'guardia-info';
+
+            const h3 = document.createElement('h3');
+            h3.textContent = hospital.tags.name || 'Nombre desconocido';
+
+            const p1 = document.createElement('p');
+            p1.textContent = 'Guardia General'; // ACA NO SE SI AGREGAR QUE TIPO DE GUARDIA ES O SINO LO ELIMINAMOS
+
+            const p2 = document.createElement('p');
+            p2.textContent = `Ubicación: ${hospital.tags['addr:city'] || 'Desconocida'}`;
+
+            infoDiv.appendChild(h3);
+            infoDiv.appendChild(p1);
+            infoDiv.appendChild(p2);
+            article.appendChild(img);
+            article.appendChild(infoDiv);
+
+            section.appendChild(article);
+        }
+    }
+
+    function showNextHospitals() {
+        if ((currentPage + 1) * 3 < hospitalsData.length) {
+            currentPage++;
+            updateCarousel();
+        }
+    }
+
+    function showPreviousHospitals() {
+        if (currentPage > 0) {
+            currentPage--;
+            updateCarousel();
+        }
+    }
+
+    </script>
 </body>
 </html>
