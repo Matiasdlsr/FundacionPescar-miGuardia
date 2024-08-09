@@ -2,7 +2,12 @@
     margin: 0;
     box-sizing: border-box;
 }
-
+.name{
+    padding: 20px;
+    display: flex;
+    justify-content: center; 
+    align-items: center;   
+}
 .container {
     display: grid;
     grid-template-columns: repeat(3, 1fr); /* 3 columnas iguales */
@@ -25,13 +30,22 @@
 }
 
 .btn{
-    padding: 20px 80px;
+    
+    
+    padding: 15px 80px;
     border: 2px solid #2E8B7A;
     background-color: #fff;
     border-radius: 50px;
 }
 .btn:hover {
+    transition: background-color .75s ease;
     background-color: #2E8B7A;
+}
+.icons{
+    
+    
+    width: 12px;
+    height: 12px;
 }
 
 .btn.primary{
@@ -41,6 +55,15 @@
 .btn.secundary{
 
 }
+
+#comments-container {
+    max-height: 300px; 
+    overflow-y: auto; /* Activar el scroll vertical */
+    margin-bottom: 20px;
+    padding-right: 10px; /* Espacio para el scroll */
+    box-sizing: border-box;
+}
+
 .comments-section {
     max-width: 600px;
     margin: 0 auto;
