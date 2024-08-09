@@ -70,3 +70,47 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     });
 });
+
+// Seccion de comentarios
+document.addEventListener('DOMContentLoaded', function() {
+    const comments = [
+        {
+            username: 'Juan Pérez',
+            comment: '¡Me encanta este artículo!',
+            date: '2024-08-09',
+            avatar: '../assets/icons/user.svg'
+        },
+        {
+            username: 'Ana López',
+            comment: 'Muy informativo, gracias por compartir.',
+            date: '2024-08-08',
+            avatar: '../assets/icons/user.svg'
+        },
+        {
+            username: 'Carlos García',
+            comment: 'Estoy de acuerdo con los puntos mencionados.',
+            date: '2024-08-07',
+            avatar: '../assets/icons/user.svg'
+        }
+    ];
+
+    const commentsContainer = document.getElementById('comments-container');
+
+    comments.forEach(function(comment) {
+        const commentElement = document.createElement('div');
+        commentElement.classList.add('comment');
+
+        commentElement.innerHTML = `
+            <img src="${comment.avatar}" alt="Avatar de ${comment.username}">   
+            <div class="comment-details">
+                <h4>${comment.username}</h4>
+                <p>${comment.comment}</p>
+                <span class="comment-date">${comment.date}</span>
+            </div>
+        `;
+
+        commentsContainer.appendChild(commentElement);
+    });
+});
+
+// fin seccion comentarios
