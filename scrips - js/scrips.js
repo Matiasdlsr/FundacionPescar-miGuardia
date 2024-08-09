@@ -76,7 +76,7 @@ document.addEventListener('DOMContentLoaded', function() {
     const comments = [
         {
             username: 'Juan Pérez',
-            comment: '¡Me encanta este artículo!',
+            comment: '¡Me encanta este pagina, muy util!',
             date: '2024-08-09',
             avatar: '../assets/icons/user.svg'
         },
@@ -88,7 +88,7 @@ document.addEventListener('DOMContentLoaded', function() {
         },
         {
             username: 'Carlos García',
-            comment: 'Estoy de acuerdo con los puntos mencionados.',
+            comment: 'Gracias por toda la informacion! .',
             date: '2024-08-07',
             avatar: '../assets/icons/user.svg'
         }
