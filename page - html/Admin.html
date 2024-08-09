@@ -27,16 +27,47 @@
     <!-- Nombre, hacer dinamico -->
     <h1 class="name">Hospital general de Agudos de Ramos mejia</h1>
     
+
+
     <!-- CRUD buttons -->
     <main class="container">  
-        <div class="grid-item"><button class="btn"> Agregar guardia 
-            <img src="../assets/icons/add.svg" alt="Icono de agregar" class="icons">   </button></div>
+
+        <div class="grid-item">
+            <button class="btn" id="openPopup"> Agregar guardia 
+            <img src="../assets/icons/add.svg" alt="Icono de agregar" class="icons">   
+            <div id="popup" class="popup">
+                <div class="popup-content">
+                    <span id="closePopup" class="close-btn">&times;</span>
+                        <h2>Agregar nueva guardia</h2>
+
+                        <section class="form">
+
+                            <form class="contact-form">
+                                <div class="form-group">
+                                    <label for="name">Nombre de la guardia</label>
+                                    <input type="text" id="name" name="name" placeholder="Tu nombre" required>
+                                </div>
+
+                                <div class="form-group">
+                                    <label for="">Tipo de guardia</label>
+                                    <input type="" id="" name="" placeholder="" required>
+                                </div>
+                                
+                        </section>
+
+                    </form>
+                </div>
+        </button></div>
+
         <div class="grid-item"><button class="btn"> Editar guardia </button></div>
         <div class="grid-item"><button class="btn"> Eliminar guardia </button></div>
         <div class="grid-item"><button class="btn"> Agregar telefono </button></div>
         <div class="grid-item"><button class="btn"> Editar telefono </button></div>
         <div class="grid-item"><button class="btn"> Eliminar telefono </button></div>
+
     </main>
+
+
 
 
     <!-- Comentarios -->

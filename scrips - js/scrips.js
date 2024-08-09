@@ -114,3 +114,24 @@ document.addEventListener('DOMContentLoaded', function() {
 });
 
 // fin seccion comentarios
+
+// popup
+document.addEventListener('DOMContentLoaded', () => {
+    const openPopupBtn = document.getElementById('openPopup');
+    const popup = document.getElementById('popup');
+    const closePopupBtn = document.getElementById('closePopup');
+
+    openPopupBtn.addEventListener('click', () => {
+        popup.style.display = 'flex';
+    });
+
+    closePopupBtn.addEventListener('click', () => {
+        popup.style.display = 'none';
+    });
+
+    window.addEventListener('click', (event) => {
+        if (event.target === popup) {
+            popup.style.display = 'none';
+        }
+    });
+});
