@@ -5,84 +5,91 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>miGuardia</title>
     <link rel="stylesheet" href="/styles - css/styles.css">
-    <!--Style con swipe-->
+    <!-- Style con Swiper -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css"/>
+   
+    <link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css" />
+    <!-- Typeahead.js CSS -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/typeahead.js/0.11.1/typeahead.min.css">
 
 </head>
 <body>
-    
-<!--Encabezado-->
-<header>
-    <img src="/icon.jpg" alt="MiGuardia" class="logo">
-    <h1>MiGuardia</h1>
-    <nav> 
-        <a href="#" >Inicio</a>
-        <a href="#">Nosotros</a>
-        <a href="#">Contacto</a> 
-    </nav>
-    <div class="user-options">
-        <button>Iniciar Sesión</button>
-        <button>Crear tu cuenta</button>
-    </div>
-</header> 
-
- <!--Mapa-->  
- <main>
-    <section class="map-section">         
-        <div id="buscador">
-            <input type="text" id="place-input" placeholder="Busca tu Guardia/Hospital..." class="input">
-            <button id="search-button">Buscar</button>
+    <!-- Encabezado -->
+    <header>
+        <img src="/icon.jpg" alt="MiGuardia" class="logo">
+        <h1>MiGuardia</h1>
+        <nav> 
+            <a href="#" >Inicio </a>
+            <a href="#">Nosotros</a>
+            <a href="#">Contacto</a> 
+        </nav>
+        <div class="user-options">
+            <button>Iniciar Sesión</button>
+            <button>Crear tu cuenta</button>
         </div>
-        <div id="map"></div>
-    </section> 
+    </header>
 
+    <!-- Mapa -->  
+    <main>
+        <section class="map-section">         
+            <div id="buscador">
+                <input type="text" id="place-input" placeholder="Busca tu Guardia/Hospital..." class="input">
+                <button id="search-button">Buscar</button>
+            </div>
+            <div id="map"></div>
+        </section>
 
-<!-- Lista de guardias -->
-<!-- Slider main container -->
-<div class="swiper">
-    <!-- Additional required wrapper -->
-    <div class="swiper-wrapper">
-      <!-- Slides -->
-      <div class="swiper-slide">
-        <h3>Hospital Ramos Mejia </h3>
-        <img src="" alt="" title="imagen-hospital">
-        <p> Cantidad de guardias..</p>
-        <button class="button-guardia">Entrar</button>
-      </div>
+        <!-- Lista de guardias -->
+       <!-- Slider main container -->
+    <div class="swiper-container">
+        <div id="hospitales" class="swiper-wrapper">
+            <div class="swiper-slide">
+                <article class="guardia-card">
+                    <img src="ImagenHospital1.jpg" alt="Hospital 1">     
+                    <div class="guardia-info">
+                        <h3>Guardia Oftalmológica</h3>
+                        <p>Guardia Ginecológica, Guardia Traumatológica</p>
+                        <p>Ubicación: Nuñez</p>                      
+                    </div>
+                </article>
+            </div>
+            <div class="swiper-slide">
+                <article class="guardia-card">
+                    <img src="ramosmejia.jpeg" alt="Hospital 2">
+                    <div class="guardia-info">
+                        <h3>Hospital Ramos Mejia</h3>
+                        <p>Guardia Pediátrica, Guardia General</p>
+                        <p>Ubicación: Martinez</p>                  
+                    </div>
+                </article>
+            </div>
+            <div class="swiper-slide">
+                <article class="guardia-card">
+                    <img src="ImagenHospital3.jpg" alt="Hospital 3">
+                    <div class="guardia-info">
+                        <h3>Guardia General</h3>
+                        <p>Guardia Dermatológica</p>
+                        <p>Ubicación: Morón</p>                     
+                    </div>
+                </article>              
+            </div>        
 
-
-      <div class="swiper-slide">
-       <h3>Hospital de Clinicas</h3>
-       <img src="" alt="" title="imagen-hospital">
-        <p> Cantidad de guardias</p>
-        <button class="button-guardia">Entrar</button>
-      </div>
-
-      <div class="swiper-slide">
-        <h3>Hospital Fernandez</h3>
-        <img src="" alt="" title="imagen-hospital">
-        <p>Cantidad de guardias</p>
-        <button class="button-guardia">Entrar</button>
-      </div>
-    
-    </div> 
-    <!-- If we need navigation buttons -->
-    <div class="swiper-button-prev"></div>
-    <div class="swiper-button-next"></div>  
-   
-  </div>
-
-
-
-
-   <!-- Descripcion -->  
-    <div class="info-div">
-        <p>
-           Esta app web nace como una solución a la problemática de encontrar guardias medicas disponibles, ofreciendo solución que prioriza la calidad de la atención medica, y busca prevenir demoras y saturación en el servicio.
-             Brindamos facilitar el proceso de búsqueda sobre la disponibilidad de los servicios de guardia de manera rápida y eficiente. Ademas, nos comprometemos a apoyar el bienestar tanto de los pacientes como del personal de salud facilitando el tiempo en situaciones de crisis.
-        </p>
+            
+        </div>
+        <!-- Botones de navegación personalizados -->
+        <div class="custom-button-next"><ion-icon name="caret-forward-outline"></ion-icon></div>
+        <div class="custom-button-prev"><ion-icon name="caret-back-outline"></ion-icon></div> 
     </div>
-</main> 
+
+        <!-- Descripción -->  
+        <div class="info-div">
+            <p>
+               Esta app web nace como una solución a la problemática de encontrar guardias medicas disponibles, ofreciendo solución que prioriza la calidad de la atención medica, y busca prevenir demoras y saturación en el servicio.
+               Brindamos facilitar el proceso de búsqueda sobre la disponibilidad de los servicios de guardia de manera rápida y eficiente. Ademas, nos comprometemos a apoyar el bienestar tanto de los pacientes como del personal de salud facilitando el tiempo en situaciones de crisis.
+            </p>
+        </div>
+    </main>
+
     <footer class="footer">
         <div>
             <h2>MI GUARDIA</h2>
@@ -117,15 +124,12 @@
             </ul>
         </div>
     </footer>
-        
+    
     <script src="/scrips - js/scrips.js" type="module"></script> 
-   
- 
     <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
-   
-
-
-     <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
+    <script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
+    <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
     <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
+    <script src="/path/to/your/search-script.js"></script>
 </body>
 </html>
