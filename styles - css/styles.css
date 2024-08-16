@@ -1,10 +1,12 @@
+/*Import google fonts */
+@import url('https://fonts.googleapis.com/css2?family=Inter+Tight:ital,wght@0,100..900;1,100..900&family=Oxygen:wght@300;400;700&display=swap');
+
 body {
     font-family: 'Roboto', sans-serif;
     margin: 0;
     padding: 0;
-    background-color: #F1F1F1;
-    color: #3333;  
-
+    background-color:#fffef7;
+    color: #333;  
 }
 
 header {
@@ -12,7 +14,7 @@ header {
     justify-content: space-between;
     align-items: center; 
     padding: 10px 20px;
-    background-color: #2E8B7A;
+    background-color: #094c69;
     color: #fafafa;
 }
 
@@ -23,17 +25,15 @@ header .logo {
 header h1 {
     font-size: 1.5em;
     margin: 15px;
-    font-size: 1.7em;
     text-align: left; 
     flex: 2; 
 }
 
 header nav {
-    flex: 1; /* Esto hará que el nav ocupe el espacio disponible y se centre */
+    flex: 1;
     display: flex;
     justify-content: flex-end;
 }
-
 
 header nav a {
     color: white;
@@ -59,7 +59,6 @@ header img {
     height: 50px;
     border-radius: 50px;
     object-fit: cover;
-
 }
 
 main {
@@ -69,10 +68,6 @@ main {
 .map-section {
     position: relative;
     margin-bottom: 20px; 
-}
-
-.map-section:hover{
-    border: none;
 }
 
 #buscador {
@@ -106,73 +101,100 @@ main {
     border-radius: 5px;
 }
 
-
-.carousel-container {
+/* Estilo para el swiper */
+.swiper-container {   
+    margin: 50px;
+    width: 50%;
+    height: 40%;
     display: flex;
-    align-items: center;
     justify-content: center;
+    align-items: center;
     position: relative;
-    width: 100%;
 }
-
-
-.guardias-section {
+.swiper-wrapper {
     display: flex;
-    justify-content: space-around;
-    flex-wrap: wrap;
-    
+    justify-content: center;
+    align-items: center;
 }
+.swiper-slide {
+    width: 100px;
+    height: 200px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}       
+    
 
 .guardia-card {
-    width: 30%;
-    border: 5px solid #2E8B7A;
-    border-radius: 5px;
-    margin: 10px;
-    overflow: hidden;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-    background-color: white;
+    width: 50%; /* Puedes ajustar el tamaño según tus necesidades */
+    aspect-ratio: 1 / 1; /* Mantiene el formato cuadrado */
+    border: 5px solid#094c69;
+    height: 20%;
+    border-radius: 5px; 
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    background-color:#094c69;
+    display: flex;
+   
 }
 
 .guardia-card img {
-    width: 100%;
-    height: auto;
+    width: 50%;
+    padding: auto;
+    height: 50%; /* Ajusta para mantener el formato cuadrado */
+    object-fit: cover; /* Asegura que la imagen se ajuste sin deformarse */
+    opacity: 0.7;
 }
 
 .guardia-info {
     padding: 10px;
-    background-color: #fafafa;
+    background-color:#F1F1F1;
+    flex: 1; /* Permite que el contenido ocupe el espacio restante */
+    width:80%;
+    height: 50%;   
+    border-radius: 5px;
+    object-fit: cover;
 }
-.carousel-button{
-    width: 0;
-    height: 0;
-    cursor: pointer;
-    outline: none;
-    position: relative;
-    background-color: transparent;
 
-}
-.next-button{
-    border-top: 30px solid transparent;
-    border-bottom: 30px solid transparent;
-    border-left: 50px solid #2A8E79; /* Color del botón */
-    border-right: none; 
-}
-.prev-button{
-    border-top: 30px solid transparent;
-    border-bottom: 30px solid transparent;
-    border-right: 50px solid #2A8E79;
-    border-left:none;
-}
-.prev-button:hover{border-style: outset;}/*Le da un efecto de oscurecer al pasar el mouse por los botones */
-.next-button:hover{border-style: inset;}
 
-div {
-    margin: 20px 0;
+.guardia-info p {
     text-align: center;
+    padding: auto;
+    justify-content: center;
 }
 
-.info-div{
-    background-color: #e0e0e0;
+.custom-button-next,
+.custom-button-prev {
+    color:#2E8B7A ;
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 80px;
+    height: 70px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+}
+.custom-button-next {
+    right: -800px;
+}
+.custom-button-prev {
+    left: -60px;
+}
+.custom-button-next ion-icon,
+.custom-button-prev ion-icon {
+    font-size: 50px;
+    color: #2E8B7A;
+}
+
+
+
+/* Otros estilos */
+.info-div {
+    background-color:#fffef7;
     padding: 50px;
     border-radius: 10px;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
@@ -185,7 +207,7 @@ div {
     color: black;
 }
 
-p{
+p {
     font-size: 18px;
     color: #333;
     line-height: 1.6;
@@ -199,33 +221,38 @@ p{
     display: flex;
     justify-content: space-between;
 }
+
 .footer h2 {
     margin: 0;
     margin-bottom: 10px;
 }
+
 .footer .columna {
     display: flex;
     flex-direction: column;
 }
+
 .footer ul {
     list-style: none;
     padding: 0;
     margin: 0;
 }
+
 .footer li {
     margin: 5px 0;
 }
+
 .footer a {
     color: white;
     text-decoration: none;
 }
+
 .footer a:hover {
     text-decoration: underline;
 }
+
 .footer .iconos-web {
     display: flex;
     gap: 10px;
     margin-top: 10px;
 }
-
-
