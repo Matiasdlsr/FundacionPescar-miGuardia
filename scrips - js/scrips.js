@@ -72,45 +72,45 @@ document.addEventListener('DOMContentLoaded', () => {
 });
 
 // Seccion de comentarios
-document.addEventListener('DOMContentLoaded', function() {
-    const comments = [
-        {
-            username: 'Juan Pérez',
-            comment: '¡Me encanta este pagina, muy util!',
-            date: '2024-08-09',
-            avatar: '../assets/icons/user.svg'
-        },
-        {
-            username: 'Ana López',
-            comment: 'Muy informativo, gracias por compartir.',
-            date: '2024-08-08',
-            avatar: '../assets/icons/user.svg'
-        },
-        {
-            username: 'Carlos García',
-            comment: 'Gracias por toda la informacion! .',
-            date: '2024-08-07',
-            avatar: '../assets/icons/user.svg'
-        }
-    ];
 
-    const commentsContainer = document.getElementById('comments-container');
+document.getElementById('comment-form').addEventListener('submit', function(e) { //comment-add es el id del elemento que envia el comentario
+    e.preventDefault(); // Evitar que se recargue la página al enviar el formulario
 
-    comments.forEach(function(comment) {
-        const commentElement = document.createElement('div');
-        commentElement.classList.add('comment');
+    // Obtener los valores del formulario
+    const name = document.getElementById('name').value;
+    const comment = document.getElementById('comment').value;
 
-        commentElement.innerHTML = `
-            <img src="${comment.avatar}" alt="Avatar de ${comment.username}">   
-            <div class="comment-details">
-                <h4>${comment.username}</h4>
-                <p>${comment.comment}</p>
-                <span class="comment-date">${comment.date}</span>
-            </div>
-        `;
-
-        commentsContainer.appendChild(commentElement);
+    // Crear la fecha actual en formato dd/mm/yyyy
+    const date = new Date();
+    const formattedDate = date.toLocaleDateString('es-ES', {
+        day: '2-digit',
+        month: '2-digit',
+        year: 'numeric'
     });
+
+    // Crear una nueva fila para la tabla
+    const newRow = document.createElement('tr');
+
+    // Crear las celdas
+    const nameCell = document.createElement('td');
+    const dateCell = document.createElement('td');
+    const commentCell = document.createElement('td');
+
+    // Asignar contenido a las celdas
+    nameCell.innerHTML = `<img src="https://via.placeholder.com/30" alt="avatar"> ${name}`;
+    dateCell.textContent = formattedDate;
+    commentCell.textContent = comment;
+
+    // Añadir las celdas a la nueva fila
+    newRow.appendChild(nameCell);
+    newRow.appendChild(dateCell);
+    newRow.appendChild(commentCell);
+
+    // Añadir la nueva fila al cuerpo de la tabla
+    document.getElementById('comments-table-body').appendChild(newRow);
+
+    // Limpiar el formulario
+    document.getElementById('comment-form').reset();
 });
 
 // fin seccion comentarios

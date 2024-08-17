@@ -11,7 +11,7 @@ header {
     justify-content: space-between;
     align-items: center;
     padding: 10px 20px;
-    background-color: #2E8B7A;
+    background-color: #2C3E50;
     color: #fafafa;
 }
 
@@ -44,8 +44,8 @@ header nav a {
 
 header .user-options button {
     margin-left: 10px;
-    background-color: #00796B;
-    color: white;
+    background-color: #fff;
+    color: #2C3E50;
     border: none;
     padding: 10px 15px;
     border-radius: 5px;
@@ -54,7 +54,7 @@ header .user-options button {
 }
 header .user-options button a{
     text-decoration: none;
-    color: white;
+    color: #2C3E50;
 }
 header img {
     width: 50px;
@@ -200,7 +200,7 @@ p{
 }
 
 .footer {
-    background-color: #337e71;
+    background-color: #2C3E50;
     color: white;
     padding: 20px;
     display: flex;
