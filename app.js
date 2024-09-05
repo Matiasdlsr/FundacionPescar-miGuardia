@@ -1,42 +1,27 @@
-
+// app.js
 const express = require('express');
 const path = require('path');
-const mongoose = require('mongoose');
-const session = require('express-session'); 
+const bodyParser = require('body-parser');
 
+const userRoutes = require('./routers/userRouters');
+const adminRoutes = require('./routers/adminRouters');
 
-// Importar rutas
-const adminRouters = require('./routers/adminRouters');
-const userRouters = require('./routers/userRouters'); 
+const app = express();
 
-const app = express(); 
-
-
-// Conectar a la base de datos
-mongoose.connect('mongodb://127.0.0.1:27017/test', { useNewUrlParser: true, useUnifiedTopology: true })
-    .then(() => console.log('Conectado a la base de datos'))
-    .catch(err => console.error('Error al conectar a la base de datos:', err)); 
-
-// Configurar motor de vistas
+// Configurar vistas y archivos estáticos
 app.set('views', path.join(__dirname, 'views'));
-//app.set('view engine', 'ejs'); // Puedes cambiar 'ejs' por tu motor de vistas preferido (ej: pug, handlebars)
-
-// Servir archivos estáticos
 app.use(express.static(path.join(__dirname, 'public')));
 
-// Configurar rutas
-app.use('/admin', adminRouters);
-app.use('/user', userRouters);
+app.use(bodyParser.urlencoded({ extended: false }));
 
-// Manejo de errores 404
-app.use((req, res, next) => {
-    res.status(404).render('404', { pageTitle: 'Página no encontrada' });
+// Ruta para la página principal (raíz)
+app.get('/', (req, res) => {
+    res.sendFile(path.join(__dirname, 'views', 'index.html')); // Servir index.html
 });
 
+// Rutas
+app.use('/user', userRoutes);
+app.use('/admin', adminRoutes);
 
-// Iniciar servidor
 const PORT = process.env.PORT || 3000;
-app.listen(PORT, () => {
-    console.log(`Servidor corriendo en el puerto ${PORT}`);
-});    
-
+app.listen(PORT, () => console.log(`Servidor corriendo en el puerto ${PORT}`));
