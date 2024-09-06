@@ -1,12 +1,10 @@
-// userRoutes.js
 const express = require('express');
 const router = express.Router();
-const userController = require('../controllers/userController'); // Asegúrate de que la ruta sea correcta
+const userController = require('../controllers/userController');
 
-// Asegúrate de que estas funciones existan en el controlador
-router.get('/', userController.getUserHome);
-router.get('/register', userController.getUserRegister);
-router.post('/register', userController.postUserRegister);
+// Ruta para mostrar la página de login de usuario
+router.get('/login', userController.getUserLogin);
+
+// Otras rutas de usuario pueden ser añadidas aquí
 
 module.exports = router;
-
