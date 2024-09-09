@@ -9,9 +9,20 @@ document.getElementById('loginForm').addEventListener('submit', function(event)
     // Validación básica
     if (email === 'email@ejemplo.com' && password === 'contraseña') {
         errorMessage.textContent = '';
-        alert('Inicio de sesión exitoso');
         // Aquí puedes redirigir al usuario a otra página o realizar otra acción
+        const res = fetch("http://localhost:3000/admin/login",{
+            method: "POST",
+            headers:{
+                "Content-Type": "application/json"
+            },
+            body: JSON.stringify({
+                email: email,
+                password: password
+            })
+        })
+        
     } else {
         errorMessage.textContent = 'Email o contraseña incorrectos';
     }
+    
 });

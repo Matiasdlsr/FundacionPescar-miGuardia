@@ -12,7 +12,7 @@ app.set('views', path.join(__dirname, 'views'));
 app.use(express.static(path.join(__dirname, 'public')));
 
 app.use(bodyParser.urlencoded({ extended: false }));
-
+app.use(express.json());
 // Ruta para la página principal (raíz)
 app.get('/', (req, res) => {
     res.sendFile(path.join(__dirname, 'views', 'index.html')); // Servir index.html

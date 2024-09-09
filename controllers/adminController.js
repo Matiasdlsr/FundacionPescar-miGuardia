@@ -5,5 +5,11 @@ exports.getAdminLogin = (req, res) => {
     res.sendFile(path.join(__dirname, '../views/admin/loginAdmin.html'));
 };
 
+exports.postAdminLogin = (req, res) => {
+    console.log(req.body);
+    
+};
+
+
 // Añadir más funciones para otras vistas de administrador si las necesitas
 
