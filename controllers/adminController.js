@@ -6,7 +6,7 @@ exports.getAdminLogin = (req, res) => {
 };
 
 exports.postAdminLogin = (req, res) => {
-    console.log(req.body);
+    console.log(req.body);//muestra email y pass por consola 
     
 };
 
