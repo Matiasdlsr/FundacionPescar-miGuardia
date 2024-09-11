@@ -1,6 +1,7 @@
 // userController.js
 const path = require('path');
 const User = require('../models/userModel');
+const conexion = require('../config/database');
 
 exports.getUserHome = (req, res) => {
     res.render('user/index', { pageTitle: 'Página Principal de Usuario' });
@@ -14,6 +15,7 @@ exports.getUserLogin = (req, res) => {
 // Manejar la autenticación de usuario
 exports.postUserLogin = async (req, res) => {
     const { username, password } = req.body;
+    console.log(req.body);
 
     try {
         // Buscar el usuario por nombre de usuario o email
@@ -51,25 +53,41 @@ exports.postUserLogin = async (req, res) => {
 };
 
 
-
+//Carga la pagina de Registro
 exports.getUserRegister = (req, res) => {
     res.sendFile(path.join(__dirname, '../views/user/registerUser.html'));
 };
 
+//Se registra el Usuario
 exports.postUserRegister = async (req, res) => {
-    const { username, password, email } = req.body;
+    console.log(req.body.email);
+    const { name, lastname, email, password } = req.body;
 
     try {
-        // Crear y guardar el usuario
-        const newUser = new User({ username, email, password });
-        await newUser.save();
+        // Verificar si el usuario ya existe
+        let user = await User.findOne({ email });
+        if (user) {
+            return res.status(400).send('El usuario ya existe');
+        }
 
-        // Redirige al usuario después del registro
-        res.redirect('/user');
-    } catch (error) {
-        res.render('user/register', {
-            pageTitle: 'Registro de Usuario',
-            errorMessage: 'Error al registrar usuario',
+        // Crear un nuevo usuario
+        user = new User({
+            name,
+            lastname,
+            email,
+            password
         });
+
+        // Encriptar la contraseña antes de guardar
+        const salt = await bcrypt.genSalt(10);
+        user.password = await bcrypt.hash(password, salt);
+
+        // Guardar el usuario en la base de datos
+        await user.save();
+
+        res.status(201).send('Usuario registrado exitosamente');
+    } catch (error) {
+        console.error('Error al registrar usuario:', error);
+        res.status(500).send('Error del servidor');
     }
 };

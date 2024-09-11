@@ -31,35 +31,29 @@
         <div class="register">
             <h1 class="title">Registrarse</h1>
             <h3 class="text">Crea tu usuario en MiGuardia</h3>
-            <form action="index.html" class="form" method="post">
+            <form action="/registerUser" class="form" method="POST">
                 <div class="row">
                     <div class="column">
-                        <label for="">Nombre
-                        </label>
-                        <input type="text" required class="half" autofocus>
+                        <label for="name">Nombre</label>
+                        <input type="text" id="name" name="name" required class="half" autofocus>
                     </div>
                     <div class="column">
-                        <label for="">Apellido
-                        </label>
-                        <input type="text" required class="half">
+                        <label for="lastname">Apellido</label>
+                        <input type="text" id="lastname" name="lastname" required class="half">
                     </div>
                 </div>
-
-                <label for="mail">Email
-                </label>
-                <input id="mail" type="email" placeholder="email@janesfakedomain.net" required>
-                <label for="pass">Contraseña
-                </label>
-                <input id="pass" type="password" required placeholder="********">
-                <label for="pass2">Repita su contraseña
-                </label>
+                <label for="mail">Email</label>
+                <input id="mail" type="email" name="email" placeholder="email@janesfakedomain.net" required>
+                <label for="pass">Contraseña</label>
+                <input id="pass" type="password" name="password" required placeholder="********">
+                <label for="pass2">Repita su contraseña</label>
                 <input id="pass2" type="password" required placeholder="********">
-                <button class="create"><input type="submit" value="Crear cuenta" ></button>
-
+                <button class="create" type="submit">Crear cuenta</button>
             </form>
+            
             <div class="row half">
-                <div class="column"><p class="info">¿Tienes una cuenta? Inicia Sesión <a class="info" href="#">aquí</a></p></div>
-                <div class="column"><p class="info">¿Olvidaste la contraseña? Recuperala <a class="info" href="#">aquí</a></p></div>
+                <div class="column"><p class="info"><a class="info" href="#">¿Tienes una cuenta? Inicia Sesión aquí</a></p></div>
+                <div class="column"><p class="info"><a class="info" href="#">¿Olvidaste la contraseña? Recuperala aquí</a></p></div>
             </div>
         </div>
     </main>
