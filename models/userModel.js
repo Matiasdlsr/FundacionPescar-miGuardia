@@ -52,10 +52,6 @@ userSchema.methods.comparePassword = function (candidatePassword) {
 };
 
 
-
-
-
-
 // Creación del modelo de usuario
 const User = mongoose.model('User', userSchema);
 

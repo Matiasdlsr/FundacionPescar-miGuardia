@@ -53,7 +53,7 @@ exports.postUserLogin = async (req, res) => {
 
 
 exports.getUserRegister = (req, res) => {
-    res.render('user/register', { pageTitle: 'Registro de Usuario' });
+    res.sendFile(path.join(__dirname, '../views/user/registerUser.html'));
 };
 
 exports.postUserRegister = async (req, res) => {

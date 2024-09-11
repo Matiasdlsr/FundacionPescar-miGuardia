@@ -11,8 +11,8 @@ router.get('/', userController.getUserHome);
 router.get('/login', userController.getUserLogin);
 router.post('/login', userController.postUserLogin);
 
-router.get('/register', userController.getUserRegister);//adorno
-router.post('/register', userController.postUserRegister);//adorno
+router.get('/registerUser', userController.getUserRegister);//adorno
+router.post('/registerUser', userController.postUserRegister);//adorno
 
 module.exports = router;
 
