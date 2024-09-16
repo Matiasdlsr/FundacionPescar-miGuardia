@@ -82,7 +82,7 @@ exports.postUserRegister = async (req, res) => {
     await newUser.save();
 
     // Si el registro es exitoso
-    res.redirect('/user');
+    res.redirect('/');
   } catch (error) {
     // Si hay errores de validación o guardado
     res.render('user/register', {
