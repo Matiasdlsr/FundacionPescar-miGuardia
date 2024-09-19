@@ -7,6 +7,8 @@ body {
     padding: 0;
     background-color:#fffef7;
     color: #333;  
+    max-width: 100vw; /* Evita que el cuerpo de la página crezca más allá del ancho de la ventana */
+    overflow-x: hidden; /* Oculta el desplazamiento horizontal */
 }
 
 header {
@@ -277,3 +279,29 @@ p {
     gap: 10px;
     margin-top: 10px;
 }
+
+
+/*---------------------------------------------------------------SWIPER CAMBIO TAMAÑO------------------------------------------------------------------------------------*/
+
+/* Asegúrate de que las imágenes tengan un tamaño uniforme */
+.swiper-slide img {
+    width: 100%;       /* Ajusta el ancho de la imagen al 100% del contenedor */
+    height: 200px;     /* Fija una altura para las imágenes */
+    object-fit: cover; /* Recorta la imagen si es necesario para mantener la relación de aspecto */
+  }
+  
+  /* Ajustar el contenedor del carrusel */
+  .swiper-container {
+    position: relative;
+    width: 25%;
+    height: 300px; /* Puedes ajustar la altura total del contenedor del carrusel */
+}
+  
+  .swiper-slide {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    margin: 5rem;
+  }
