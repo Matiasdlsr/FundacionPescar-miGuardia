@@ -4,7 +4,7 @@ document.addEventListener('DOMContentLoaded', function () {
     const swiperWrapper = document.getElementById('hospitales');
   
     // Cargar los hospitales desde el archivo JSON
-    fetch('/models/guardias.json')
+    fetch('../InfoGuardia/guardias.json')
         .then(response => response.json())
         .then(hospitales => {
             hospitales.forEach(hospital => {

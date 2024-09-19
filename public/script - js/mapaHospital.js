@@ -1,3 +1,8 @@
+//Buscador 
+
+
+
+
 // mapaHospital.js
 document.addEventListener('DOMContentLoaded', function () {
     const map = L.map('map').setView([-34.6158526, -58.4350089], 12); // Coordenadas de Buenos Aires
@@ -9,7 +14,7 @@ document.addEventListener('DOMContentLoaded', function () {
     }).addTo(map);
 
     // Cargar los hospitales desde el archivo JSON
-    fetch('.InfoGuardia/guardias.json')
+    fetch('../InfoGuardia/guardias.json')
         .then(response => response.json())
         .then(hospitales => {
             hospitales.forEach(hospital => {
