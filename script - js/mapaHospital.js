@@ -1,13 +1,15 @@
 // mapaHospital.js
 document.addEventListener('DOMContentLoaded', function () {
     const map = L.map('map').setView([-34.6158526, -58.4350089], 12); // Coordenadas de Buenos Aires
+    
+    map.locate({enableHighAccuracy: true})     
 
     L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
         attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
     }).addTo(map);
 
     // Cargar los hospitales desde el archivo JSON
-    fetch('./models/guardias.json')
+    fetch('.InfoGuardia/guardias.json')
         .then(response => response.json())
         .then(hospitales => {
             hospitales.forEach(hospital => {
@@ -42,8 +44,7 @@ legend.onAdd = function (map) {
     for (let i = 0; i < tipos.length; i++) {
         div.innerHTML +=
             '<i style="background:' + getColor(tipos[i]) + '"></i> ' +
-            tipos[i] + '<br>';
-    }
+            tipos[i] + '<br>';    }
 
     return div;
 };

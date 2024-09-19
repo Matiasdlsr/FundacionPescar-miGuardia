@@ -30,7 +30,6 @@
     </header>
 
     <!-- Mapa -->  
-    <main>
         <section class="map-section">         
             <div id="buscador">
                 <input type="text" id="place-input" placeholder="Busca tu Guardia/Hospital..." class="input">
@@ -39,58 +38,16 @@
             <div id="map"></div>
         </section>
 
-        <!-- Lista de guardias -->
-       <!-- Slider main container -->
+    <!--Carrusel-->         
     <div class="swiper-container">
-        <div id="hospitales" class="swiper-wrapper">
-            <div class="swiper-slide">
-                <article class="guardia-card">
-                    <img src="ImagenHospital1.jpg" alt="Hospital 1">     
-                    <div class="guardia-info">
-                        <h3>Guardia Oftalmológica</h3>
-                        <p>Guardia Ginecológica, Guardia Traumatológica</p>
-                        <p>Ubicación: Nuñez</p>                      
-                    </div>
-                </article>
-            </div>
-            <div class="swiper-slide">
-                <article class="guardia-card">
-                    <img src="ramosmejia.jpeg" alt="Hospital 2">
-                    <div class="guardia-info">
-                        <h3>Hospital Ramos Mejia</h3>
-                        <p>Guardia Pediátrica, Guardia General</p>
-                        <p>Ubicación: Martinez</p>                  
-                    </div>
-                </article>
-            </div>
-            <div class="swiper-slide">
-                <article class="guardia-card">
-                    <img src="ImagenHospital3.jpg" alt="Hospital 3">
-                    <div class="guardia-info">
-                        <h3>Guardia General</h3>
-                        <p>Guardia Dermatológica</p>
-                        <p>Ubicación: Morón</p>                     
-                    </div>
-                </article>              
-            </div>        
-
-            
-        </div>
+        <div class="swiper-wrapper" id="hospitales"></div>
+        <div class="swiper-pagination"></div>
         <!-- Botones de navegación personalizados -->
         <div class="custom-button-next"><ion-icon name="caret-forward-outline"></ion-icon></div>
         <div class="custom-button-prev"><ion-icon name="caret-back-outline"></ion-icon></div> 
     </div>
 
-        <!-- Descripción -->  
-        <div class="info-div">
-            <p>
-               Esta app web nace como una solución a la problemática de encontrar guardias medicas disponibles, ofreciendo solución que prioriza la calidad de la atención medica, y busca prevenir demoras y saturación en el servicio.
-               Brindamos facilitar el proceso de búsqueda sobre la disponibilidad de los servicios de guardia de manera rápida y eficiente. Ademas, nos comprometemos a apoyar el bienestar tanto de los pacientes como del personal de salud facilitando el tiempo en situaciones de crisis.
-            </p>
-        </div>
-    </main>
-
-    <footer class="footer">
+       <footer class="footer">
         <div>
             <h2>MI GUARDIA</h2>
             <div class="iconos-web">              
@@ -126,12 +83,13 @@
     </footer>
 
     <!-- Scripts -->
-    <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
-    <script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
+    <script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/swiper@latest/swiper-bundle.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/typeahead.js/0.11.1/typeahead.bundle.min.js"></script>
     <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
     <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
-    <script src="/script-js/scripts.js" type="module"></script>
+    <script src="/script-js/mapaHospital.js"></script>
+    <script src="/script-js/carruselGuardia.js"></script>
 </body>
 </html>

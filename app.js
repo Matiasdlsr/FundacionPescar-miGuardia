@@ -4,6 +4,8 @@ const path = require('path');
 const bodyParser = require('body-parser');
 const userRoutes = require('./routers/userRouters');
 const adminRoutes = require('./routers/adminRouters');
+//Importar desde el archivo JSON
+const hospitales = require('./InfoGuardia/guardias.json'); 
 
 const app = express();
 
@@ -22,5 +24,15 @@ app.get('/', (req, res) => {
 app.use('/user', userRoutes);
 app.use('/admin', adminRoutes);
 
+
+
 const PORT = process.env.PORT || 3000;
 app.listen(PORT, () => console.log(`Servidor corriendo en el puerto ${PORT}`));
+
+
+
+//Ruta para los hospitales 
+app.get('/InfoGuardia/guardias.json', (req , res) =>{
+    res.json(hospitales)}); 
+
+  

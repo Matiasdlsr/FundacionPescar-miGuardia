@@ -26,11 +26,12 @@ document.addEventListener('DOMContentLoaded', function () {
                     clickable: true,
                 },
                 navigation: {
-                    nextEl: '.swiper-button-next',
-                    prevEl: '.swiper-button-prev',
+                    nextEl: '.custom-button-next',
+                    prevEl: '.custom-button-prev',
                 },
                 loop: true,
             });
         });
   });
+  
   
