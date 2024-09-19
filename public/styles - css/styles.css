@@ -7,6 +7,8 @@ body {
     padding: 0;
     background-color:#fffef7;
     color: #333;  
+    max-width: 100vw; /* Evita que el cuerpo de la página crezca más allá del ancho de la ventana */
+    overflow-x: hidden; /* Oculta el desplazamiento horizontal */
 }
 
 header {
