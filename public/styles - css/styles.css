@@ -126,12 +126,9 @@ main {
 
 /* Estilo para el swiper */
 .swiper-container {   
-    margin: 50px;
-    width: 50%;
-    height: 40%;
-    display: flex;
-    justify-content: center;
-    align-items: center;
+    margin: 50px auto; /* Centra el carrusel horizontalmente */
+    width: 70%; /* Aumenta el ancho para dar espacio a los botones */
+    height: 400px; /* Altura fija para mayor consistencia */
     position: relative;
     overflow: visible;
     z-index: 1;
@@ -141,81 +138,44 @@ main {
     justify-content: center;
     align-items: center;
 }
+
 .swiper-slide {
-    width: 100px;
-    height: 200px;
+    width: auto;
+    height: 100%;
     display: flex;
     justify-content: center;
     align-items: center;
-}       
-    
-
-.guardia-card {
-    width: 50%; /* Puedes ajustar el tamaño según tus necesidades */
-    aspect-ratio: 1 / 1; /* Mantiene el formato cuadrado */
-    border: 5px solid#094c69;
-    height: 20%;
-    border-radius: 5px; 
-    display: flex;
     flex-direction: column;
-    align-items: center;
-    text-align: center;
-    background-color:#094c69;
-    display: flex;
-   
-}
-
-.guardia-card img {
-    width: 50%;
-    padding: auto;
-    height: 50%; /* Ajusta para mantener el formato cuadrado */
-    object-fit: cover; /* Asegura que la imagen se ajuste sin deformarse */
-    opacity: 0.7;
-}
-
-.guardia-info {
-    padding: 10px;
-    background-color:#F1F1F1;
-    flex: 1; /* Permite que el contenido ocupe el espacio restante */
-    width:80%;
-    height: 50%;   
-    border-radius: 5px;
-    object-fit: cover;
-}
-
-
-.guardia-info p {
-    text-align: center;
-    padding: auto;
-    justify-content: center;
+    padding: 10px 40px; /* Aumenta el padding horizontal */
 }
 
 .custom-button-next,
 .custom-button-prev {
-    color:#2E8B7A ;
-    position: absolute;
+    color: #2E8B7A;
+    position: fixed; 
     top: 50%;
     transform: translateY(-50%);
-    width: 80px;
-    height: 70px;
+    width: 50px;
+    height: 50px;
     display: flex;
     justify-content: center;
     align-items: center;
     cursor: pointer;
-    z-index: 10; 
+    z-index: 10;
+    background-color: rgba(255, 255, 255, 0.7); 
+    border-radius: 50%; 
+}
 
-}
+
 .custom-button-next {
-    right: -800px;
+    right: 20px;
 }
+
+
 .custom-button-prev {
-    left: -60px;
+    left: 20px; 
 }
-.custom-button-next ion-icon,
-.custom-button-prev ion-icon {
-    font-size: 50px;
-    color: #2E8B7A;
-}
+
 
 
 
