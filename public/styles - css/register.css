@@ -21,7 +21,7 @@ body{
     height: 70px;
 }
 .register{
-    background: linear-gradient(#23977B, #012b30 93%, #00272d 100%);
+    background:#23977B;
     width: 575px;
     height: 500px;
     border-radius: 20px;

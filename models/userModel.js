@@ -5,10 +5,15 @@ const { Schema } = mongoose;
 
 // Definición del esquema de usuario
 const userSchema = new Schema({
-  username: {
+  name: {
     type: String,
     required: true,
     unique: true,
+  }, 
+  lastname: {
+    type: String,
+    required: true,
+    unique:true,
   },
   email: {
     type: String,
@@ -24,7 +29,7 @@ const userSchema = new Schema({
     enum: ['user', 'admin'],
     default: 'user',
   },
-  createDate: {
+  createdAt: {
     type: Date,
     default: Date.now,
   },

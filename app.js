@@ -7,6 +7,9 @@ const adminRoutes = require('./routers/adminRouters');
 const dotenv = require('dotenv');
 const connectDB = require('./config/database'); // Ajusta esta ruta según tu estructura de archivos
 
+const Hospital = require('../models/hospitalModel');
+const router = express.Router(); 
+  
 //Importar desde el archivo JSON
 const hospitales = require('./InfoGuardia/guardias.json'); 
 
@@ -39,5 +42,3 @@ app.listen(PORT, () => console.log(`Servidor corriendo en el puerto http://local
 //Ruta para los hospitales 
 app.get('/InfoGuardia/guardias.json', (req , res) =>{
     res.json(hospitales)}); 
-
-  

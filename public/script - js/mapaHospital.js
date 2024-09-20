@@ -74,7 +74,7 @@ document.addEventListener('DOMContentLoaded', function () {
     }
 
     // Función para manejar la búsqueda y redirigir
-    document.getElementById('search-button').addEventListener('click', function () {
+  /*  document.getElementById('search-button').addEventListener('click', function () {
         const input = document.getElementById('place-input').value.toLowerCase();
 
         fetch('../InfoGuardia/guardias.json')
@@ -87,6 +87,28 @@ document.addEventListener('DOMContentLoaded', function () {
                 } else {
                     alert('Hospital no encontrado');
                 }
-            });
-    });
+            }); 
+    }); */ 
+
+    document.getElementById('search-button').addEventListener('click', function () {
+        const input = document.getElementById('place-input').value.toLowerCase();
+      
+        // Realizar fetch a la API de hospitales desde MongoDB
+        fetch('/hospitals/all') // Cambia la ruta para obtener datos desde el backend
+          .then(response => response.json())
+          .then(hospitals => {
+            const hospital = hospitals.find(h => h.name.toLowerCase() === input);
+            if (hospital) {
+              // Redirigir a la página específica para ver la disponibilidad
+              window.location.href = `/ver-disponibilidad?name=${encodeURIComponent(hospital.name)}`; 
+            } else {
+              alert('Hospital no encontrado');
+            }
+          })
+          .catch(error => {
+            console.error('Error fetching hospitals:', error);
+            alert('Error al buscar hospitales');
+          });
+      });
+
 });

@@ -34,3 +34,19 @@ loadHospitalesData();
 module.exports = {
   getHospitales
 };
+
+const Hospital = require('../models/hospitalModel');
+
+const searchHospitals = async (req, res) => {
+  try {
+    const { query } = req.query; // Obtener el texto de búsqueda del query string
+    const hospitals = await Hospital.find({
+      name: { $regex: query, $options: 'i' } // Búsqueda que no distingue entre mayúsculas/minúsculas
+    });
+    res.json(hospitals); // Devolver la lista de hospitales encontrados como JSON
+  } catch (error) {
+    res.status(500).json({ message: 'Error al buscar hospitales' });
+  }
+};
+
+module.exports = { searchHospitals };
