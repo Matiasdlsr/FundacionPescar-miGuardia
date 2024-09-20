@@ -123,6 +123,30 @@ main {
     line-height: 1.5;
     color: #555;
 }
+#suggestions {
+    position: absolute;
+    top: 10%;
+    width: 75%;    
+    display: block;
+    margin: 0 auto;
+    left: 0;
+    right: 0; /* Hace que el ancho sea igual al del campo de entrada */
+    background: white;
+    border: 1px solid #ccc;
+    max-height: 200px;
+    overflow-y: auto;
+    z-index: 1000;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+}
+
+.suggestion {
+    padding: 8px 12px;
+    cursor: pointer;
+}
+
+.suggestion:hover {
+    background-color: #f0f0f0;
+}
 
 /* Estilo para el swiper */
 .swiper-container {   
