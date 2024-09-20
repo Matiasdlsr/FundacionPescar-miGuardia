@@ -4,10 +4,13 @@ const path = require('path');
 const bodyParser = require('body-parser');
 const userRoutes = require('./routers/userRouters');
 const adminRoutes = require('./routers/adminRouters');
-require('dotenv').config();
+const dotenv = require('dotenv');
+const connectDB = require('./config/database'); // Ajusta esta ruta según tu estructura de archivos
+
 //Importar desde el archivo JSON
 const hospitales = require('./InfoGuardia/guardias.json'); 
 
+dotenv.config(); // Esta línea debe estar aquí, antes de cualquier uso de process.env
 const app = express();
 
 // Configurar vistas y archivos estáticos
@@ -20,7 +23,8 @@ app.use(express.json());
 app.get('/', (req, res) => {
     res.sendFile(path.join(__dirname, 'views', 'index.html')); // Servir index.html
 });
-
+// Conectar a la base de datos
+connectDB();
 // Rutas
 app.use('/user', userRoutes);
 app.use('/admin', adminRoutes);
