@@ -7,7 +7,7 @@ const adminRoutes = require('./routers/adminRouters');
 const dotenv = require('dotenv');
 const connectDB = require('./config/database'); // Ajusta esta ruta según tu estructura de archivos
 
-const Hospital = require('../models/hospitalModel');
+const Hospital = require('./models/hospitalModel');
 const router = express.Router(); 
   
 //Importar desde el archivo JSON
