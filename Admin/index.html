@@ -92,5 +92,68 @@
             </ul>
         </div>
     </footer>
+
+<script>
+
+document.addEventListener('DOMContentLoaded', function () {
+    // Obtener el nombre del hospital de la URL
+    const urlParams = new URLSearchParams(window.location.search);
+    const nombreHospital = urlParams.get('nombre');
+
+    if (nombreHospital) {
+        // Cargar los datos del hospital
+        fetch('../InfoGuardia/guardias.json')
+            .then(response => response.json())
+            .then(hospitales => {
+                const hospital = hospitales.find(h => h.name === decodeURIComponent(nombreHospital));
+                if (hospital) {
+                    mostrarDetallesHospital(hospital);
+                } else {
+                    mostrarError('Hospital no encontrado');
+                }
+            })
+            .catch(error => {
+                console.error('Error al cargar los datos del hospital:', error);
+                mostrarError('Error al cargar los datos del hospital');
+            });
+    } else {
+        mostrarError('Nombre del hospital no especificado');
+    }
+
+    function mostrarDetallesHospital(hospital) {
+        document.getElementById('hospital-name').textContent = hospital.name;
+        
+        const detallesContainer = document.getElementById('hospital-details');
+        detallesContainer.innerHTML = `
+            <div class="guardia-clinica">
+                <h2>Guardia Clínica</h2>
+                <p>Estado: ${hospital.guardiaClinica || 'No disponible'}</p>
+            </div>
+            <div class="guardia-oftalmologica">
+                <h2>Guardia Oftalmológica</h2>
+                <p>Estado: ${hospital.guardiaOftalmologica || 'No disponible'}</p>
+            </div>
+            <div class="guardia-ginecologia">
+                <h2>Guardia Ginecología</h2>
+                <p>Estado: ${hospital.guardiaGinecologia || 'No disponible'}</p>
+            </div>
+            <div class="guardia-pediatrica">
+                <h2>Guardia Pediátrica</h2>
+                <p>Estado: ${hospital.guardiaPediatrica || 'No disponible'}</p>
+            </div>
+            <div class="administracion-ginecologia">
+                <h2>Administración Ginecología</h2>
+                <p>Teléfono: ${hospital.telefonoAdminGinecologia || 'No disponible'}</p>
+            </div>
+        `;
+    }
+
+    function mostrarError(mensaje) {
+        document.getElementById('hospital-name').textContent = 'Error';
+        document.getElementById('hospital-details').innerHTML = `<p>${mensaje}</p>`;
+    }
+});
+</script>
+
 </body>
 </html>

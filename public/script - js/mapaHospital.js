@@ -92,44 +92,37 @@ document.addEventListener('DOMContentLoaded', function () {
             suggestion.textContent = hospital.name;
             suggestion.classList.add('suggestion');
             suggestion.addEventListener('click', () => {
-                document.getElementById('place-input').value = hospital.name;
-                suggestionsContainer.innerHTML = '';
-                mostrarHospitales([hospital]);
-                map.setView([hospital.lat, hospital.lng], 15);
+                redirigirAHospital(hospital);
             });
             suggestionsContainer.appendChild(suggestion);
         });
     }
+   
+      // Función para redirigir a la página del hospital
+      function redirigirAHospital(nombreHospital) {
+        window.location.href = `/admin/index.html=${encodeURIComponent(nombreHospital)}`;
+    }
 
-    // Evento de entrada en el campo de búsqueda
-    document.getElementById('place-input').addEventListener('input', function () {
-        const input = this.value;
-        if (input.length > 2) {
-            const hospitalesFiltrados = filtrarHospitales(input);
-            actualizarSugerencias(hospitalesFiltrados);
-            mostrarHospitales(hospitalesFiltrados);
-            
-            if (hospitalesFiltrados.length > 0) {
-                const bounds = L.latLngBounds(hospitalesFiltrados.map(h => [h.lat, h.lng]));
-                map.fitBounds(bounds);
-            }
-        } else {
-            document.getElementById('suggestions').innerHTML = '';
-            mostrarHospitales(hospitales);
-        }
-    });
-
-    // Evento de clic en el botón de búsqueda (opcional, puedes mantenerlo si lo deseas)
-    document.getElementById('search-button').addEventListener('click', function () {
-        const input = document.getElementById('place-input').value;
+   // Evento de entrada en el campo de búsqueda
+   document.getElementById('place-input').addEventListener('input', function () {
+    const input = this.value;
+    if (input.length > 2) {
         const hospitalesFiltrados = filtrarHospitales(input);
-        mostrarHospitales(hospitalesFiltrados);
-        
-        if (hospitalesFiltrados.length > 0) {
-            const bounds = L.latLngBounds(hospitalesFiltrados.map(h => [h.lat, h.lng]));
-            map.fitBounds(bounds);
-        } else {
-            alert('No se encontraron hospitales que coincidan con la búsqueda');
-        }
-    });
+        actualizarSugerencias(hospitalesFiltrados);
+    } else {
+        document.getElementById('suggestions').innerHTML = '';
+    }
+});
+
+// Evento de clic en el botón de búsqueda
+document.getElementById('search-button').addEventListener('click', function () {
+    const input = document.getElementById('place-input').value;
+    const hospitalesFiltrados = filtrarHospitales(input);
+    
+    if (hospitalesFiltrados.length > 0) {
+        redirigirAHospital(hospitalesFiltrados[0].name);
+    } else {
+        alert('No se encontraron hospitales que coincidan con la búsqueda');
+    }
+});
 });
