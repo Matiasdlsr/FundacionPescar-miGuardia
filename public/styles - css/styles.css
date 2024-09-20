@@ -133,6 +133,8 @@ main {
     justify-content: center;
     align-items: center;
     position: relative;
+    overflow: visible;
+    z-index: 1;
 }
 .swiper-wrapper {
     display: flex;
@@ -200,6 +202,8 @@ main {
     justify-content: center;
     align-items: center;
     cursor: pointer;
+    z-index: 10; 
+
 }
 .custom-button-next {
     right: -800px;
