@@ -77,11 +77,10 @@
     const password = document.getElementById('password').value;
     const errorMessage = document.getElementById('error-message');
 
-    // Validación básica
     if (email === 'admin@miguardia.com' && password === 'miGuardia') {
         errorMessage.textContent = '';
         alert('Inicio de sesión exitoso');
-        window.location.href = '/';
+        window.location.href = '../../Admin/index.html';
     } else {
         errorMessage.textContent = 'Email o contraseña incorrectos';
     }
