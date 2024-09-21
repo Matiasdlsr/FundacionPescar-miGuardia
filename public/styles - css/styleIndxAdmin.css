@@ -16,6 +16,10 @@ header {
     align-items: center;
 }
 
+.logo img{
+    border-radius: 50%;
+}
+
 header .logo h1 {
     margin-left: 10px;
     font-size: 24px;
