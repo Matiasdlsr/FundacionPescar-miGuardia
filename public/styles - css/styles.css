@@ -13,19 +13,21 @@ body {
 
 header {
     display: flex;
-    justify-content: space-between;
+    justify-content: space-around;
     align-items: center; 
-    padding: 10px 20px;
+    padding: 40px 20px;
     background-color: #094c69;
     color: #fafafa;
+
 }
 
 header .logo {
-    height: 50px;    
+    height: 75px; 
+    width: 75px;   
 }
 
 header h1 {
-    font-size: 1.5em;
+    font-size: 2.5em;
     margin: 15px;
     text-align: left; 
     flex: 2; 
@@ -42,18 +44,19 @@ header nav a {
     margin: 0 10px;
     text-decoration: none;
     font-weight: 700;
-    font-size: 0.9em;
+    font-size: 1.5em;
 }
 
 header .user-options button {
     margin-left: 10px;
     background-color: #00796B;
     color: white;
-    border: none;
+    border: 1px solid #00796B ; 
     padding: 10px 15px;
-    border-radius: 5px;
+    border-radius: 10px;
     cursor: pointer;
     font-weight: 700;
+    font-size: 1.5rem;
 }
  
 header img {
@@ -75,15 +78,18 @@ main {
 #buscador {
     display: flex;
     justify-content: center;
-    margin-bottom: 20px;
+    margin-bottom: 2rem; 
+    margin-top: 2rem;
+    
 }
 
 #place-input {
-    width: 70%;
+    width: 75%;
     padding: 10px;
     border: 1px solid #ccc;
     border-radius: 5px;
     margin-right: 10px;
+    font-size: 1.5rem;
 }
 
 #search-button {
@@ -94,13 +100,15 @@ main {
     border-radius: 5px;
     cursor: pointer;
     font-weight: 700;
+    font-size: 1.5rem;
 }
 
 #map {
     width: 100%;
-    height: 400px;
+    height: 500px;
     border: 1px solid #ccc;
     border-radius: 5px;
+    margin-bottom: 2rem;
 }
 .info {
     padding: 6px 8px;
@@ -150,17 +158,21 @@ main {
 
 /* Estilo para el swiper */
 .swiper-container {   
+    padding: 10%;
     margin: 50px auto; /* Centra el carrusel horizontalmente */
     width: 70%; /* Aumenta el ancho para dar espacio a los botones */
-    height: 400px; /* Altura fija para mayor consistencia */
+    height: 300px; /* Altura fija para mayor consistencia */
     position: relative;
     overflow: visible;
     z-index: 1;
+ 
 }
 .swiper-wrapper {
     display: flex;
     justify-content: center;
     align-items: center;
+    z-index: -1;
+   
 }
 
 .swiper-slide {
@@ -171,6 +183,7 @@ main {
     align-items: center;
     flex-direction: column;
     padding: 10px 40px; /* Aumenta el padding horizontal */
+    background-color: #094c69;
 }
 
 .custom-button-next,
