@@ -6,10 +6,8 @@ const userRoutes = require('./routers/userRouters');
 const adminRoutes = require('./routers/adminRouters');
 const dotenv = require('dotenv');
 const connectDB = require('./config/database'); // Ajusta esta ruta según tu estructura de archivos
-
-const Hospital = require('./models/hospitalModel');
 const router = express.Router(); 
-  
+const { getHospitales, getGuards, getComments, getUsers } = require('./controllers/hospitalesController');
 //Importar desde el archivo JSON
 const hospitales = require('./InfoGuardia/miGuardia.hospitals.json'); 
 
@@ -32,6 +30,19 @@ connectDB();
 app.use('/user', userRoutes);
 app.use('/admin', adminRoutes);
 
+
+
+// Ruta para obtener los hospitales
+app.get('/api/hospitales', getHospitales);
+
+// Ruta para obtener las guardias
+app.get('/api/guards', getGuards);
+
+// Ruta para obtener los comentarios
+app.get('/api/comments', getComments);
+
+// Ruta para obtener los usuarios
+app.get('/api/users', getUsers);
 
 
 const PORT = process.env.PORT || 3000;

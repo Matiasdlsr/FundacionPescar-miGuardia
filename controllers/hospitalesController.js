@@ -2,25 +2,43 @@ const fs = require('fs');
 const path = require('path');
 
 let hospitalesData = null;
+let guardsData = null;
+let commentsData = null;
+let usersData = null;
 
-// Cargar el archivo una vez al iniciar la aplicación
-const loadHospitalesData = () => {
-  const filePath = path.join(__dirname, '..', 'models', 'miGuardia.hospitals.json');
-  fs.readFile(filePath, 'utf8', (err, data) => {
-    if (err) {
-      console.error('Error al leer el archivo:', err);
-      return;
-    }
-    try {
-      hospitalesData = JSON.parse(data); // Almacena el JSON en memoria
-      console.log('Datos de hospitales cargados correctamente');
-    } catch (parseError) {
-      console.error('Error al parsear el archivo JSON:', parseError);
-    }
-  });
+// Cargar múltiples archivos JSON
+const loadData = () => {
+  const filesToLoad = {
+    hospitales: 'miGuardia.hospitals.json',
+    guards: 'miGuardia.guards.json',
+    comments: 'miGuardia.comments.json',
+    users: 'miGuardia.users.json'
+  };
+
+  for (const [key, file] of Object.entries(filesToLoad)) {
+    const filePath = path.join(__dirname, '..', 'InfoGuardia', file);
+    fs.readFile(filePath, 'utf8', (err, data) => {
+      if (err) {
+        console.error(`Error al leer el archivo ${file}:`, err);
+        return;
+      }
+      try {
+        if (key === 'hospitales') hospitalesData = JSON.parse(data);
+        if (key === 'guards') guardsData = JSON.parse(data);
+        if (key === 'comments') commentsData = JSON.parse(data);
+        if (key === 'users') usersData = JSON.parse(data);
+        console.log(`Datos de ${key} cargados correctamente`);
+      } catch (parseError) {
+        console.error(`Error al parsear el archivo ${file}:`, parseError);
+      }
+    });
+  }
 };
 
-// Función para obtener hospitales
+// Llamar a la función de carga
+loadData();
+
+// Controladores para cada tipo de datos
 const getHospitales = (req, res) => {
   if (!hospitalesData) {
     return res.status(500).json({ error: 'Datos de hospitales no disponibles' });
@@ -28,25 +46,30 @@ const getHospitales = (req, res) => {
   res.json(hospitalesData);
 };
 
-// Cargar los datos al iniciar la aplicación
-loadHospitalesData();
+const getGuards = (req, res) => {
+  if (!guardsData) {
+    return res.status(500).json({ error: 'Datos de guardias no disponibles' });
+  }
+  res.json(guardsData);
+};
+
+const getComments = (req, res) => {
+  if (!commentsData) {
+    return res.status(500).json({ error: 'Datos de comentarios no disponibles' });
+  }
+  res.json(commentsData);
+};
+
+const getUsers = (req, res) => {
+  if (!usersData) {
+    return res.status(500).json({ error: 'Datos de usuarios no disponibles' });
+  }
+  res.json(usersData);
+};
 
 module.exports = {
-  getHospitales
+  getHospitales,
+  getGuards,
+  getComments,
+  getUsers
 };
-
-const Hospital = require('../models/hospitalModel');
-
-const searchHospitals = async (req, res) => {
-  try {
-    const { query } = req.query; // Obtener el texto de búsqueda del query string
-    const hospitals = await Hospital.find({
-      name: { $regex: query, $options: 'i' } // Búsqueda que no distingue entre mayúsculas/minúsculas
-    });
-    res.json(hospitals); // Devolver la lista de hospitales encontrados como JSON
-  } catch (error) {
-    res.status(500).json({ message: 'Error al buscar hospitales' });
-  }
-};
-
-module.exports = { searchHospitals };

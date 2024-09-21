@@ -22,62 +22,29 @@
     </header>
 
     <main>
+        <!-- Sección de información de los hospitales -->
         <section class="hospital-info">
-            <div><h2>Hospital General de Agudos José María Ramos Mejía</h2></div>
-            
-            <div class="cards">
-                <div class="card saturated">
-                    <h3>Guardia clínica</h3>
-                    <p>Planta Baja</p>
-                    <p class="status">Saturado</p>
-                </div>
-                <div class="card saturated">
-                    <h3>Guardia Oftalmologica</h3>
-                    <p>Planta Baja</p>
-                    <p class="status">Saturado</p>
-                </div>
-                <div class="card normal">
-                    <h3>Guardia Ginecología</h3>
-                    <p>Piso 2</p>
-                    <p class="status">Normal</p>
-                </div>
-                <div class="card normal">
-                    <h3>Guardia Pediatrica</h3>
-                    <p>Planta Baja</p>
-                    <p class="status">Normal</p>
-                </div>
-                <div class="card admin">
-                    <h3>Administración Ginecología</h3>
-                    <p>656-656-6545</p>
-                    <p>555-000-525</p>
-                </div>
+            <div><h2>Hospitales Disponibles</h2></div>
+            <div class="cards" id="hospitalCards">
+                <!-- Las tarjetas de hospitales se inyectarán dinámicamente aquí -->
             </div>
         </section>
-
+    
+        <!-- Sección de comentarios/reseñas -->
         <section class="feedback">
-            <div class="feedback-card">
-                <p>"A terrific piece of praise"</p>
-                <p class="name">Name</p>
-                <p class="description">Description</p>
-            </div>
-            <div class="feedback-card">
-                <p>"A fantastic bit of feedback"</p>
-                <p class="name">Name</p>
-                <p class="description">Description</p>
-            </div>
-            <div class="feedback-card">
-                <p>"A genuinely glowing review"</p>
-                <p class="name">Name</p>
-                <p class="description">Description</p>
+            <div class="feedback-card" id="feedbackSection">
+                <!-- Las reseñas/comentarios se inyectarán dinámicamente aquí -->
             </div>
         </section>
-
+    
+        <!-- Sección para agregar comentarios -->
         <section class="comments">
             <h3>Deja tu comentario</h3>
             <textarea></textarea>
             <button>Enviar</button>
         </section>
     </main>
+    
 
     <footer>
         <div class="contacts">
@@ -93,67 +60,60 @@
         </div>
     </footer>
 
-<script>
-
-document.addEventListener('DOMContentLoaded', function () {
-    // Obtener el nombre del hospital de la URL
-    const urlParams = new URLSearchParams(window.location.search);
-    const nombreHospital = urlParams.get('nombre');
-
-    if (nombreHospital) {
-        // Cargar los datos del hospital
-        fetch('../InfoGuardia/guardias.json')
-            .then(response => response.json())
-            .then(hospitales => {
-                const hospital = hospitales.find(h => h.name === decodeURIComponent(nombreHospital));
-                if (hospital) {
-                    mostrarDetallesHospital(hospital);
-                } else {
-                    mostrarError('Hospital no encontrado');
-                }
-            })
-            .catch(error => {
-                console.error('Error al cargar los datos del hospital:', error);
-                mostrarError('Error al cargar los datos del hospital');
-            });
-    } else {
-        mostrarError('Nombre del hospital no especificado');
-    }
-
-    function mostrarDetallesHospital(hospital) {
-        document.getElementById('hospital-name').textContent = hospital.name;
+    <script>
+        // Función para cargar los hospitales
+        function loadHospitals() {
+            fetch('/api/guards')
+                .then(response => response.json())
+                .then(hospitals => {
+                    const hospitalCards = document.getElementById('hospitalCards');
+                    hospitalCards.innerHTML = '';  // Limpiar contenido previo
         
-        const detallesContainer = document.getElementById('hospital-details');
-        detallesContainer.innerHTML = `
-            <div class="guardia-clinica">
-                <h2>Guardia Clínica</h2>
-                <p>Estado: ${hospital.guardiaClinica || 'No disponible'}</p>
-            </div>
-            <div class="guardia-oftalmologica">
-                <h2>Guardia Oftalmológica</h2>
-                <p>Estado: ${hospital.guardiaOftalmologica || 'No disponible'}</p>
-            </div>
-            <div class="guardia-ginecologia">
-                <h2>Guardia Ginecología</h2>
-                <p>Estado: ${hospital.guardiaGinecologia || 'No disponible'}</p>
-            </div>
-            <div class="guardia-pediatrica">
-                <h2>Guardia Pediátrica</h2>
-                <p>Estado: ${hospital.guardiaPediatrica || 'No disponible'}</p>
-            </div>
-            <div class="administracion-ginecologia">
-                <h2>Administración Ginecología</h2>
-                <p>Teléfono: ${hospital.telefonoAdminGinecologia || 'No disponible'}</p>
-            </div>
-        `;
-    }
-
-    function mostrarError(mensaje) {
-        document.getElementById('hospital-name').textContent = 'Error';
-        document.getElementById('hospital-details').innerHTML = `<p>${mensaje}</p>`;
-    }
-});
-</script>
+                    hospitals.forEach(hospital => {
+                        const card = document.createElement('div');
+                        card.classList.add('card', hospital.status === 'Saturado' ? 'saturated' : 'normal');
+                        
+                        card.innerHTML = `
+                            <p>${hospital.typeguard}</p>
+                            <p>${hospital.piso}</p>
+                            <p class="status">${hospital.state}</p>
+                        `;
+                        hospitalCards.appendChild(card);
+                    });
+                })
+                .catch(error => console.error('Error al cargar hospitales:', error));
+        }
+        
+        // Función para cargar comentarios/reseñas
+        function loadFeedback() {
+            fetch('/api/comments')
+                .then(response => response.json())
+                .then(comments => {
+                    const feedbackSection = document.getElementById('feedbackSection');
+                    feedbackSection.innerHTML = '';  // Limpiar contenido previo
+        
+                    comments.forEach(comment => {
+                        const feedbackCard = document.createElement('div');
+                        feedbackCard.classList.add('feedback-card');
+                        
+                        feedbackCard.innerHTML = `
+                            <p>"${comment.text}"</p>
+                            <p class="name">${comment.name}</p>
+                            <p class="description">${comment.description}</p>
+                        `;
+                        feedbackSection.appendChild(feedbackCard);
+                    });
+                })
+                .catch(error => console.error('Error al cargar comentarios:', error));
+        }
+        
+        // Llamar a las funciones para cargar los datos al cargar la página
+        document.addEventListener('DOMContentLoaded', () => {
+            loadHospitals();  // Cargar hospitales
+            loadFeedback();   // Cargar comentarios/reseñas
+        });
+        </script>
+        
 
 </body>
 </html>
