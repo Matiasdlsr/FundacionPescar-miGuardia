@@ -160,11 +160,14 @@ main {
 .swiper-container {   
     padding: 10%;
     margin: 50px auto; /* Centra el carrusel horizontalmente */
-    width: 70%; /* Aumenta el ancho para dar espacio a los botones */
+    width: 25%; /* Aumenta el ancho para dar espacio a los botones */
     height: 300px; /* Altura fija para mayor consistencia */
     position: relative;
     overflow: visible;
     z-index: 1;
+    /*position: relative;
+    width: 25%;
+    height: 300px;*/
  
 }
 .swiper-wrapper {
@@ -172,7 +175,6 @@ main {
     justify-content: center;
     align-items: center;
     z-index: -1;
-   
 }
 
 .swiper-slide {
@@ -184,6 +186,24 @@ main {
     flex-direction: column;
     padding: 10px 40px; /* Aumenta el padding horizontal */
     background-color: #094c69;
+    /*display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;*/
+    color: white;
+    margin: 5rem;
+}
+
+.swiper-slide p{
+    color: white;
+}
+
+/* Asegúrate de que las imágenes tengan un tamaño uniforme */
+.swiper-slide img {
+    width: 100%;       /* Ajusta el ancho de la imagen al 100% del contenedor */
+    height: 150px;     /* Fija una altura para las imágenes */
+    object-fit: cover; /* Recorta la imagen si es necesario para mantener la relación de aspecto */
 }
 
 .custom-button-next,
@@ -284,25 +304,3 @@ p {
 
 /*---------------------------------------------------------------SWIPER CAMBIO TAMAÑO------------------------------------------------------------------------------------*/
 
-/* Asegúrate de que las imágenes tengan un tamaño uniforme */
-.swiper-slide img {
-    width: 100%;       /* Ajusta el ancho de la imagen al 100% del contenedor */
-    height: 200px;     /* Fija una altura para las imágenes */
-    object-fit: cover; /* Recorta la imagen si es necesario para mantener la relación de aspecto */
-  }
-  
-  /* Ajustar el contenedor del carrusel */
-  .swiper-container {
-    position: relative;
-    width: 25%;
-    height: 300px; /* Puedes ajustar la altura total del contenedor del carrusel */
-}
-  
-  .swiper-slide {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    text-align: center;
-    margin: 5rem;
-  }
