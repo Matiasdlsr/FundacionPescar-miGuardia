@@ -84,7 +84,7 @@
                 .catch(error => console.error('Error al cargar hospitales:', error));
         }
         
-        // Función para cargar comentarios/reseñas
+        //Función para cargar comentarios/reseñas
         function loadFeedback() {
             fetch('/api/comments')
                 .then(response => response.json())
@@ -107,7 +107,9 @@
                 })
                 .catch(error => console.error('Error al cargar comentarios:', error));
         }
-        
+    
+
+
             // Función para obtener el nombre del hospital de la URL
         function getHospitalNameFromURL() {
             const urlParams = new URLSearchParams(window.location.search);
