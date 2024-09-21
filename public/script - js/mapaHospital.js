@@ -100,7 +100,7 @@ document.addEventListener('DOMContentLoaded', function () {
    
       // Función para redirigir a la página del hospital
       function redirigirAHospital(nombreHospital) {
-        window.location.href = `/admin/index.html=${encodeURIComponent(nombreHospital)}`;
+        window.location.href = `/admin/`;
     }
 
    // Evento de entrada en el campo de búsqueda
