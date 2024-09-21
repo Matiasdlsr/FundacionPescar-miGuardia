@@ -1,0 +1,36 @@
+[{
+  "_id": {
+    "$oid": "66ec4113964ffbd9333c766c"
+  },
+  "text": "Excelente servicio!",
+  "userId": {
+    "$oid": "66ec5229ed645ca380361329"
+  },
+  "createdAt": {
+    "$date": "2024-09-19T15:19:47.019Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "66ec4132964ffbd9333c766d"
+  },
+  "text": "Espere solamente 30 minutos para que me atiendan",
+  "userId": {
+    "$oid": "66ec5229ed645ca380361329"
+  },
+  "createdAt": {
+    "$date": "2024-09-19T15:20:18.486Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "66ec4143964ffbd9333c766e"
+  },
+  "text": "Muy amable el doctor peralta",
+  "userId": {
+    "$oid": "66ec5229ed645ca380361329"
+  },
+  "createdAt": {
+    "$date": "2024-09-19T15:20:35.285Z"
+  }
+}]

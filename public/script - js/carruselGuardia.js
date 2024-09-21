@@ -5,7 +5,7 @@ document.addEventListener('DOMContentLoaded', function () {
     const swiperContainer = document.querySelector('.swiper-container');
 
     // Cargar los hospitales desde el archivo JSON
-    fetch('../InfoGuardia/guardias.json')
+    fetch('../InfoGuardia/miGuardia.hospitals.json')
         .then(response => response.json())
         .then(hospitales => {
             hospitales.forEach(hospital => {
@@ -19,7 +19,8 @@ document.addEventListener('DOMContentLoaded', function () {
                 ;
                 swiperWrapper.appendChild(slide);
             });
-
+             
+            
             // Crear y agregar botones de navegación dinámicamente
             const prevButton = document.createElement('div');
             prevButton.classList.add('custom-button-prev');

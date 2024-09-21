@@ -1,0 +1,42 @@
+[{
+  "_id": {
+    "$oid": "66ec40cced645ca380361318"
+  },
+  "name": "admin",
+  "lastname": "miguardia",
+  "email": "miguardia@gmail.com",
+  "password": "pescar123",
+  "role": "admin",
+  "comments": [
+    {
+      "$oid": "66ec4143964ffbd9333c766e"
+    }
+  ],
+  "createdAt": {
+    "$date": "2024-09-19T15:35:36.256Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "66ec5229ed645ca380361329"
+  },
+  "name": "user",
+  "lastname": "miguardia",
+  "email": "miguardiauser@gmail.com",
+  "password": "pescar123",
+  "role": "user",
+  "comments": [
+    {
+      "$oid": "66ec4143964ffbd9333c766c"
+    },
+    {
+      "$oid": "66ec4143964ffbd9333c766d"
+    },
+    {
+      "$oid": "66ec4143964ffbd9333c766e"
+    }
+  ],
+  "createdAt": {
+    "$date": "2024-09-19T15:35:36.256Z"
+  }
+}]
