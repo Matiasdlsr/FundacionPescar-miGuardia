@@ -71,11 +71,11 @@
         
                     hospitals.forEach(hospital => {
                         const card = document.createElement('div');
-                        card.classList.add('card', hospital.status === 'Saturado' ? 'saturated' : 'normal');
+                        card.classList.add('card', hospital.state === 'Ocupado' ? 'saturated' : 'normal');
                         
                         card.innerHTML = `
                             <p>${hospital.typeguard}</p>
-                            <p>${hospital.piso}</p>
+                            <p>Piso: ${hospital.piso}</p>
                             <p class="status">${hospital.state}</p>
                         `;
                         hospitalCards.appendChild(card);
@@ -96,10 +96,11 @@
                         const feedbackCard = document.createElement('div');
                         feedbackCard.classList.add('feedback-card');
                         
+                        const createdAt = new Date(comment.createdAt.$date).toLocaleString();
                         feedbackCard.innerHTML = `
                             <p>"${comment.text}"</p>
                             <p class="name">${comment.name}</p>
-                            <p class="description">${comment.description}</p>
+                            <p class="description">${createdAt}</p>
                         `;
                         feedbackSection.appendChild(feedbackCard);
                     });
