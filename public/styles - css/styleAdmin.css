@@ -8,12 +8,12 @@ body {
 }
 
 header {
-    background-color: #22977b;
-    color: #FFFFFF;
-    padding: 10px 20px;
     display: flex;
-    justify-content: space-between;
     align-items: center;
+    justify-content: space-between;
+    padding: 40px 20px;
+    background-color: #094c69;
+    color: #fafafa;
 }
 
 header .logo {
@@ -22,7 +22,8 @@ header .logo {
 }
 
 header .logo img {
-    height: 50px;
+        height: 75px;
+        width: 75px;
     margin-right: 10px;
     border-radius: 50%;
 }
@@ -41,6 +42,7 @@ header nav ul li {
 header nav ul li a {
     color: #fff;
     text-decoration: none;
+    font-size: 1.5em;
 }
 
 .login-container {
