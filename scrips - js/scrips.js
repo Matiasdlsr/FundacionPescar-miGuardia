@@ -116,22 +116,46 @@ document.getElementById('comment-form').addEventListener('submit', function(e) {
 // fin seccion comentarios
 
 // popup
-document.addEventListener('DOMContentLoaded', () => {
-    const openPopupBtn = document.getElementById('openPopup');
-    const popup = document.getElementById('popup');
-    const closePopupBtn = document.getElementById('closePopup');
+// document.addEventListener('DOMContentLoaded', () => {
+//     const openPopupBtn = document.getElementById('openPopup');
+//     const popup = document.getElementById('popup');
+//     const closePopupBtn = document.getElementById('closePopup');
 
-    openPopupBtn.addEventListener('click', () => {
-        popup.style.display = 'flex';
-    });
+//     openPopupBtn.addEventListener('click', () => {
+//         popup.style.display = 'flex';
+//     });
 
-    closePopupBtn.addEventListener('click', () => {
-        popup.style.display = 'none';
-    });
+//     closePopupBtn.addEventListener('click', () => {
+//         popup.style.display = 'none';
+//     });
 
-    window.addEventListener('click', (event) => {
-        if (event.target === popup) {
-            popup.style.display = 'none';
-        }
-    });
+//     window.addEventListener('click', (event) => {
+//         if (event.target === popup) {
+//             popup.style.display = 'none';
+//         }
+//     });
+// });
+// Abrir el popup
+document.getElementById('openPopupBtn').addEventListener('click', function() {
+    document.getElementById('popup').style.display = 'flex';
+});
+
+// Cerrar el popup
+document.getElementById('closePopupBtn').addEventListener('click', function() {
+    document.getElementById('popup').style.display = 'none';
+});
+
+// Manejo del formulario
+document.getElementById('guardiaForm').addEventListener('submit', function(event) {
+    event.preventDefault();
+    const tipoGuardia = document.getElementById('tipoGuardia').value;
+    const estado = document.getElementById('estado').value;
+    const piso = document.getElementById('piso').value;
+
+    console.log('Tipo de Guardia:', tipoGuardia);
+    console.log('Estado:', estado);
+    console.log('Piso:', piso);
+
+    alert('Formulario enviado correctamente');
+    document.getElementById('popup').style.display = 'none';
 });

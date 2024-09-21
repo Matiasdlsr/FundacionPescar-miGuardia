@@ -30,7 +30,31 @@
     <main>
         <h2>Hospital General de Agudos José María Ramos Mejía</h2>
         <div class="button-group">
-            <button id ="openPopUp">Agregar guardia</button>
+            <button id="openPopupBtn">Abrir Formulario</button>
+
+    <!-- Popup -->
+    <div id="popup" class="popup-container">
+        <div class="popup-content">
+            <span class="close-btn" id="closePopupBtn">&times;</span>
+            <h2>Agregar nueva guardia</h2>
+            <form id="guardiaForm">
+                <label for="tipoGuardia">Tipo de Guardia:</label>
+                <input type="text" id="tipoGuardia" name="tipoGuardia" required>
+
+                <label for="estado">Estado:</label>
+                <select id="estado" name="estado" required>
+                    <option value="libre">Libre</option>
+                    <option value="ocupado">Ocupado</option>
+                </select>
+
+                <label for="piso">Piso:</label>
+                <input type="number" id="piso" name="piso" required>
+
+                <button type="submit">Enviar</button>
+            </form>
+        </div>
+    </div>
+            <button >Agregar guardia</button>
             <button>Modificar guardia</button>
             <button>Eliminar guardia</button>
             <button>Agregar teléfono</button>
