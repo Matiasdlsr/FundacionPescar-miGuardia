@@ -11,7 +11,7 @@ document.addEventListener('DOMContentLoaded', function () {
     let hospitales = [];
 
     // Cargar los hospitales desde el archivo JSON
-    fetch('../InfoGuardia/guardias.json')
+    fetch('../InfoGuardia/miGuardia.hospitals.json')
         .then(response => response.json())
         .then(data => {
             hospitales = data;

@@ -5,7 +5,7 @@ let hospitalesData = null;
 
 // Cargar el archivo una vez al iniciar la aplicación
 const loadHospitalesData = () => {
-  const filePath = path.join(__dirname, '..', 'models', 'guardias.json');
+  const filePath = path.join(__dirname, '..', 'models', 'miGuardia.hospitals.json');
   fs.readFile(filePath, 'utf8', (err, data) => {
     if (err) {
       console.error('Error al leer el archivo:', err);

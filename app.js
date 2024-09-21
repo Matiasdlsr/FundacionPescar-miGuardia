@@ -11,7 +11,7 @@ const Hospital = require('./models/hospitalModel');
 const router = express.Router(); 
   
 //Importar desde el archivo JSON
-const hospitales = require('./InfoGuardia/guardias.json'); 
+const hospitales = require('./InfoGuardia/miGuardia.hospitals.json'); 
 
 dotenv.config(); // Esta línea debe estar aquí, antes de cualquier uso de process.env
 const app = express();
@@ -40,5 +40,5 @@ app.listen(PORT, () => console.log(`Servidor corriendo en el puerto http://local
 
 
 //Ruta para los hospitales 
-app.get('/InfoGuardia/guardias.json', (req , res) =>{
+app.get('/InfoGuardia/miGuardia.hospitals.json', (req , res) =>{
     res.json(hospitales)}); 
