@@ -18,6 +18,9 @@ const app = express();
 app.set('views', path.join(__dirname, 'views'));
 app.use(express.static(path.join(__dirname, 'public')));
 
+app.use('/admin', express.static(path.join(__dirname, 'Admin')));
+
+
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(express.json());
 // Ruta para la página principal (raíz)
@@ -53,3 +56,9 @@ app.listen(PORT, () => console.log(`Servidor corriendo en el puerto http://local
 //Ruta para los hospitales 
 app.get('/InfoGuardia/miGuardia.hospitals.json', (req , res) =>{
     res.json(hospitales)}); 
+
+
+    app.use((req, res, next) => {
+        res.status(404).send('Página no encontrada');
+    });
+    

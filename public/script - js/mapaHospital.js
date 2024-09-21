@@ -92,7 +92,7 @@ document.addEventListener('DOMContentLoaded', function () {
             suggestion.textContent = hospital.name;
             suggestion.classList.add('suggestion');
             suggestion.addEventListener('click', () => {
-                redirigirAHospital(hospital);
+                redirigirAHospital(hospital.name);
             });
             suggestionsContainer.appendChild(suggestion);
         });
@@ -100,7 +100,7 @@ document.addEventListener('DOMContentLoaded', function () {
    
       // Función para redirigir a la página del hospital
       function redirigirAHospital(nombreHospital) {
-        window.location.href = `/admin/`;
+        window.location.href = `Admin/index.html?hospital=${encodeURIComponent(nombreHospital)}`;
     }
 
    // Evento de entrada en el campo de búsqueda

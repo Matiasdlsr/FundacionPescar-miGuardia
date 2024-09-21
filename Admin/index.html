@@ -24,7 +24,7 @@
     <main>
         <!-- Sección de información de los hospitales -->
         <section class="hospital-info">
-            <div><h2>Hospitales Disponibles</h2></div>
+            <div><h2 id="hospital-title">Hospitales Disponibles</h2></div>
             <div class="cards" id="hospitalCards">
                 <!-- Las tarjetas de hospitales se inyectarán dinámicamente aquí -->
             </div>
@@ -108,8 +108,18 @@
                 .catch(error => console.error('Error al cargar comentarios:', error));
         }
         
+            // Función para obtener el nombre del hospital de la URL
+        function getHospitalNameFromURL() {
+            const urlParams = new URLSearchParams(window.location.search);
+            return urlParams.get('hospital');
+        }
+                // Llamar a las funciones para cargar los datos al cargar la página
         // Llamar a las funciones para cargar los datos al cargar la página
         document.addEventListener('DOMContentLoaded', () => {
+            const hospitalName = getHospitalNameFromURL();
+            if (hospitalName) {
+                document.getElementById('hospital-title').textContent = hospitalName; // Cambiar título por el nombre del hospital
+            }
             loadHospitals();  // Cargar hospitales
             loadFeedback();   // Cargar comentarios/reseñas
         });
