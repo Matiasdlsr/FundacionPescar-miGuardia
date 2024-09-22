@@ -9,6 +9,25 @@
   "lng": -58.39333,
   "imageUrl": "/imagenes-Hospitales/Garrahan103918.png",
   "phone": 1126417088,
+  "guards": [{
+      "typeguard": "Pediatria",
+      "state": "Libre",
+      "piso": "1"},
+      {
+      "typeguard": "Clinica",
+      "state": "Libre",
+      "piso": "1"},
+      {
+      "typeguard": "Ginecologia",
+      "state": "Ocupado",
+      "piso": "2"
+      },
+      {
+      "typeguard": "Oftalmologica",
+      "state": "Ocupado",
+      "piso": "2"
+      }
+  ],
   "comments": [
     {
       "$oid": "66ec4143964ffbd9333c766c"
