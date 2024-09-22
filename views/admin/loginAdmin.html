@@ -124,6 +124,12 @@
             padding: 15px;
             border-radius: 5px;
         }
+        #tituloHospital{
+            padding: 10px 10px 10px 20px;
+            outline: none;
+            border-radius: 10px;
+            width: 100%;
+        }
     </style>
 </head>
 <body>
@@ -148,15 +154,18 @@
             <form id="loginForm">
                 <div class="input-group">
                     <label for="email">Email</label>
-                    <input type="email" id="email" name="email" required>
+                    <input type="email" id="email" name="email" required placeholder="juan@gmail.com">
                 </div>
-                <div class="input-group">
+                <!-- <div class="input-group">
                     <label for="tituloHospital">Nombre del Hospital</label>
                     <input type="text" id="tituloHospital" name="tituloHospital" required>
-                </div>
+                </div> -->
+                <select id="tituloHospital">
+                    <option value="">Seleccione un hospital</option>
+                  </select>
                 <div class="input-group">
                     <label for="password">Contraseña</label>
-                    <input type="password" id="password" name="password" required>
+                    <input type="password" id="password" name="password" required placeholder="########" minlength="8">
                 </div>
                 <button type="submit">Ingresar</button>
             </form>
@@ -277,7 +286,7 @@
 
         document.getElementById('addGuardForm').addEventListener('submit', function(e) {
             e.preventDefault();
-            
+
             const guardType = document.getElementById('guardType').value;
             const guardStatus = document.getElementById('guardStatus').value;
             const floor = document.getElementById('floor').value;
@@ -322,6 +331,36 @@
         }
 
         document.addEventListener('DOMContentLoaded', loadComments);
+
+function populateSelect(hospitales) {
+  const select = document.getElementById('tituloHospital');
+
+  hospitales.forEach(hospital => {
+    const option = document.createElement('option');
+    option.value = hospital.name;
+    option.text = hospital.name;
+    const idoption = hospital.id;
+    select.appendChild(option);
+  });
+}
+function handleHospitalSelect() {
+    const select = document.getElementById('tituloHospital');
+    const hospitalName = select.value;
+    console.log("Hospital seleccionado:", hospitalName);
+    // window.location.href = `/siguiente_pagina?hospitalName=${hospitalName}`;
+}
+
+// Función para cargar el archivo JSON y poblar el select
+function loadHospitals() {
+  fetch('/InfoGuardia/miGuardia.hospitals.json')  // Asegúrate de poner la ruta correcta al archivo JSON
+    .then(response => response.json())
+    .then(data => {
+      populateSelect(data);
+    })
+    .catch(error => console.error('Error al cargar los hospitales:', error));
+}
+window.onload = loadHospitals;
+
     </script>
 </body>
 </html>
