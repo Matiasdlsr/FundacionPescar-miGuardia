@@ -1,5 +1,15 @@
+body {
+  font-family: Arial, sans-serif;
+  margin: 0;
+  padding: 0;
+  line-height: 1.6;
+}
+
+
 .nosotros-titulo{
-  padding: 20px;
+  text-align: center;
+  margin-bottom: 2rem;
+  color: #0e4e6b;
 }
 
 .contenedor-cards {
@@ -8,25 +18,32 @@
 
   padding: 10px;
   display: grid;
-  grid-template-columns: 1fr 1fr 1fr;
-  grid-gap: 50px;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 2rem;
+}
+
+main {
+  padding: 2rem;
 }
 
 .integrante-card{
-  background-color: #2E8B7A;
-  border-radius: 10%;
+  border-radius: 8%;
   padding: 20px;
-
+  background-color: #f0f0f0;
   display: flex;
   flex-direction: column;
   align-items: center;
   text-align: center;
+  object-fit: cover;
+  margin-bottom: 1rem;
+
 
 }
 
 .integrante-card:hover{
-  box-shadow: 4px 4px 8px rgba(0, 0, 0, 0.8);
-  padding: 20px;
+
+    transform: translateY(-5px);
+
 }
 
 
@@ -36,18 +53,98 @@
   object-fit: cover;
 }
 
-.integrante-card > p, .integrante-card > h3, h2{
-  
-  font-family:'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+.integrante-card h3 {
+  margin: 0.5rem 0;
+  color: #0e4e6b;
 }
 
+.integrante-card p {
+  margin: 0;
+  color: #666;
+}
+
+
 .contenedor-agradecimientos{
-  text-align: center;
-  padding-top: 40px;
+  display: flex;
+  justify-content: center;
+  gap: 2rem;
+  padding: 4px;
+  margin-top: 1rem;
+  color: #0e4e6b;
 }
 
 .contenedor-logos-fundacion{
   display: flex;
   align-items: center;
   justify-content: center;
+  
+}
+
+.footer {
+  background-color: #0e4e6b;
+  color: white;
+  display: flex;
+  justify-content: space-around;
+  padding: 2rem;
+}
+
+.footer h2 {
+  margin-bottom: 1rem;
+  font-size: 1.2rem;
+}
+
+.footer ul {
+  list-style-type: none;
+  padding: 0;
+}
+
+.footer li {
+  margin-bottom: 0.5rem;
+}
+
+.footer a {
+  color: white;
+  text-decoration: none;
+}
+
+.footer a:hover {
+  text-decoration: underline;
+}
+
+.iconos-web {
+  display: flex;
+  gap: 1rem;
+}
+
+.iconos-web a {
+  font-size: 1.5rem;
+}
+
+/* Estilos responsivos */
+@media (max-width: 768px) {
+  header {
+      flex-direction: column;
+      align-items: flex-start;
+  }
+
+  nav {
+      margin-top: 1rem;
+  }
+
+  .user-options {
+      margin-top: 1rem;
+  }
+
+  .user-options button {
+      margin-left: 0;
+      margin-right: 1rem;
+  }
+
+  .footer {
+      flex-direction: column;
+  }
+
+  .columna {
+      margin-top: 1rem;
+  }
 }

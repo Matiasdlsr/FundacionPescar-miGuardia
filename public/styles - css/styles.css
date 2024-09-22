@@ -133,14 +133,13 @@ main {
 }
 #suggestions {
     position: absolute;
-    top: 10%;
-    width: 75%;    
+    top: 8.6%;
+    width: 72%;    
     display: block;
     margin: 0 auto;
     left: 0;
-    right: 0; /* Hace que el ancho sea igual al del campo de entrada */
-    background: white;
-    border: 1px solid #ccc;
+    right: 190px; /* Hace que el ancho sea igual al del campo de entrada */
+    background: white;    
     max-height: 200px;
     overflow-y: auto;
     z-index: 1000;
@@ -233,7 +232,6 @@ main {
 .custom-button-prev {
     left: 20px; 
 }
-
 
 
 

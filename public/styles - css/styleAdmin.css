@@ -6,6 +6,14 @@ body {
     flex-direction: column;
     min-height: 100vh;
 }
+.hidden {
+    display: none;
+}
+.form-container {
+    margin: 20px;
+    padding: 20px;
+    border: 1px solid #ccc;
+}
 
 header {
     display: flex;
@@ -57,19 +65,6 @@ header nav ul li a {
     position: relative;
 }
 
-.register-link {
-    position: absolute;
-    top: -30px;
-    left: -40px;
-    background-color: #23977B;
-    padding: 10px;
-    border-radius: 50%;
-    width: 150px;
-    height: 150px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-}
 
 .register-link a {
     color: #fff;
@@ -157,3 +152,62 @@ footer {
     color: #fff;
     text-decoration: none;
 }
+
+#register-container {
+    background: linear-gradient(180deg, rgba(0, 44, 50, 0.8), rgba(0, 44, 50, 0.5)); /* Fondo similar al login */
+    padding: 50px; /* Ajusta el padding */
+    border-radius: 10px; /* Bordes redondeados */
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.2); /* Sombra más suave */
+    width: 500px; /* Ancho consistente */
+    text-align: center; /* Centrar texto */
+    margin: 50px auto; /* Centrando el contenedor */
+    color: #fff; /* Color del texto */
+}
+
+#register-container h2 {
+    margin-bottom: 20px; /* Espaciado en el título */
+}
+
+#register-container .input-group {
+    margin-bottom: 15px; /* Espaciado entre campos */
+}
+
+#register-container label {
+    display: block;
+    margin-bottom: 5px;
+    color: #fff; /* Color del texto de las etiquetas */
+}
+
+#register-container input {
+    width: 100%; /* Ancho completo */
+    padding: 10px; /* Aumentar padding */
+    box-sizing: border-box; /* Para incluir padding en el ancho total */
+    border-radius: 5px; /* Bordes redondeados */
+    border: none; /* Sin borde */
+    background-color: #f0f0f0; /* Fondo claro para los inputs */
+}
+
+#register-container button {
+    width: 100%; /* Ancho completo */
+    padding: 10px; /* Padding consistente */
+    background-color: #007BFF; /* Color del botón */
+    border: none; /* Sin borde */
+    color: #fff; /* Color del texto del botón */
+    border-radius: 5px; /* Bordes redondeados */
+    cursor: pointer; /* Cambiar cursor a mano */
+    transition: background-color 0.3s; /* Transición suave al cambiar de color */
+}
+
+#register-container button:hover {
+    background-color: #0056b3; /* Color al pasar el cursor */
+}
+
+#register-container #showLogin {
+    margin-top: 20px; /* Espaciado superior */
+    background-color: transparent; /* Fondo transparente */
+    color: #fff; /* Color del texto */
+    border: none; /* Sin borde */
+    cursor: pointer; /* Cambiar cursor a mano */
+    font-size: 1em; /* Tamaño de fuente consistente */
+}
+

@@ -20,9 +20,10 @@
             </ul>
         </nav>
     </header>
+
+
     <div class="login-container">
-        <div class="register-link">
-            <a href="/user/registerUser">Registro de Usuario</a>
+            <a >Login Admin</a>
         </div>
         <h2>Iniciar Sesión</h2>
         <p>Inicia sesión con tu cuenta en MiGuardia</p>
@@ -68,24 +69,7 @@
             </div>
         </div>
     </footer>
-    <script>
-        document.getElementById('loginForm').addEventListener('submit', function(event)
-{
-    event.preventDefault();
 
-    const email = document.getElementById('email').value;
-    const password = document.getElementById('password').value;
-    const errorMessage = document.getElementById('error-message');
-
-    if (email === 'admin@miguardia.com' && password === 'miGuardia') {
-        errorMessage.textContent = '';
-        alert('Inicio de sesión exitoso');
-        window.location.href = '../../Admin/index.html';
-    } else {
-        errorMessage.textContent = 'Email o contraseña incorrectos';
-    }
-});
-    </script>
 
 
 </body>
