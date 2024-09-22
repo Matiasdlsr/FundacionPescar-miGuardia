@@ -1,4 +1,4 @@
-document.getElementById('loginForm').addEventListener('submit', function(event) {
+/*document.getElementById('loginForm').addEventListener('submit', function(event) {
     event.preventDefault();
 
     const email = document.getElementById('email').value;
@@ -44,3 +44,18 @@ document.getElementById('loginForm').addEventListener('submit', function(event) 
         errorMessage.textContent = 'Error en el servidor: ' + error.message;
     });
 });
+*/
+
+document.getElementById('loginForm').addEventListener('submit', function(e) {
+    e.preventDefault();
+    var hospitalName = document.getElementById('tituloHospital').value;
+    document.getElementById('loginSection').style.display = 'none';
+    document.getElementById('hospitalInterface').style.display = 'block';
+    document.getElementById('hospitalName').textContent = hospitalName;
+});
+
+function showModal(action) {
+    // Here you would implement the logic to show different modals
+    // based on the action (e.g., 'addGuard', 'modifyGuard', etc.)
+    alert('Acción: ' + action + ' - Esta funcionalidad aún no está implementada.');
+}
