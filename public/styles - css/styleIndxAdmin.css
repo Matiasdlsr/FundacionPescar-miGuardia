@@ -16,7 +16,7 @@ header {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    font-size: 1em;
+    font-size: 1.5rem;
 
 }
 
@@ -28,7 +28,7 @@ header .logo {
 }
 
 header h1 {
-    font-size: 2.5em;
+    font-size: 2.5rem;
     margin: 15px;
     text-align: left; 
     flex: 2; 
