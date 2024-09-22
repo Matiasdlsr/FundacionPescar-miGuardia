@@ -9,7 +9,7 @@ const userSchema = new Schema({
     type: String,
     required: true,
     unique: true,
-  }, 
+  },
   lastname: {
     type: String,
     required: true,
@@ -80,6 +80,7 @@ exports.postUserRegister = async (req, res) => {
     // Validación y creación del nuevo usuario
     const newUser = new User({
       username,
+      lastname,
       email,
       password, // Asegúrate de encriptar la contraseña antes de guardarla
     });

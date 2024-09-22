@@ -4,5 +4,10 @@
     "lastname": "pablo",
     "email": "juan@gmail.com",
     "password": "$2a$10$examplehashedpassword"
+  },
+  {
+    "name": "gato",
+    "lastname": "miau",
+    "password": "123123123"
   }
 ]
