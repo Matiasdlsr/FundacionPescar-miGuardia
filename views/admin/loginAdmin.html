@@ -5,108 +5,127 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Iniciar Sesión - MiGuardia</title>
     <link rel="stylesheet" href="/styles - css/styleAdmin.css">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f0f0f0;
+        }
+        header {
+            background-color: #006064;
+            color: white;
+            padding: 1rem;
+        }
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 1rem;
+        }
+        .logo {
+            display: inline-block;
+            background-color: white;
+            color: #006064;
+            width: 30px;
+            height: 30px;
+            text-align: center;
+            line-height: 30px;
+            border-radius: 50%;
+            margin-right: 10px;
+        }
+        nav {
+            float: right;
+        }
+        nav a {
+            color: white;
+            text-decoration: none;
+            margin-left: 1rem;
+        }
+        main {
+            padding: 2rem 0;
+        }
+        .button-group {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 1rem;
+            margin-bottom: 2rem;
+        }
+        button {
+            background-color: #006064;
+            color: white;
+            border: none;
+            padding: 0.5rem 1rem;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+        button:hover {
+            background-color: #00838f;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            background-color: white;
+        }
+        th, td {
+            text-align: left;
+            padding: 0.5rem;
+            border-bottom: 1px solid #ddd;
+        }
+        th {
+            background-color: #f2f2f2;
+        }
+        .modal {
+            display: none;
+            position: fixed;
+            z-index: 1;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.4);
+        }
+        .modal-content {
+            background-color: white;
+            margin: 15% auto;
+            padding: 20px;
+            border: 1px solid #888;
+            width: 80%;
+            max-width: 500px;
+        }
+        .close {
+            color: #aaa;
+            float: right;
+            font-size: 28px;
+            font-weight: bold;
+            cursor: pointer;
+        }
+        .close:hover {
+            color: black;
+        }
+        .form-group {
+            margin-bottom: 1rem;
+        }
+        .form-group label {
+            display: block;
+            margin-bottom: 0.5rem;
+        }
+        .form-group input, .form-group select {
+            width: 100%;
+            padding: 0.5rem;
+            box-sizing: border-box;
+        }
+        .alert {
+            display: none;
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            background-color: #4CAF50;
+            color: white;
+            padding: 15px;
+            border-radius: 5px;
+        }
+    </style>
 </head>
-<style>
-    body {
-        font-family: Arial, sans-serif;
-        margin: 0;
-        padding: 0;
-        background-color: #f0f0f0;
-    }
-    header {
-        background-color: #006064;
-        color: white;
-        padding: 1rem;
-    }
-    .container {
-        max-width: 1200px;
-        margin: 0 auto;
-        padding: 1rem;
-    }
-    .logo {
-        display: flex;
-        align-items: center;
-    }
-    .logo img {
-        width: 50px;
-        margin-right: 10px;
-    }
-    nav ul {
-        list-style-type: none;
-        padding: 0;
-    }
-    nav ul li {
-        display: inline;
-        margin-left: 1rem;
-    }
-    nav ul li a {
-        color: white;
-        text-decoration: none;
-    }
-    main {
-        padding: 2rem 0;
-    }
-    .login-container, .hospital-interface {
-        background-color: white;
-        padding: 2rem;
-        border-radius: 8px;
-        box-shadow: 0 0 10px rgba(0,0,0,0.1);
-        max-width: 500px;
-        margin: 2rem auto;
-    }
-    .input-group {
-        margin-bottom: 1rem;
-    }
-    .input-group label {
-        display: block;
-        margin-bottom: 0.5rem;
-    }
-    .input-group input {
-        width: 100%;
-        padding: 0.5rem;
-        box-sizing: border-box;
-    }
-    button {
-        background-color: #006064;
-        color: white;
-        border: none;
-        padding: 0.5rem 1rem;
-        cursor: pointer;
-        transition: background-color 0.3s;
-    }
-    button:hover {
-        background-color: #00838f;
-    }
-    .button-group {
-        display: grid;
-        grid-template-columns: repeat(3, 1fr);
-        gap: 1rem;
-        margin-bottom: 2rem;
-    }
-    footer {
-        background-color: #006064;
-        color: white;
-        padding: 2rem 0;
-    }
-    .footer-container {
-        display: flex;
-        justify-content: space-around;
-    }
-    .footer-section h3 {
-        margin-bottom: 1rem;
-    }
-    .footer-section ul {
-        list-style-type: none;
-        padding: 0;
-    }
-    .footer-section ul li {
-        margin-bottom: 0.5rem;
-    }
-    .footer-section ul li a {
-        color: white;
-        text-decoration: none;
-    }
-</style>
 <body>
     <header>
         <div class="logo">
@@ -147,16 +166,14 @@
 
         <div id="hospitalInterface" class="hospital-interface" style="display: none;">
             <h1 id="hospitalName"></h1>
-
             <div class="button-group">
-                <button onclick="showModal('addGuard')">Agregar guardia</button>
-                <button onclick="showModal('modifyGuard')">Modificar guardia</button>
-                <button onclick="showModal('deleteGuard')">Eliminar guardia</button>
-                <button onclick="showModal('addPhone')">Agregar teléfono</button>
-                <button onclick="showModal('modifyPhone')">Modificar teléfono</button>
-                <button onclick="showModal('deletePhone')">Eliminar teléfono</button>
+                <button onclick="openModal()">Agregar guardia</button>
+                <button>Modificar guardia</button>
+                <button>Eliminar guardia</button>
+                <button>Agregar teléfono</button>
+                <button>Modificar teléfono</button>
+                <button>Eliminar teléfono</button>
             </div>
-
             <h2>Comentarios</h2>
             <table>
                 <thead>
@@ -170,6 +187,35 @@
                     <!-- Las filas de la tabla irán aquí -->
                 </tbody>
             </table>
+        </div>
+
+        <div id="addGuardModal" class="modal">
+            <div class="modal-content">
+                <span class="close" onclick="closeModal()">&times;</span>
+                <h2>Agregar nueva guardia</h2>
+                <form id="addGuardForm">
+                    <div class="form-group">
+                        <label for="guardType">Tipo de Guardia:</label>
+                        <input type="text" id="guardType" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="guardStatus">Estado:</label>
+                        <select id="guardStatus">
+                            <option>Libre</option>
+                            <option>Ocupado</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="floor">Piso:</label>
+                        <input type="number" id="floor" required>
+                    </div>
+                    <button type="submit">Enviar</button>
+                </form>
+            </div>
+        </div>
+
+        <div id="alert" class="alert">
+            Guardia agregada exitosamente!
         </div>
     </main>
 
@@ -206,9 +252,11 @@
             event.preventDefault();
             const email = document.getElementById('email').value;
             const password = document.getElementById('password').value;
+            const hospitalName = document.getElementById('tituloHospital').value;
             const errorMessage = document.getElementById('error-message');
-       // Validar las credenciales de inicio de sesión
-       if (email === 'miguardia@gmail.com' && password === 'pescar123') {
+
+            // Validar las credenciales de inicio de sesión
+            if (email === 'miguardia@gmail.com' && password === 'pescar123') {
                 // Ocultar el formulario de inicio de sesión y mostrar la interfaz del hospital
                 errorMessage.textContent = '';
                 document.getElementById('loginSection').style.display = 'none';
@@ -218,9 +266,62 @@
                 errorMessage.textContent = 'Email o contraseña incorrectos';
             }
         });
-        function showModal(action) {
-            alert('Acción: ' + action + ' - Esta funcionalidad aún no está implementada.');
+
+        function openModal() {
+            document.getElementById('addGuardModal').style.display = 'block';
         }
+
+        function closeModal() {
+            document.getElementById('addGuardModal').style.display = 'none';
+        }
+
+        document.getElementById('addGuardForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            const guardType = document.getElementById('guardType').value;
+            const guardStatus = document.getElementById('guardStatus').value;
+            const floor = document.getElementById('floor').value;
+
+            // Aquí deberías enviar los datos al servidor (ejemplo)
+            // fetch('/api/guards', {
+            //     method: 'POST',
+            //     body: JSON.stringify({ guardType, guardStatus, floor }),
+            //     headers: {
+            //         'Content-Type': 'application/json'
+            //     }
+            // }).then(response => response.json()).then(data => {
+            //     // Manejar la respuesta del servidor
+            // }).catch(error => console.error('Error:', error));
+
+            closeModal();
+            showAlert();
+        });
+
+        function showAlert() {
+            const alertBox = document.getElementById('alert');
+            alertBox.style.display = 'block';
+            setTimeout(() => {
+                alertBox.style.display = 'none';
+            }, 3000);
+        }
+
+        function loadComments() {
+            // Lógica para cargar comentarios
+            // fetch('/api/comments')
+            //     .then(response => response.json())
+            //     .then(comments => {
+            //         const tbody = document.querySelector('table tbody');
+            //         tbody.innerHTML = ''; // Limpiar contenido previo
+            //         comments.forEach(comment => {
+            //             const row = document.createElement('tr');
+            //             row.innerHTML = `<td>${comment.name}</td><td>${comment.date}</td><td>${comment.text}</td>`;
+            //             tbody.appendChild(row);
+            //         });
+            //     })
+            //     .catch(error => console.error('Error al cargar comentarios:', error));
+        }
+
+        document.addEventListener('DOMContentLoaded', loadComments);
     </script>
 </body>
 </html>
