@@ -1,6 +1,8 @@
 /* Estilos generales */
+@import url('https://fonts.googleapis.com/css2?family=Inter+Tight:ital,wght@0,100..900;1,100..900&family=Oxygen:wght@300;400;700&display=swap');
+
 body {
-    font-family: Arial, sans-serif;
+    font-family: 'Roboto', sans-serif;
     margin: 0;
     padding: 0;
     background-color: #fffef7;
@@ -14,13 +16,22 @@ header {
     display: flex;
     justify-content: space-between;
     align-items: center;
+    font-size: 1em;
+
 }
 
 
 
-header .logo h1 {
-    margin-left: 10px;
-    font-size: 24px;
+header .logo {
+    height: 75px; 
+    width: 75px;   
+}
+
+header h1 {
+    font-size: 2.5em;
+    margin: 15px;
+    text-align: left; 
+    flex: 2; 
 }
 
 nav ul {
