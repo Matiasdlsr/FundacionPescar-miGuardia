@@ -6,10 +6,10 @@ const userRoutes = require('./routers/userRouters');
 const adminRoutes = require('./routers/adminRouters');
 const dotenv = require('dotenv');
 const connectDB = require('./config/database'); // Ajusta esta ruta según tu estructura de archivos
-const router = express.Router(); 
+const router = express.Router();
 const { getHospitales, getGuards, getComments, getUsers } = require('./controllers/hospitalesController');
 //Importar desde el archivo JSON
-const hospitales = require('./InfoGuardia/miGuardia.hospitals.json'); 
+const hospitales = require('./InfoGuardia/miGuardia.hospitals.json');
 
 dotenv.config(); // Esta línea debe estar aquí, antes de cualquier uso de process.env
 const app = express();
@@ -19,8 +19,9 @@ app.set('views', path.join(__dirname, 'views'));
 app.use(express.static(path.join(__dirname, 'public')));
 
 app.use('/admin', express.static(path.join(__dirname, 'Admin')));
-
-
+app.get('/nosotros', (req, res) => {
+    res.sendFile(path.join(__dirname, 'views','nosotros.html'));
+});
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(express.json());
 // Ruta para la página principal (raíz)
@@ -32,8 +33,6 @@ connectDB();
 // Rutas
 app.use('/user', userRoutes);
 app.use('/admin', adminRoutes);
-
-
 
 // Ruta para obtener los hospitales
 app.get('/api/hospitales', getHospitales);
@@ -53,12 +52,11 @@ app.listen(PORT, () => console.log(`Servidor corriendo en el puerto http://local
 
 
 
-//Ruta para los hospitales 
+//Ruta para los hospitales
 app.get('/InfoGuardia/miGuardia.hospitals.json', (req , res) =>{
-    res.json(hospitales)}); 
+    res.json(hospitales)});
 
 
     app.use((req, res, next) => {
         res.status(404).send('Página no encontrada');
     });
-    

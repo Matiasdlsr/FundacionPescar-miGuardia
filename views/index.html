@@ -7,7 +7,7 @@
     <link rel="stylesheet" href="/styles - css/styles.css">
     <!-- Style con Swiper -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css"/>
-   
+
     <link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css" />
     <!-- Typeahead.js CSS -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/typeahead.js/0.11.1/typeahead.min.css">
@@ -16,11 +16,11 @@
 <body>
     <!-- Encabezado -->
     <header>
-        <img src="/assets/img/icon.MiGuardia.jpg" alt="MiGuardia" class="logo"> 
+        <img src="/assets/img/icon.MiGuardia.jpg" alt="MiGuardia" class="logo">
         <h1>MiGuardia</h1>
-        <nav> 
-            <a href="#">Nosotros</a>
-            <a href="#">Contacto</a> 
+        <nav>
+            <a href="/nosotros">Nosotros</a>
+            <a href="#">Contacto</a>
         </nav>
         <div class="user-options">
             <button onclick="location.href='admin/login'"">Iniciar Sesión</button>
@@ -28,8 +28,8 @@
         </div>
     </header>
 
-    <!-- Mapa -->  
-        <section class="map-section">         
+    <!-- Mapa -->
+        <section class="map-section">
             <div id="buscador">
                 <input type="text" id="place-input" placeholder="Busca tu Guardia/Hospital..." class="input">
                 <div id="suggestions"></div>
@@ -38,11 +38,11 @@
             <div id="map"></div>
         </section>
 
-    <!--Carrusel-->  
+    <!--Carrusel-->
     <div class="swiper-container">
         <div class="swiper-wrapper" id="hospitales">
             <!-- Aquí se añaden las diapositivas dinámicamente -->
-        </div>    
+        </div>
         <!-- Botones de navegación personalizados -->
         <div class="custom-button-prev">
             <ion-icon name="chevron-back-outline"></ion-icon>
@@ -50,7 +50,7 @@
         <div class="custom-button-next">
             <ion-icon name="chevron-forward-outline"></ion-icon>
         </div>
-    
+
         <!-- Paginación -->
         <div class="swiper-pagination"></div>
     </div>
@@ -59,7 +59,7 @@
        <footer class="footer">
         <div>
             <h2>MI GUARDIA</h2>
-            <div class="iconos-web">              
+            <div class="iconos-web">
                 <a href="#"><ion-icon name="logo-facebook"></ion-icon></a>
                 <a href="#"><ion-icon name="logo-instagram"></ion-icon></a>
                 <a href="#"><ion-icon name="logo-linkedin"></ion-icon></a>
