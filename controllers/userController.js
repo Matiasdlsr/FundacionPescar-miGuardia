@@ -54,66 +54,35 @@ exports.postUserLogin = async (req, res) => {
 };
 
 
-//Carga la pagina de Registro
 exports.getUserRegister = (req, res) => {
-    res.sendFile(path.join(__dirname, '../views/user/registerUser.html'));
+    res.sendFile(path.join(__dirname, '../views/user/loginUser.html'));
 };
 
-//Se registra el Usuario
 exports.postUserRegister = async (req, res) => {
     console.log(req.body.email);
     const { name, lastname, email, password } = req.body;
 
-    /* try {
-        // Verificar si el usuario ya existe
-        let user = await User.findOne({ email });
-        if (user) {
-            return res.status(400).send('El usuario ya existe');
-        }
-
-        // Crear un nuevo usuario
-        user = new User({
-            name,
-            lastname,
-            email,
-            password
-        });
-        // Guardar el usuario en la base de datos
-        await user.save();
-
-        res.status(201).send('Usuario registrado exitosamente');
-    } catch (error) {
-        console.error('Error al registrar usuario:', error);
-        res.status(500).send('Error del servidor');
-    }
-};
- */
 fs.readFile(usersFilePath, 'utf8', (err, data) => {
     if (err) {
         console.error('Error al leer el archivo JSON:', err);
         return res.status(500).send('Error al registrar usuario.');
     }
 
-    // Parsear el contenido del archivo a un array
+
     let users = [];
     if (data) {
         users = JSON.parse(data);
     }
 
-    // Verificar si el usuario ya existe en el JSON
     const userExists = users.some(user => user.email === email);
 
     if (userExists) {
         return res.status(400).send('El usuario ya existe');
     }
 
-    // Crear el nuevo usuario
     const newUser = { name, lastname, email, password };
 
-    // Agregar el nuevo usuario al array
     users.push(newUser);
-
-    // Escribir el array actualizado de vuelta al archivo JSON
     fs.writeFile(usersFilePath, JSON.stringify(users, null, 2), (err) => {
         if (err) {
             console.error('Error al escribir en el archivo JSON:', err);
@@ -121,7 +90,8 @@ fs.readFile(usersFilePath, 'utf8', (err, data) => {
         }
 
         res.status(201).send('Usuario registrado exitosamente');
-        window.location.href = '/register';
+        alert("Usuario creado exitosamente!");
+        window.location.href = '/user/loginUser.html';
     });
 });
 };
