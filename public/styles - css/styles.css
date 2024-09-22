@@ -301,5 +301,105 @@ p {
 }
 
 
-/*---------------------------------------------------------------SWIPER CAMBIO TAMAÑO------------------------------------------------------------------------------------*/
+/* Responsive Swiper for Small Screens */
+@media (max-width: 720px) {
+    body {
+        font-size: 1rem;
+    }
 
+    header {
+        flex-direction: column;
+        align-items: center;
+        padding: 20px;
+    }
+
+    header h1 {
+        font-size: 2rem;
+        text-align: center;
+    }
+
+    header nav {
+        justify-content: center;
+        margin-top: 10px;
+    }
+
+    header nav a {
+        font-size: 1.2em;
+        margin: 5px;
+    }
+
+    .user-options {
+        display: flex;
+    }
+
+    header .user-options button {
+        font-size: 1.2rem;
+        padding: 8px 12px;
+    }
+
+    #place-input {
+        width: 90%;
+        font-size: 1.2rem;
+    }
+
+    #search-button {
+        font-size: 1.2rem;
+        padding: 8px 15px;
+    }
+
+    .map-section {
+        margin-bottom: 15px;
+    }
+
+    #map {
+        height: 350px;
+    }
+
+    #suggestions {
+        width: 90%;
+        left: 5%;
+        right: 5%;
+    }
+
+    .swiper-container {
+        width: 50%;
+        padding: 0;
+        margin: 0 auto;
+    }
+
+    .swiper-slide {
+        width: 50%;
+        margin: 1rem;
+        padding: 10px 20px;
+    }
+
+    .swiper-slide img {
+        height: 65px;
+    }
+
+    .custom-button-next,
+    .custom-button-prev {
+        width: 0;
+        height: 0;
+        top: 0;
+    }
+
+    .swiper-pagination-bullet {
+        width: 8px;
+        height: 8px;
+        background-color: #2E8B7A;
+    }
+
+    .swiper-pagination-bullet-active {
+        background-color: #094c69;
+    }
+
+    .info {
+        font-size: 0.5rem;
+    }
+
+    .footer {
+        margin-top: 5rem;
+        font-size: 0.5rem;
+    }
+}
