@@ -22,6 +22,9 @@ app.use('/admin', express.static(path.join(__dirname, 'Admin')));
 app.get('/nosotros', (req, res) => {
     res.sendFile(path.join(__dirname, 'views','nosotros.html'));
 });
+/* app.get('/register', (req, res) => {
+    res.sendFile(path.join(__dirname, 'user','loginUser.html'));
+}); */
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(express.json());
 // Ruta para la página principal (raíz)

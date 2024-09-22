@@ -2,7 +2,8 @@
 const path = require('path');
 const User = require('../models/userModel');
 const conexion = require('../config/database');
-
+const fs = require('fs');
+const usersFilePath = path.join(__dirname, '../views/user/users.json');
 exports.getUserHome = (req, res) => {
     res.render('user/index', { pageTitle: 'Página Principal de Usuario' });
 };
@@ -63,7 +64,7 @@ exports.postUserRegister = async (req, res) => {
     console.log(req.body.email);
     const { name, lastname, email, password } = req.body;
 
-    try {
+    /* try {
         // Verificar si el usuario ya existe
         let user = await User.findOne({ email });
         if (user) {
@@ -77,11 +78,6 @@ exports.postUserRegister = async (req, res) => {
             email,
             password
         });
-
-        // Encriptar la contraseña antes de guardar
-        const salt = await bcrypt.genSalt(10);
-        user.password = await bcrypt.hash(password, salt);
-
         // Guardar el usuario en la base de datos
         await user.save();
 
@@ -90,4 +86,42 @@ exports.postUserRegister = async (req, res) => {
         console.error('Error al registrar usuario:', error);
         res.status(500).send('Error del servidor');
     }
+};
+ */
+fs.readFile(usersFilePath, 'utf8', (err, data) => {
+    if (err) {
+        console.error('Error al leer el archivo JSON:', err);
+        return res.status(500).send('Error al registrar usuario.');
+    }
+
+    // Parsear el contenido del archivo a un array
+    let users = [];
+    if (data) {
+        users = JSON.parse(data);
+    }
+
+    // Verificar si el usuario ya existe en el JSON
+    const userExists = users.some(user => user.email === email);
+
+    if (userExists) {
+        return res.status(400).send('El usuario ya existe');
+    }
+
+    // Crear el nuevo usuario
+    const newUser = { name, lastname, email, password };
+
+    // Agregar el nuevo usuario al array
+    users.push(newUser);
+
+    // Escribir el array actualizado de vuelta al archivo JSON
+    fs.writeFile(usersFilePath, JSON.stringify(users, null, 2), (err) => {
+        if (err) {
+            console.error('Error al escribir en el archivo JSON:', err);
+            return res.status(500).send('Error al registrar usuario.');
+        }
+
+        res.status(201).send('Usuario registrado exitosamente');
+        window.location.href = '/register';
+    });
+});
 };
