@@ -30,10 +30,11 @@ header .logo {
 }
 
 header .logo img {
-        height: 75px;
-        width: 75px;
+    height: 75px;
+    width: 75px;
     margin-right: 10px;
     border-radius: 50%;
+    color: white;
 }
 
 header nav ul {

@@ -1,6 +1,6 @@
 body {
     font-family:sans-serif,arial;
-    background-color: #fffef7;
+    background-color: #f0f0f0;
     margin: 0;
     display: flex;
     flex-direction: column;
@@ -13,50 +13,25 @@ body {
 
 header {
     display: flex;
-    justify-content: space-around;
-    align-items: center; 
+    align-items: center;
+    justify-content: space-between;
     padding: 40px 20px;
     background-color: #094c69;
     color: #fafafa;
-
 }
 
 
 header .logo {
-    height: 75px; 
-    width: 75px;   
+    display: flex;
+    align-items: center;  
 }
 
 header img {
-    width: 50px;
-    height: 50px;
-    border-radius: 50px;
-    object-fit: cover;
+height: 75px;
+width: 75px;
+margin-right: 10px;
+border-radius: 50%;
 } 
-
-
-header h1 {
-    font-size: 2.5em;
-    margin: 15px;
-    text-align: left; 
-    flex: 2; 
-}
-
-header nav {
-    flex: 1;
-    display: flex;
-    justify-content: flex-end;
-    
-}
-
-header nav a  {
-    color: white;
-    margin: 0 10px;
-    text-decoration: none;
-    font-weight: 700;
-    font-size: 1.5em;
-  
-}
 
 header nav ul {
     list-style: none;
@@ -64,6 +39,19 @@ header nav ul {
     padding: 0;
     display: flex;
 }
+
+header nav ul li {
+    margin-right: 20px;
+}
+
+header nav ul li a {
+    color: #fff;
+    text-decoration: none;
+    font-size: 1.5em;
+}
+
+
+
 
 
 .login-container {
@@ -170,50 +158,46 @@ button:hover {
 }
 
 
-
 .footer {
-    background-color: #094c69;
-    color: white; 
-    padding: 20px;
+    background-color: #0e4e6b;
+    color: white;
     display: flex;
-    justify-content: space-between;
-}
-
-.footer h2 {
-    margin: 0;
-    margin-bottom: 10px;
-}
-
-.footer .columna {
-    display: flex;
-    flex-direction: column;
-}
-
-.footer ul {
-    list-style: none;
+    justify-content: space-around;
+    padding: 2rem;
+  }
+  
+  .footer h2 {
+    margin-bottom: 1rem;
+    font-size: 1.2rem;
+  }
+  
+  .footer ul {
+    list-style-type: none;
     padding: 0;
-    margin: 0;
-}
-
-.footer li {
-    margin: 5px 0;
-}
-
-.footer a {
+  }
+  
+  .footer li {
+    margin-bottom: 0.5rem;
+  }
+  
+  .footer a {
     color: white;
     text-decoration: none;
-}
-
-.footer a:hover {
+  }
+  
+  .footer a:hover {
     text-decoration: underline;
-}
-
-.footer .iconos-web {
+  }
+  
+  .iconos-web {
     display: flex;
-    gap: 10px;
-    margin-top: 10px;
-}
-
+    gap: 1rem;
+    color: #fff;
+  }
+  
+  .iconos-web a {
+    font-size: 1.5rem;
+  }
 
 
 

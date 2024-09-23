@@ -574,7 +574,6 @@
     ]
   },
   {
-<<<<<<< HEAD
     "id": 1727054939478,
     "guardType": "Pediatria",
     "guardStatus": "Ocupado",
@@ -591,11 +590,12 @@
     "guardType": "Oftamologia",
     "guardStatus": "Ocupado",
     "floor": 5
-=======
-    "id": 1727061370603,
+  },
+  {
+  "id": 1727061370603,
     "guardType": "asdsad",
     "guardStatus": "Libre",
     "floor": 1
->>>>>>> dd92825377d274b4ac2a3df656210069241c0bcc
-  }
+  }  
+  
 ]

@@ -77,16 +77,12 @@ document.addEventListener('DOMContentLoaded', function () {
     }
 
     function filtrarHospitales(busqueda) {
-<<<<<<< HEAD
-        return hospitales.filter(hospital => 
-            hospital && hospital.name && 
-=======
         return hospitales.filter(hospital =>
             hospital && hospital.name &&
->>>>>>> dd92825377d274b4ac2a3df656210069241c0bcc
             hospital.name.toLowerCase().includes(busqueda.toLowerCase())
         );
     }
+
     // Función para actualizar la lista de sugerencias
     function actualizarSugerencias(hospitalesFiltrados) {
         const suggestionsContainer = document.getElementById('suggestions');
