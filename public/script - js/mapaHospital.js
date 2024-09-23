@@ -42,7 +42,7 @@ document.addEventListener('DOMContentLoaded', function () {
             for (let i = 0; i < tipos.length; i++) {
                 div.innerHTML +=
                     '<i style="background:' + getColor(tipos[i]) + '"></i> ' +
-                    tipos[i] + '<br>';    
+                    tipos[i] + '<br>';
             }
 
             return div;
@@ -76,9 +76,9 @@ document.addEventListener('DOMContentLoaded', function () {
             .bindPopup(`<b>${name}</b><br>${type}`);
     }
 
-     // Función para filtrar hospitales
-       function filtrarHospitales(busqueda) {
-        return hospitales.filter(hospital => 
+    function filtrarHospitales(busqueda) {
+        return hospitales.filter(hospital =>
+            hospital && hospital.name &&
             hospital.name.toLowerCase().includes(busqueda.toLowerCase())
         );
     }
@@ -96,7 +96,7 @@ document.addEventListener('DOMContentLoaded', function () {
             suggestionsContainer.appendChild(suggestion);
         });
     }
-   
+
       // Función para redirigir a la página del hospital
       function redirigirAHospital(nombreHospital) {
         window.location.href = `Admin/index.html?hospital=${encodeURIComponent(nombreHospital)}`;
@@ -109,9 +109,9 @@ let suggestionsList = [];
 // Función para actualizar la lista de sugerencias
 function actualizarSugerencias(hospitalesFiltrados) {
     const suggestionsContainer = document.getElementById('suggestions');
-    suggestionsContainer.innerHTML = ''; 
+    suggestionsContainer.innerHTML = '';
     suggestionsList = hospitalesFiltrados;
-    selectedSuggestionIndex = -1; 
+    selectedSuggestionIndex = -1;
 
     hospitalesFiltrados.forEach((hospital, index) => {
         const suggestion = document.createElement('div');
