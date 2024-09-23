@@ -51,7 +51,6 @@
 
         <div id="hospitalInterface" class="hospital-interface" style="display: none;">
             <h1 id="hospitalName"></h1>
-            <div class="hospital-title"><h2 id="hospital-title">Hospitales Disponibles</h2></div>
 
             <div class="button-group">
                 <button onclick="openModal()" class="modalbtn">Agregar guardia</button>
@@ -109,17 +108,26 @@
                 <span class="close" onclick="closeModifyModal()">&times;</span>
                 <h2>Modificar Guardia</h2>
                 <form id="modifyForm">
-                    <label for="hospitalId">ID del Hospital (deshabilitado):</label>
-                    <input type="text" id="hospitalId" name="hospitalId" disabled>
                     <label for="hospitalSelect">Seleccionar Hospital:</label>
                     <select id="hospitalSelect" name="hospitalSelect"></select>
-                    <select id="guardiasSelect" name="guardiasSelect">
-                        <option value="" disabled>Seleccione una guardia:</option>
+
+                    <label for="guardiasSelect">Seleccionar Guardia:</label>
+                    <select id="guardiasSelect" name="guardiasSelect"></select>
+
+                    <label for="modifyState">Modificar Estado:</label>
+                    <select id="modifyState" name="modifyState">
+                        <option value="Libre">Libre</option>
+                        <option value="Ocupado">Ocupado</option>
                     </select>
+
+                    <label for="modifyFloor">Modificar Piso:</label>
+                    <input type="number" id="modifyFloor" name="modifyFloor">
+
                     <button type="submit">Modificar</button>
-                  </form>
+                </form>
             </div>
         </div>
+
     </main>
 
     <footer>
@@ -239,11 +247,22 @@
             });
         }
         function handleHospitalSelect() {
-            const select = document.getElementById('tituloHospital');
-            const hospitalName = select.value;
-            console.log("Hospital seleccionado:", hospitalName);
-            // window.location.href = `/siguiente_pagina?hospitalName=${hospitalName}`;
-        }
+    const select = document.getElementById('tituloHospital');
+    const hospitalName = select.value;
+    // Encontrar el hospital en los datos
+    fetch('/InfoGuardia/miGuardia.hospitals.json')
+        .then(response => response.json())
+        .then(data => {
+            const selectedHospital = data.find(hospital => hospital.name === hospitalName);
+            if (selectedHospital && selectedHospital.guards) {
+                populateGuardSelect(selectedHospital.guards); // Llenar el select de guardias
+            } else {
+                console.error('Hospital no encontrado o no tiene guardias disponibles.');
+            }
+        })
+        .catch(error => console.error('Error al cargar los hospitales:', error));
+}
+document.getElementById('tituloHospital').addEventListener('change', handleHospitalSelect);
 
         // Función para cargar el archivo JSON y poblar el select
         function loadHospitals() {
@@ -259,30 +278,46 @@
     const modal = document.getElementById('modifyGuardModal');
     modal.style.display = "block";
     const hospitalSelect = document.getElementById('hospitalSelect');
-    hospitalSelect.innerHTML = document.getElementById('hospitalId');
+    const guardiasSelect = document.getElementById('guardiasSelect');
+
+    // Limpiar los selects
+    hospitalSelect.innerHTML = "";
+    guardiasSelect.innerHTML = "";
+    //hospitalSelect.innerHTML = document.getElementById('hospitalId');
     fetch('/InfoGuardia/miGuardia.hospitals.json') // Ruta a tu archivo JSON
     .then(response => response.json()) // Convertir la respuesta a JSON
     .then(hospitales => {
       // Limpiar el select antes de llenarlo
-      hospitalSelect.innerHTML = "";
+      //hospitalSelect.innerHTML = "";
     hospitales.forEach(hospital => {
     const option = document.createElement('option');
     option.value = hospital._id.$oid;
     option.textContent = hospital.name;
     hospitalSelect.appendChild(option);
   });
+
+  hospitalSelect.addEventListener('change', function() {
+                const selectedHospital = hospitales.find(hospital => hospital._id.$oid === hospitalSelect.value);
+
+                guardiasSelect.innerHTML = ""; // Limpiar el select de guardias
+
+                if (selectedHospital && selectedHospital.guards) {
+                    selectedHospital.guards.forEach(guard => {
+                        const option = document.createElement('option');
+                        option.value = guard.typeguard;
+                        option.text = `${guard.typeguard} - Estado: ${guard.state} - Piso: ${guard.piso}`;
+                        guardiasSelect.appendChild(option);
+                    });
+                }
+            });
   if (hospitales.length > 0) {
-        hospitalIdInput.value = hospitales[0]._id.$oid;
-      }
-      // Manejar el cambio del select para actualizar el ID mostrado
-      hospitalSelect.addEventListener('change', function() {
-        const selectedHospitalId = this.value;
-        hospitalIdInput.value = selectedHospitalId;
-      });
-    })
-    .catch(error => {
-      console.error('Error al cargar el archivo JSON:', error);
-    });
+    hospitalSelect.value = hospitales[0]._id.$oid;
+    hospitalSelect.dispatchEvent(new Event('change'));
+}
+        })
+        .catch(error => console.error('Error al cargar los hospitales:', error));
+
+    document.getElementById('modifyGuardModal').style.display = 'block';
 }
 function closeModifyModal() {
     document.getElementById('modifyGuardModal').style.display = 'none';
@@ -314,6 +349,46 @@ function handleHospitalSelect() {
         .catch(error => console.error('Error al cargar los hospitales:', error));
 }
 document.getElementById('tituloHospital').addEventListener('change', handleHospitalSelect);
+document.getElementById('modifyForm').addEventListener('submit', function(event) {
+    event.preventDefault();
+
+    const selectedHospitalId = document.getElementById('hospitalSelect').value;
+    const selectedGuardType = document.getElementById('guardiasSelect').value;
+    const newState = document.getElementById('modifyState').value;
+    const newFloor = document.getElementById('modifyFloor').value;
+
+    // Obtener los hospitales del archivo JSON
+    fetch('/InfoGuardia/miGuardia.hospitals.json')
+        .then(response => response.json())
+        .then(hospitales => {
+            // Encontrar el hospital seleccionado
+            const hospital = hospitales.find(hospital => hospital._id.$oid === selectedHospitalId);
+
+            if (hospital) {
+                // Encontrar la guardia a modificar
+                const guardia = hospital.guards.find(guard => guard.typeguard === selectedGuardType);
+
+                if (guardia) {
+                    // Modificar los valores
+                    guardia.state = newState;
+                    guardia.piso = newFloor;
+
+                    // Aquí deberías enviar los datos modificados al servidor para actualizar el JSON
+                    fetch('/api/update-hospital', {
+                        method: 'POST',
+                        body: JSON.stringify(hospitales),
+                        headers: {
+                            'Content-Type': 'application/json'
+                        }
+                    }).then(response => response.json()).then(data => {
+                        console.log('Guardia modificada:', data);
+                        closeModifyModal(); // Cerrar el modal al finalizar
+                    }).catch(error => console.error('Error al actualizar el hospital:', error));
+                }
+            }
+        })
+        .catch(error => console.error('Error al cargar los hospitales:', error));
+});
 
     </script>
 </body>
