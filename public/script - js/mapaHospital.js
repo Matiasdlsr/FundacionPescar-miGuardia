@@ -57,7 +57,7 @@ document.addEventListener('DOMContentLoaded', function () {
             case 'Hospital Psiquiatrico': return '#9C27B0';
             case 'Hospital Oftamologico': return '#2196F3';
             case 'Hospital Neuropsiquiatrico': return '#FFC107';
-            case 'Hospital de Enfermedades Infecciosas': return '#FF5722';
+            case 'Hospital de Enfermedades Infecciosas': return '#0020ff';
             default: return '#9E9E9E';
         }
     }

@@ -30,7 +30,7 @@
     
         <!-- Sección de comentarios/reseñas -->
         <section class="feedback">
-            <div class="feedback-card" id="feedbackSection">
+            <div  id="feedbackSection">
                 <!-- Las reseñas/comentarios se inyectarán dinámicamente aquí -->
             </div>
         </section>
@@ -44,18 +44,42 @@
     </main>
     
 
-    <footer>
-        <div class="contacts">
+    <footer class="footer">     
+            <h2>MI GUARDIA</h2>
+            <div class="iconos-web">
+                <a href="#"><img src="/assets/icons/brand-facebook.svg" alt="facebook"></a>
+                <a href="#"><img src="/assets/icons/brand-instagram.svg" alt="instagram"></a>
+                <a href="#"><img src="/assets/icons/brand-linkedin.svg" alt="linkedin"></a>
+                <a href="#"><img src="/assets/icons/brand-youtube.svg" alt="youtube"></a>
+            </div>
+            <div class="columna">
+                <h2>Nosotros</h2>
+                <ul>
+                    <li><a href="#">Descripción</a></li>
+                    <li><a href="#">Equipo</a></li>
+                    <li><a href="#">Herramientas</a></li>
+                </ul>
+            </div>
+            <div class="columna">
+                <h2>Acerca de</h2>
+                <ul>
+                    <li><a href="#">Normas</a></li>
+                    <li><a href="#">Contacto</a></li>
+                </ul>
+            </div>
+            <div class="columna">
+                <h2>Inicia sesión</h2>
+                <ul>
+                    <li><a href="#">Registro</a></li>
+                    <li><a href="#">Ayuda</a></li>
+                    <li><a href="#">Información</a></li>
+                </ul>
+            </div>  
+             <div class="contacts">
             <p>SAME: 555-000-555</p>
             <p>Bomberos: 000-555-000</p>
         </div>
-        <div class="footer-nav">
-            <ul>
-                <li><a href="#">Nosotros</a></li>
-                <li><a href="#">Acceso de Usuarios</a></li>
-                <li><a href="#">Login</a></li>
-            </ul>
-        </div>
+        <div>
     </footer>
 
     <script>
@@ -114,8 +138,8 @@
                         
                         const createdAt = new Date(comment.createdAt.$date).toLocaleString();
                         feedbackCard.innerHTML = `
-                            <p>"${comment.text}"</p>
                             <p class="name">${comment.name}</p>
+                            <p>"${comment.text}"</p>                           
                             <p class="description">${createdAt}</p>
                         `;
                         feedbackSection.appendChild(feedbackCard);
