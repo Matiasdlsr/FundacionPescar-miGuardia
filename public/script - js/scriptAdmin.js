@@ -46,6 +46,12 @@
 });
 */
 
+fetch('../InfoGuardia/miGuardia.hospitals.json')
+.then(response => response.json())
+.then(data => {
+    hospitales = data;
+}); 
+
 document.getElementById('loginForm').addEventListener('submit', function(e) {
     e.preventDefault();
     var hospitalName = document.getElementById('tituloHospital').value;
@@ -55,7 +61,6 @@ document.getElementById('loginForm').addEventListener('submit', function(e) {
 });
 
 function showModal(action) {
-    // Here you would implement the logic to show different modals
-    // based on the action (e.g., 'addGuard', 'modifyGuard', etc.)
-    alert('Acción: ' + action + ' - Esta funcionalidad aún no está implementada.');
+      alert('Acción: ' + action + ' - Esta funcionalidad aún no está implementada.');
 }
+
