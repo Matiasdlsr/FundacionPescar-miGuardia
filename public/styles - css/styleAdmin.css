@@ -92,7 +92,9 @@ label {
     margin-bottom: 15px;
     color: white;
 }
-
+.lettermodal{
+    color: black;
+}
 input {
     width: 100%;
     padding: 8px;
