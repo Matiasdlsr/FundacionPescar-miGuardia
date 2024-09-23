@@ -98,17 +98,29 @@ input {
 button {
     width: 100%;
     padding: 10px;
-    background-color: #007BFF;
+    background-color: #094c69;
     border: none;
     color: #fff;
     border-radius: 5px;
     cursor: pointer;
 }
-
+#hospitalname{
+    text-align: center;
+}
 button:hover {
     background-color: #0056b3;
 }
-
+.button-group{
+    display: grid;
+    grid-template-columns: repeat(3,1fr);
+    gap: 20px;
+}
+.modalbtn{
+    padding: 30px ;
+    border-radius: 10px;
+    text-align: center;
+    font-size: 1rem;
+}
 .forgot-password {
     margin-top: 10px;
     color: #fff;

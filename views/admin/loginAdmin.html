@@ -7,13 +7,13 @@
     <link rel="stylesheet" href="/styles - css/styleAdmin.css">
     <style>
         
-        .button-group {
+        /* .button-group {
             display: grid;
             grid-template-columns: repeat(3, 1fr);
             gap: 1rem;
             margin-bottom: 2rem;
-        }
-        button {
+        } */
+        /* button {
             background-color: #006064;
             color: white;
             border: none;
@@ -23,7 +23,7 @@
         }
         button:hover {
             background-color: #00838f;
-        }
+        } */
         table {
             width: 100%;
             border-collapse: collapse;
@@ -139,12 +139,12 @@
         <div id="hospitalInterface" class="hospital-interface" style="display: none;">
             <h1 id="hospitalName"></h1>
             <div class="button-group">
-                <button onclick="openModal()">Agregar guardia</button>
-                <button>Modificar guardia</button>
-                <button>Eliminar guardia</button>
-                <button>Agregar teléfono</button>
-                <button>Modificar teléfono</button>
-                <button>Eliminar teléfono</button>
+                <button onclick="openModal()" class="modalbtn">Agregar guardia</button>
+                <button class="modalbtn">Modificar guardia</button>
+                <button class="modalbtn">Eliminar guardia</button>
+                <button class="modalbtn">Agregar teléfono</button>
+                <button class="modalbtn">Modificar teléfono</button>
+                <button class="modalbtn">Eliminar teléfono</button>
             </div>
             <h2>Comentarios</h2>
             <table>
