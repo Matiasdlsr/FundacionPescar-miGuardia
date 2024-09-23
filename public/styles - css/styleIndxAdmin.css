@@ -5,7 +5,7 @@ body {
     font-family: 'Roboto', sans-serif;
     margin: 0;
     padding: 0;
-    background-color: #fffef7;
+    background-color: #FFFBF7;
     color: #333;
 }
 
@@ -95,7 +95,7 @@ main {
 }
 
 .normal {
-    background-color: rgba(0, 128, 0, 0.3); /* Verde transparente */
+    background-color: #3CB371; /* Verde transparente */
     color: white;
 }
 

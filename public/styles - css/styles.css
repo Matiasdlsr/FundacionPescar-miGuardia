@@ -5,7 +5,7 @@ body {
     font-family: 'Roboto', sans-serif;
     margin: 0;
     padding: 0;
-    background-color:#fffef7;
+    background-color:#FFFBF7;
     color: #333;  
     max-width: 100vw; /* Evita que el cuerpo de la página crezca más allá del ancho de la ventana */
     overflow-x: hidden; /* Oculta el desplazamiento horizontal */
@@ -157,7 +157,7 @@ main {
 
 /* Estilo para el swiper */
 .swiper-container {   
-    padding: 10%;
+    padding: 12%;
     margin: 50px auto; /* Centra el carrusel horizontalmente */
     width: 25%; /* Aumenta el ancho para dar espacio a los botones */
     height: 300px; /* Altura fija para mayor consistencia */
@@ -262,7 +262,7 @@ p {
     color: white; 
     padding: 20px;
     display: flex;
-    justify-content: space-between;
+    justify-content: space-around;
 }
 
 .footer h2 {

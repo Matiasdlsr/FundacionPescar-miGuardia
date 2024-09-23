@@ -1,6 +1,6 @@
 body {
     font-family:sans-serif,arial;
-    background-color: #f0f0f0;
+    background-color: #FFFBF7;
     margin: 0;
     display: flex;
     flex-direction: column;
@@ -157,47 +157,39 @@ button:hover {
     margin-top: 10px;
 }
 
-
 .footer {
-    background-color: #0e4e6b;
-    color: white;
+    background-color: #094c69;
+    color: white; 
+    padding: 20px;
     display: flex;
-    justify-content: space-around;
-    padding: 2rem;
-  }
-  
-  .footer h2 {
-    margin-bottom: 1rem;
-    font-size: 1.2rem;
-  }
-  
-  .footer ul {
-    list-style-type: none;
-    padding: 0;
-  }
-  
-  .footer li {
-    margin-bottom: 0.5rem;
-  }
-  
-  .footer a {
+    justify-content: space-between;
+}
+.footer h2 {
+    margin: 0;
+    margin-bottom: 10px;
+}
+
+.footer .columna {
+    display: flex;
+    flex-direction: column;
+}
+
+
+.footer a {
     color: white;
     text-decoration: none;
-  }
-  
-  .footer a:hover {
+}
+
+.footer a:hover {
     text-decoration: underline;
-  }
-  
-  .iconos-web {
+}
+
+.footer .iconos-web {
     display: flex;
-    gap: 1rem;
-    color: #fff;
-  }
-  
-  .iconos-web a {
-    font-size: 1.5rem;
-  }
+    gap: 10px;
+    margin-top: 10px;
+}
+
 
 
 
