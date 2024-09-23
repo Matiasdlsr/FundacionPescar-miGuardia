@@ -13,8 +13,7 @@
             gap: 1rem;
             margin-bottom: 2rem;
         }
-
-        button {
+        /* button {
             background-color: #006064;
             color: white;
             border: none;
@@ -91,7 +90,6 @@
             padding: 0.5rem;
             box-sizing: border-box;
         }
-
         .alert {
             display: none;
             position: fixed;
@@ -158,7 +156,7 @@
             
             <div class="button-group">
                 <button onclick="openModal()" class="modalbtn">Agregar guardia</button>
-                <button class="modalbtn">Modificar guardia</button>
+                <button onclick="openModifyModal()" class="modalbtn">Modificar guardia</button>
                 <button class="modalbtn">Eliminar guardia</button>
                 <button class="modalbtn">Agregar teléfono</button>
                 <button class="modalbtn">Modificar teléfono</button>
@@ -206,6 +204,23 @@
 
         <div id="alert" class="alert">
             Guardia agregada exitosamente!
+        </div>
+        <div id="modifyModal" class="modal">
+            <div class="modal-content">
+                <span class="close" onclick="closeModifyModal()">&times;</span>
+                <h2>Modificar Guardia</h2>
+                <form id="modifyForm">
+                    <label for="hospitalId">ID del Hospital (deshabilitado):</label>
+                    <input type="text" id="hospitalId" name="hospitalId" disabled>
+
+                    <label for="hospitalSelect">Seleccionar Hospital:</label>
+                    <select id="hospitalSelect" name="hospitalSelect"></select>
+                    <select id="guardiasSelect">
+                        <option value="">Seleccione una guardia:</option>
+                    </select>
+                    <button type="submit">Modificar</button>
+                  </form>
+            </div>
         </div>
     </main>
 
@@ -342,6 +357,77 @@
                 .catch(error => console.error('Error al cargar los hospitales:', error));
         }
         window.onload = loadHospitals;
+
+function openModifyModal() {
+    const modal = document.getElementById('modifyModal');
+    modal.style.display = "block";
+
+    const hospitalSelect = document.getElementById('hospitalSelect');
+    hospitalSelect.innerHTML = document.getElementById('hospitalId');
+
+    fetch('/InfoGuardia/miGuardia.hospitals.json') // Ruta a tu archivo JSON
+    .then(response => response.json()) // Convertir la respuesta a JSON
+    .then(hospitales => {
+      // Limpiar el select antes de llenarlo
+      hospitalSelect.innerHTML = "";
+    hospitales.forEach(hospital => {
+    const option = document.createElement('option');
+    option.value = hospital._id.$oid;
+    option.textContent = hospital.name;
+    hospitalSelect.appendChild(option);
+  });
+
+  if (hospitales.length > 0) {
+        hospitalIdInput.value = hospitales[0]._id.$oid;
+      }
+
+      // Manejar el cambio del select para actualizar el ID mostrado
+      hospitalSelect.addEventListener('change', function() {
+        const selectedHospitalId = this.value;
+        hospitalIdInput.value = selectedHospitalId;
+      });
+    })
+    .catch(error => {
+      console.error('Error al cargar el archivo JSON:', error);
+    });
+}
+
+
+function closeModifyModal() {
+    document.getElementById('modifyGuardModal').style.display = 'none';
+}
+function populateGuardSelect(guards) {
+    const guardiasSelect = document.getElementById('guardiasSelect');
+    guardiasSelect.innerHTML = ''; // Limpiar el contenido previo
+
+    guards.forEach(guard => {
+        const option = document.createElement('option');
+        option.value = guard.typeguard;
+        option.text = `${guard.typeguard} - Estado: ${guard.state} - Piso: ${guard.piso}`;
+        guardiasSelect.appendChild(option);
+    });
+}
+
+function handleHospitalSelect() {
+    const select = document.getElementById('tituloHospital');
+    const hospitalName = select.value;
+
+    // Encontrar el hospital en los datos
+    fetch('/InfoGuardia/miGuardia.hospitals.json')
+        .then(response => response.json())
+        .then(data => {
+            const selectedHospital = data.find(hospital => hospital.name === hospitalName);
+
+            if (selectedHospital && selectedHospital.guards) {
+                populateGuardSelect(selectedHospital.guards); // Llenar el select de guardias
+            } else {
+                console.error('Hospital no encontrado o no tiene guardias disponibles.');
+            }
+        })
+        .catch(error => console.error('Error al cargar los hospitales:', error));
+}
+
+document.getElementById('tituloHospital').addEventListener('change', handleHospitalSelect);
 
     </script>
 </body>
