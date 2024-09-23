@@ -12,7 +12,7 @@
             <h1>MiGuardia</h1>
         <nav>
             <ul>
-                <li><a href="/index">Inicio</a></li>
+                <li><a href="/">Inicio</a></li>
                 <li><a href="/nosotros">Nosotros</a></li>
                 <li><a href="#">Contacto</a></li>
             </ul>
@@ -38,8 +38,8 @@
         <!-- Sección para agregar comentarios -->
         <section class="comments">
             <h3>Deja tu comentario</h3>
-            <textarea></textarea>
-            <button>Enviar</button>
+            <textarea id="newCommentText"></textarea>
+            <button id="submitComment">Enviar</button>
         </section>
     </main>
     
@@ -123,6 +123,43 @@
                 })
                 .catch(error => console.error('Error al cargar comentarios:', error));
         }
+        // Función para enviar un nuevo comentario
+    function submitNewComment() {
+        const newCommentText = document.getElementById('newCommentText').value;
+        
+        if (!newCommentText) {
+            alert('Por favor, escribe un comentario antes de enviar.');
+            return;
+        }
+
+        const newComment = {
+            text: newCommentText,
+            name: getHospitalNameFromURL(),  // Puedes reemplazar esto con el nombre real si es necesario
+            createdAt: new Date().toISOString()
+        };
+
+        fetch('/api/comments', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify(newComment)
+        })
+        .then(response => response.json())
+        .then(data => {
+            // Limpiar el textarea después de enviar el comentario
+            document.getElementById('newCommentText').value = '';
+            loadFeedback();
+            // Recargar los comentarios
+        })
+        .catch(error => console.error('Error al enviar el comentario:', error));
+    }
+
+    // Añadir evento al botón de enviar
+    document.getElementById('submitComment').addEventListener('click', submitNewComment);
+
+    // Cargar los comentarios al iniciar
+    loadFeedback();
     
 
 
