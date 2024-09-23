@@ -76,9 +76,9 @@ document.addEventListener('DOMContentLoaded', function () {
             .bindPopup(`<b>${name}</b><br>${type}`);
     }
 
-     // Función para filtrar hospitales
-       function filtrarHospitales(busqueda) {
+    function filtrarHospitales(busqueda) {
         return hospitales.filter(hospital => 
+            hospital && hospital.name && 
             hospital.name.toLowerCase().includes(busqueda.toLowerCase())
         );
     }
