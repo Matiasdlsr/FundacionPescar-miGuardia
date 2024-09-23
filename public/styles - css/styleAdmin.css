@@ -17,6 +17,7 @@ body {
 .hospital-interface{
     width: 80%;
     margin: auto;
+    height: 629px;
 }
 header {
     display: flex;
@@ -178,6 +179,8 @@ button:hover {
     gap: 10px;
     margin-top: 10px;
 }
+
+
 
 #register-container {
     background: linear-gradient(180deg, rgba(0, 44, 50, 0.8), rgba(0, 44, 50, 0.5)); /* Fondo similar al login */
