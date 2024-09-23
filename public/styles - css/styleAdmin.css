@@ -89,7 +89,7 @@ h2 {
 label {
     display: block;
     margin-bottom: 5px;
-    color: #fff;
+    color: black;
 }
 
 input {
@@ -307,8 +307,9 @@ th {
 .alert {
     display: none;
     position: fixed;
-    bottom: 20px;
-    right: 20px;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
     background-color: #4CAF50;
     color: white;
     padding: 15px;
@@ -389,20 +390,13 @@ th {
     box-sizing: border-box;
 }
 
-.alert {
-    display: none;
-    position: fixed;
-    bottom: 20px;
-    right: 20px;
-    background-color: #4CAF50;
-    color: white;
-    padding: 15px;
-    border-radius: 5px;
-}
 
 #tituloHospital {
-    padding: 10px 10px 10px 20px;
+    padding: 10px 10px 10px 10px;
+    /* margin: 5px 5px 5px 5px; */
     outline: none;
     border-radius: 10px;
     width: 100%;
+    color: gray;
+    
 }
