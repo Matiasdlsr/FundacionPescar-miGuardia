@@ -8,6 +8,7 @@ const userRoutes = require('./routers/userRouters');
 const adminRoutes = require('./routers/adminRouters');
 const { getHospitales, getGuards, getComments, getUsers } = require('./controllers/hospitalesController');
 
+
 dotenv.config();
 const app = express();
 
@@ -70,6 +71,37 @@ function writeGuardsData(data) {
     }
 }
 
+app.post('/api/comments', (req, res) => {
+    const newComment = {
+        _id: Date.now(), // Genera un ID único
+        name: req.body.name,
+        text: req.body.text,
+        createdAt: Date.now()
+    };
+
+    // Leer el archivo de comentarios existente
+    fs.readFile(path.join(__dirname, 'InfoGuardia/miGuardia.comments.json'), 'utf-8', (err, data) => {
+        if (err) {
+            return res.status(500).json({ error: 'Error al leer los comentarios.' });
+        }
+
+        // Parsear los comentarios existentes
+        let comments = JSON.parse(data);
+
+        // Agregar el nuevo comentario al array
+        comments.push(newComment);
+
+        // Escribir de nuevo los comentarios actualizados al archivo
+        fs.writeFile(path.join(__dirname, 'InfoGuardia/miGuardia.comments.json'), JSON.stringify(comments, null, 2), (err) => {
+            if (err) {
+                return res.status(500).json({ error: 'Error al guardar el comentario.' });
+            }
+
+            // Devolver el comentario agregado como respuesta
+            res.status(201).json(newComment);
+        });
+    });
+});
 // Ruta POST para agregar una nueva guardia
 app.post('/api/guards', (req, res) => {
     const { guardType, guardStatus, floor } = req.body;
