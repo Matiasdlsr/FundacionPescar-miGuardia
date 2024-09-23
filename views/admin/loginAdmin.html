@@ -1,18 +1,19 @@
 <!DOCTYPE html>
 <html lang="es">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Iniciar Sesión - MiGuardia</title>
     <link rel="stylesheet" href="/styles - css/styleAdmin.css">
     <style>
-        
         .button-group {
             display: grid;
             grid-template-columns: repeat(3, 1fr);
             gap: 1rem;
             margin-bottom: 2rem;
         }
+
         button {
             background-color: #006064;
             color: white;
@@ -21,22 +22,28 @@
             cursor: pointer;
             transition: background-color 0.3s;
         }
+
         button:hover {
             background-color: #00838f;
         }
+
         table {
             width: 100%;
             border-collapse: collapse;
             background-color: white;
         }
-        th, td {
+
+        th,
+        td {
             text-align: left;
             padding: 0.5rem;
             border-bottom: 1px solid #ddd;
         }
+
         th {
             background-color: #f2f2f2;
         }
+
         .modal {
             display: none;
             position: fixed;
@@ -47,6 +54,7 @@
             height: 100%;
             background-color: rgba(0, 0, 0, 0.4);
         }
+
         .modal-content {
             background-color: white;
             margin: 15% auto;
@@ -55,6 +63,7 @@
             width: 80%;
             max-width: 500px;
         }
+
         .close {
             color: #aaa;
             float: right;
@@ -62,21 +71,27 @@
             font-weight: bold;
             cursor: pointer;
         }
+
         .close:hover {
             color: black;
         }
+
         .form-group {
             margin-bottom: 1rem;
         }
+
         .form-group label {
             display: block;
             margin-bottom: 0.5rem;
         }
-        .form-group input, .form-group select {
+
+        .form-group input,
+        .form-group select {
             width: 100%;
             padding: 0.5rem;
             box-sizing: border-box;
         }
+
         .alert {
             display: none;
             position: fixed;
@@ -87,7 +102,8 @@
             padding: 15px;
             border-radius: 5px;
         }
-        #tituloHospital{
+
+        #tituloHospital {
             padding: 10px 10px 10px 20px;
             outline: none;
             border-radius: 10px;
@@ -95,6 +111,7 @@
         }
     </style>
 </head>
+
 <body>
     <header>
         <div class="logo">
@@ -125,7 +142,7 @@
                 </div> -->
                 <select id="tituloHospital">
                     <option value="">Seleccione un hospital</option>
-                  </select>
+                </select>
                 <div class="input-group">
                     <label for="password">Contraseña</label>
                     <input type="password" id="password" name="password" required placeholder="########" minlength="8">
@@ -165,7 +182,7 @@
             <div class="modal-content">
                 <span class="close" onclick="closeModal()">&times;</span>
                 <h2>Agregar nueva guardia</h2>
-                <form id="addGuardForm">
+                <form method="POST" id="addGuardForm">
                     <div class="form-group">
                         <label for="guardType">Tipo de Guardia:</label>
                         <input type="text" id="guardType" required>
@@ -220,7 +237,7 @@
     </footer>
 
     <script>
-        document.getElementById('loginForm').addEventListener('submit', function(event) {
+        document.getElementById('loginForm').addEventListener('submit', function (event) {
             event.preventDefault();
             const email = document.getElementById('email').value;
             const password = document.getElementById('password').value;
@@ -247,7 +264,7 @@
             document.getElementById('addGuardModal').style.display = 'none';
         }
 
-        document.getElementById('addGuardForm').addEventListener('submit', function(e) {
+        document.getElementById('addGuardForm').addEventListener('submit', function (e) {
             e.preventDefault();
 
             const guardType = document.getElementById('guardType').value;
@@ -255,15 +272,15 @@
             const floor = document.getElementById('floor').value;
 
             // Aquí deberías enviar los datos al servidor (ejemplo)
-            // fetch('/api/guards', {
-            //     method: 'POST',
-            //     body: JSON.stringify({ guardType, guardStatus, floor }),
-            //     headers: {
-            //         'Content-Type': 'application/json'
-            //     }
-            // }).then(response => response.json()).then(data => {
-            //     // Manejar la respuesta del servidor
-            // }).catch(error => console.error('Error:', error));
+            fetch('/api/guards', {
+                method: 'POST',
+                body: JSON.stringify({ guardType, guardStatus, floor }),
+                headers: {
+                    'Content-Type': 'application/json'
+                }
+            }).then(response => response.json()).then(data => {
+                // Manejar la respuesta del servidor
+            }).catch(error => console.error('Error:', error));
 
             closeModal();
             showAlert();
@@ -295,35 +312,36 @@
 
         document.addEventListener('DOMContentLoaded', loadComments);
 
-function populateSelect(hospitales) {
-  const select = document.getElementById('tituloHospital');
+        function populateSelect(hospitales) {
+            const select = document.getElementById('tituloHospital');
 
-  hospitales.forEach(hospital => {
-    const option = document.createElement('option');
-    option.value = hospital.name;
-    option.text = hospital.name;
-    const idoption = hospital.id;
-    select.appendChild(option);
-  });
-}
-function handleHospitalSelect() {
-    const select = document.getElementById('tituloHospital');
-    const hospitalName = select.value;
-    console.log("Hospital seleccionado:", hospitalName);
-    // window.location.href = `/siguiente_pagina?hospitalName=${hospitalName}`;
-}
+            hospitales.forEach(hospital => {
+                const option = document.createElement('option');
+                option.value = hospital.name;
+                option.text = hospital.name;
+                const idoption = hospital.id;
+                select.appendChild(option);
+            });
+        }
+        function handleHospitalSelect() {
+            const select = document.getElementById('tituloHospital');
+            const hospitalName = select.value;
+            console.log("Hospital seleccionado:", hospitalName);
+            // window.location.href = `/siguiente_pagina?hospitalName=${hospitalName}`;
+        }
 
-// Función para cargar el archivo JSON y poblar el select
-function loadHospitals() {
-  fetch('/InfoGuardia/miGuardia.hospitals.json')  // Asegúrate de poner la ruta correcta al archivo JSON
-    .then(response => response.json())
-    .then(data => {
-      populateSelect(data);
-    })
-    .catch(error => console.error('Error al cargar los hospitales:', error));
-}
-window.onload = loadHospitals;
+        // Función para cargar el archivo JSON y poblar el select
+        function loadHospitals() {
+            fetch('/InfoGuardia/miGuardia.hospitals.json')  // Asegúrate de poner la ruta correcta al archivo JSON
+                .then(response => response.json())
+                .then(data => {
+                    populateSelect(data);
+                })
+                .catch(error => console.error('Error al cargar los hospitales:', error));
+        }
+        window.onload = loadHospitals;
 
     </script>
 </body>
+
 </html>
