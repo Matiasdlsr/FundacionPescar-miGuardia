@@ -151,9 +151,9 @@ button {
 button:hover {
     background-color:#0056b3;
 }
-#loginAdmin{
+/* #loginAdmin{
     align-items: center;
-}
+} */
 .forgot-password {
     margin-top: 10px;
     color: #fff;

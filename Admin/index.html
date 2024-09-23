@@ -59,15 +59,29 @@
     </footer>
 
     <script>
+            // Función para obtener el nombre del hospital de la URL
+        function getHospitalNameFromURL() {
+            const urlParams = new URLSearchParams(window.location.search);
+            return urlParams.get('hospital');
+        }
         // Función para cargar los hospitales
         function loadHospitals() {
+
+            const hospitalName = getHospitalNameFromURL(); // Obtener el nombre del hospital de la URL new
+
             fetch('/api/guards')
                 .then(response => response.json())
                 .then(hospitals => {
                     const hospitalCards = document.getElementById('hospitalCards');
                     hospitalCards.innerHTML = '';  // Limpiar contenido previo
-        
-                    hospitals.forEach(hospital => {
+                    
+                    // Filtrar los hospitales que coincidan con el nombre obtenido de la URL new
+                    const filteredHospitals = hospitals.filter(hospital => hospital.name === hospitalName);
+                        
+                    // Mostrar solo los hospitales filtrados new
+                        filteredHospitals.forEach(hospital => {
+
+                    // hospitals.forEach(hospital => {
                         const card = document.createElement('div');
                         card.classList.add('card', hospital.state === 'Ocupado' ? 'saturated' : 'normal');
                         
@@ -77,6 +91,10 @@
                             <p class="status">${hospital.state}</p>
                         `;
                         hospitalCards.appendChild(card);
+                        // Si no tiene datos guardados
+                        if (filteredHospitals.length === 0) {
+                        hospitalCards.innerHTML = '<p>No se encontraron guardias para este hospital.</p>';
+            }
                     });
                 })
                 .catch(error => console.error('Error al cargar hospitales:', error));
@@ -108,11 +126,6 @@
     
 
 
-            // Función para obtener el nombre del hospital de la URL
-        function getHospitalNameFromURL() {
-            const urlParams = new URLSearchParams(window.location.search);
-            return urlParams.get('hospital');
-        }
                 // Llamar a las funciones para cargar los datos al cargar la página
         // Llamar a las funciones para cargar los datos al cargar la página
         document.addEventListener('DOMContentLoaded', () => {
