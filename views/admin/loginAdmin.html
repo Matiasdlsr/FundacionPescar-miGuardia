@@ -218,19 +218,24 @@
         }
 
         function loadComments() {
-            // Lógica para cargar comentarios
-            // fetch('/api/comments')
-            //     .then(response => response.json())
-            //     .then(comments => {
-            //         const tbody = document.querySelector('table tbody');
-            //         tbody.innerHTML = ''; // Limpiar contenido previo
-            //         comments.forEach(comment => {
-            //             const row = document.createElement('tr');
-            //             row.innerHTML = `<td>${comment.name}</td><td>${comment.date}</td><td>${comment.text}</td>`;
-            //             tbody.appendChild(row);
-            //         });
-            //     })
-            //     .catch(error => console.error('Error al cargar comentarios:', error));
+            //Lógica para cargar comentarios
+            fetch('/api/comments')
+                .then(response => response.json())
+                .then(comments => {
+                    const tbody = document.querySelector('table tbody');
+                    tbody.innerHTML = ''; // Limpiar contenido previo
+
+                    comments.forEach(comment => {
+                        const row = document.createElement('tr');
+                        const createdAt = new Date(comment.createdAt.$date).toLocaleString();
+                        row.innerHTML = `
+                        <td>${comment.name}</td>
+                        <td>${createdAt}</td>
+                        <td>${comment.text}</td>`;
+                        tbody.appendChild(row);
+                    });
+                })
+                .catch(error => console.error('Error al cargar comentarios:', error));
         }
 
         document.addEventListener('DOMContentLoaded', loadComments);
