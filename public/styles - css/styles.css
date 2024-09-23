@@ -403,3 +403,22 @@ p {
         font-size: 0.5rem;
     }
 }
+
+
+/*ANIMACION DE CARGA*/
+body {
+    opacity: 0;
+    background-color: #094C69;
+    animation: fadeInBackground .5s forwards;
+  }
+  
+  @keyframes fadeInBackground {
+    0% {
+      opacity: 0;
+      background-color: #2c718f; /* Fondo azul */
+    }
+    100% {
+      opacity: 1;
+      background-color: transparent; /* Vuelve el fondo a transparente */
+    }
+  }
