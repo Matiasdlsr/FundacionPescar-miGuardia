@@ -172,7 +172,6 @@ main {
     cursor: pointer;
 }
 
-
 .footer {
     background-color: #094c69;
     color: white; 
@@ -180,7 +179,6 @@ main {
     display: flex;
     justify-content: space-between;
 }
-
 .footer h2 {
     margin: 0;
     margin-bottom: 10px;
@@ -191,15 +189,6 @@ main {
     flex-direction: column;
 }
 
-.footer ul {
-    list-style: none;
-    padding: 0;
-    margin: 0;
-}
-
-.footer li {
-    margin: 5px 0;
-}
 
 .footer a {
     color: white;
@@ -215,6 +204,9 @@ main {
     gap: 10px;
     margin-top: 10px;
 }
+
+
+
 
 /* Estilos Responsive */
 @media (max-width: 1024px) {
