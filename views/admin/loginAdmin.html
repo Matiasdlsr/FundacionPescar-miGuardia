@@ -6,108 +6,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Iniciar Sesión - MiGuardia</title>
     <link rel="stylesheet" href="/styles - css/styleAdmin.css">
-    <!-- <style>
-        /* .button-group {
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 1rem;
-            margin-bottom: 2rem;
-        }
-        /* button {
-            background-color: #006064;
-            color: white;
-            border: none;
-            padding: 0.5rem 1rem;
-            cursor: pointer;
-            transition: background-color 0.3s;
-        }
-
-        button:hover {
-            background-color: #00838f;
-        } */
-
-        table {
-            width: 100%;
-            border-collapse: collapse;
-            background-color: white;
-        }
-
-        th,
-        td {
-            text-align: left;
-            padding: 0.5rem;
-            border-bottom: 1px solid #ddd;
-        }
-
-        th {
-            background-color: #f2f2f2;
-        }
-
-        .modal {
-            display: none;
-            position: fixed;
-            z-index: 1;
-            left: 0;
-            top: 0;
-            width: 100%;
-            height: 100%;
-            background-color: rgba(0, 0, 0, 0.4);
-        }
-
-        .modal-content {
-            background-color: white;
-            margin: 15% auto;
-            padding: 20px;
-            border: 1px solid #888;
-            width: 80%;
-            max-width: 500px;
-        }
-
-        .close {
-            color: #aaa;
-            float: right;
-            font-size: 28px;
-            font-weight: bold;
-            cursor: pointer;
-        }
-
-        .close:hover {
-            color: black;
-        }
-
-        .form-group {
-            margin-bottom: 1rem;
-        }
-
-        .form-group label {
-            display: block;
-            margin-bottom: 0.5rem;
-        }
-
-        .form-group input,
-        .form-group select {
-            width: 100%;
-            padding: 0.5rem;
-            box-sizing: border-box;
-        }
-        .alert {
-            display: none;
-            position: fixed;
-            bottom: 20px;
-            right: 20px;
-            background-color: #4CAF50;
-            color: white;
-            padding: 15px;
-            border-radius: 5px;
-        }
-
-        #tituloHospital {
-            padding: 10px 10px 10px 20px;
-            outline: none;
-            border-radius: 10px;
-            width: 100%;
-        }
-    </style> -->
 </head>
 
 <body>
@@ -156,7 +54,7 @@
             
             <div class="button-group">
                 <button onclick="openModal()" class="modalbtn">Agregar guardia</button>
-                <button onclick="openModifyModal()" class="modalbtn">Modificar guardia</button>
+                <button class="modalbtn">Modificar guardia</button>
                 <button class="modalbtn">Eliminar guardia</button>
                 <button class="modalbtn">Agregar teléfono</button>
                 <button class="modalbtn">Modificar teléfono</button>
@@ -204,23 +102,6 @@
 
         <div id="alert" class="alert">
             Guardia agregada exitosamente!
-        </div>
-        <div id="modifyModal" class="modal">
-            <div class="modal-content">
-                <span class="close" onclick="closeModifyModal()">&times;</span>
-                <h2>Modificar Guardia</h2>
-                <form id="modifyForm">
-                    <label for="hospitalId">ID del Hospital (deshabilitado):</label>
-                    <input type="text" id="hospitalId" name="hospitalId" disabled>
-
-                    <label for="hospitalSelect">Seleccionar Hospital:</label>
-                    <select id="hospitalSelect" name="hospitalSelect"></select>
-                    <select id="guardiasSelect">
-                        <option value="">Seleccione una guardia:</option>
-                    </select>
-                    <button type="submit">Modificar</button>
-                  </form>
-            </div>
         </div>
     </main>
 
@@ -357,77 +238,6 @@
                 .catch(error => console.error('Error al cargar los hospitales:', error));
         }
         window.onload = loadHospitals;
-
-function openModifyModal() {
-    const modal = document.getElementById('modifyModal');
-    modal.style.display = "block";
-
-    const hospitalSelect = document.getElementById('hospitalSelect');
-    hospitalSelect.innerHTML = document.getElementById('hospitalId');
-
-    fetch('/InfoGuardia/miGuardia.hospitals.json') // Ruta a tu archivo JSON
-    .then(response => response.json()) // Convertir la respuesta a JSON
-    .then(hospitales => {
-      // Limpiar el select antes de llenarlo
-      hospitalSelect.innerHTML = "";
-    hospitales.forEach(hospital => {
-    const option = document.createElement('option');
-    option.value = hospital._id.$oid;
-    option.textContent = hospital.name;
-    hospitalSelect.appendChild(option);
-  });
-
-  if (hospitales.length > 0) {
-        hospitalIdInput.value = hospitales[0]._id.$oid;
-      }
-
-      // Manejar el cambio del select para actualizar el ID mostrado
-      hospitalSelect.addEventListener('change', function() {
-        const selectedHospitalId = this.value;
-        hospitalIdInput.value = selectedHospitalId;
-      });
-    })
-    .catch(error => {
-      console.error('Error al cargar el archivo JSON:', error);
-    });
-}
-
-
-function closeModifyModal() {
-    document.getElementById('modifyGuardModal').style.display = 'none';
-}
-function populateGuardSelect(guards) {
-    const guardiasSelect = document.getElementById('guardiasSelect');
-    guardiasSelect.innerHTML = ''; // Limpiar el contenido previo
-
-    guards.forEach(guard => {
-        const option = document.createElement('option');
-        option.value = guard.typeguard;
-        option.text = `${guard.typeguard} - Estado: ${guard.state} - Piso: ${guard.piso}`;
-        guardiasSelect.appendChild(option);
-    });
-}
-
-function handleHospitalSelect() {
-    const select = document.getElementById('tituloHospital');
-    const hospitalName = select.value;
-
-    // Encontrar el hospital en los datos
-    fetch('/InfoGuardia/miGuardia.hospitals.json')
-        .then(response => response.json())
-        .then(data => {
-            const selectedHospital = data.find(hospital => hospital.name === hospitalName);
-
-            if (selectedHospital && selectedHospital.guards) {
-                populateGuardSelect(selectedHospital.guards); // Llenar el select de guardias
-            } else {
-                console.error('Hospital no encontrado o no tiene guardias disponibles.');
-            }
-        })
-        .catch(error => console.error('Error al cargar los hospitales:', error));
-}
-
-document.getElementById('tituloHospital').addEventListener('change', handleHospitalSelect);
 
     </script>
 </body>
