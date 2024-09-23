@@ -145,11 +145,15 @@ button {
 }
 
 
-
+#loginAdmin{
+    padding-top: 10px ;
+}
 button:hover {
     background-color:#0056b3;
 }
-
+/* #loginAdmin{
+    align-items: center;
+} */
 .forgot-password {
     margin-top: 10px;
     color: #fff;
