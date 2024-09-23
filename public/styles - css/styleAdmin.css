@@ -302,8 +302,11 @@ th {
 .alert {
     display: none;
     position: fixed;
-    bottom: 20px;
-    right: 20px;
+    /* bottom: 20px;
+    right: 20px; */
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
     background-color: #4CAF50;
     color: white;
     padding: 15px;
@@ -383,7 +386,7 @@ th {
     box-sizing: border-box;
 }
 
-.alert {
+/* .alert {
     display: none;
     position: fixed;
     bottom: 20px;
@@ -392,7 +395,7 @@ th {
     color: white;
     padding: 15px;
     border-radius: 5px;
-}
+} */
 
 #tituloHospital {
     padding: 10px 10px 10px 20px;
