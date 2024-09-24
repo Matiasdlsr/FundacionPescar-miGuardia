@@ -1,0 +1,407 @@
+body {
+    font-family:sans-serif,arial;
+    background-color: FFFBF7;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+}
+.hidden {
+    display: none;
+}
+.form-container {
+    margin: 20px;
+    padding: 20px;
+    border: 1px solid #ccc;
+}
+.hospital-interface{
+    width: 80%;
+    margin: auto;
+    height: 629px;
+}
+header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 40px 20px;
+    background-color: #094c69;
+    color: #fafafa;
+}
+
+header .logo {
+    display: flex;
+    align-items: center;
+}
+
+header .logo img {
+    height: 75px;
+    width: 75px;
+    margin-right: 10px;
+    border-radius: 50%;
+    color: white;
+}
+
+header nav ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+}
+
+header nav ul li {
+    margin-right: 20px;
+}
+
+header nav ul li a {
+    color: #fff;
+    text-decoration: none;
+    font-size: 1.5em;
+}
+
+.login-container {
+    background: linear-gradient(360deg, rgba(0, 44, 50, 0.94) 43.77%, rgba(0, 44, 50, 0.94) 51%, #002A30 100%);
+    padding: 100px;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    width: 500px;
+    text-align: center;
+    margin: 50px auto;
+    color: #fff;
+    position: relative;
+}
+
+
+.register-link a {
+    color: #fff;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+h2 {
+    margin-bottom: 13px;
+    font-size: 26px;
+}
+
+.input-group {
+    margin-bottom: 15px;
+    text-align: left;
+}
+
+label {
+    display: block;
+    margin-bottom: 15px;
+    color: white;
+}
+.lettermodal{
+    color: black;
+}
+input {
+    width: 100%;
+    padding: 8px;
+    box-sizing: border-box;
+    border-radius: 5px;
+    border: none;
+}
+
+button {
+    width: 100%;
+    padding: 10px;
+    background-color: #094c69;
+    border: none;
+    color: #fff;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.hospital-title h2 {
+    text-align: center;
+    margin-bottom: 26px;
+    border-radius: 10px;
+    padding: 30px;
+    font-size: 30px;
+}
+
+button:hover {
+    background-color: #0056b3;
+}
+.button-group{
+    display: grid;
+    grid-template-columns: repeat(3,1fr);
+    gap: 20px;
+}
+.modalbtn{
+    padding: 30px ;
+    border-radius: 10px;
+    text-align: center;
+    font-size: 1rem;
+}
+.forgot-password {
+    margin-top: 10px;
+    color: #fff;
+}
+
+.forgot-password a {
+    color: #fff;
+    text-decoration: underline;
+}
+
+.error-message {
+    color: red;
+    margin-top: 10px;
+}
+.footer {
+    background-color: #094c69;
+    color: white; 
+    padding: 25px;
+    display: flex;
+    justify-content: space-between;}
+
+.footer h2 {
+    margin: 0;
+    margin-bottom: 10px;
+}
+
+.footer .columna {
+    display: flex;
+    flex-direction: column;
+}
+
+
+.footer a {
+    color: white;
+    text-decoration: none;
+}
+
+.footer a:hover {
+    text-decoration: underline;
+}
+
+.footer .iconos-web {
+    display: flex;
+    gap: 10px;
+    margin-top: 10px;
+}
+
+
+
+#register-container {
+    background: linear-gradient(180deg, rgba(0, 44, 50, 0.8), rgba(0, 44, 50, 0.5)); /* Fondo similar al login */
+    padding: 50px; /* Ajusta el padding */
+    border-radius: 10px; /* Bordes redondeados */
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.2); /* Sombra más suave */
+    width: 500px; /* Ancho consistente */
+    text-align: center; /* Centrar texto */
+    margin: 50px auto; /* Centrando el contenedor */
+    color: #fff; /* Color del texto */
+}
+
+#register-container h2 {
+    margin-bottom: 20px; /* Espaciado en el título */
+}
+
+#register-container .input-group {
+    margin-bottom: 15px; /* Espaciado entre campos */
+}
+
+#register-container label {
+    display: block;
+    margin-bottom: 5px;
+    color: #fff; /* Color del texto de las etiquetas */
+}
+
+#register-container input {
+    width: 100%; /* Ancho completo */
+    padding: 10px; /* Aumentar padding */
+    box-sizing: border-box; /* Para incluir padding en el ancho total */
+    border-radius: 5px; /* Bordes redondeados */
+    border: none; /* Sin borde */
+    background-color: #f0f0f0; /* Fondo claro para los inputs */
+}
+
+#register-container button {
+    width: 100%; /* Ancho completo */
+    padding: 10px; /* Padding consistente */
+    background-color: #007BFF; /* Color del botón */
+    border: none; /* Sin borde */
+    color: #fff; /* Color del texto del botón */
+    border-radius: 5px; /* Bordes redondeados */
+    cursor: pointer; /* Cambiar cursor a mano */
+    transition: background-color 0.3s; /* Transición suave al cambiar de color */
+}
+
+#register-container button:hover {
+    background-color: #0056b3; /* Color al pasar el cursor */
+}
+
+#register-container #showLogin {
+    margin-top: 20px; /* Espaciado superior */
+    background-color: transparent; /* Fondo transparente */
+    color: #fff; /* Color del texto */
+    border: none; /* Sin borde */
+    cursor: pointer; /* Cambiar cursor a mano */
+    font-size: 1em; /* Tamaño de fuente consistente */
+}
+
+/* modal */
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    background-color: white;
+}
+
+th,
+td {
+    text-align: left;
+    padding: 0.5rem;
+    border-bottom: 1px solid #ddd;
+}
+
+th {
+    background-color: #f2f2f2;
+}
+
+.modal {
+    display: none;
+    position: fixed;
+    z-index: 1;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.4);
+}
+
+.modal-content {
+    background-color: white;
+    margin: 15% auto;
+    padding: 20px;
+    border: 1px solid #888;
+    width: 80%;
+    max-width: 500px;
+}
+
+.close {
+    color: #aaa;
+    float: right;
+    font-size: 28px;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+.close:hover {
+    color: black;
+}
+
+.form-group {
+    margin-bottom: 1rem;
+}
+
+.form-group label {
+    display: block;
+    margin-bottom: 0.5rem;
+}
+
+.form-group input,
+.form-group select {
+    width: 100%;
+    padding: 0.5rem;
+    box-sizing: border-box;
+}
+
+.alert {
+    display: none;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: #4CAF50;
+    color: white;
+    padding: 15px;
+    border-radius: 5px;
+}
+
+#seleccionarHospital {
+    padding: 10px 10px 10px 20px;
+    outline: none;
+    border-radius: 10px;
+    width: 100%;
+} 
+
+
+/* modal, tabla y menu desplegable inicio */
+table {
+    width: 100%;
+    border-collapse: collapse;
+    background-color: white;
+}
+
+th,
+td {
+    text-align: left;
+    padding: 0.5rem;
+    border-bottom: 1px solid #ddd;
+}
+
+th {
+    background-color: #f2f2f2;
+}
+
+.modal {
+    display: none;
+    position: fixed;
+    z-index: 1;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.4);
+}
+
+.modal-content {
+    background-color: white;
+    margin: 15% auto;
+    padding: 20px;
+    border: 1px solid #888;
+    width: 80%;
+    max-width: 500px;
+}
+
+.close {
+    color: #aaa;
+    float: right;
+    font-size: 28px;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+.close:hover {
+    color: black;
+}
+
+.form-group {
+    margin-bottom: 1rem;
+}
+
+.form-group label {
+    display: block;
+    margin-bottom: 0.5rem;
+}
+
+.form-group input,
+.form-group select {
+    width: 100%;
+    padding: 0.5rem;
+    box-sizing: border-box;
+}
+
+
+#tituloHospital {
+    padding: 10px 10px 10px 10px;
+    /* margin: 5px 5px 5px 5px; */
+    outline: none;
+    border-radius: 10px;
+    width: 100%;
+    color: gray;
+    
+}
