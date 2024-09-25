@@ -6,13 +6,9 @@ const userController = require('../controllers/userController');
 console.log(userController);
 
 // Definir las rutas
-router.get('/', userController.getUserHome);
-
-router.get('/login', userController.getUserLogin);
-router.post('/login', userController.postUserLogin);
-
-router.get('/registerUser', userController.getUserRegister);
-router.post('/registerUser', userController.postUserRegister);
+router.get('/login',userController.getLogin);
+router.get('/login',userController.postLogin);
+router.get('/register',userController.getRegister)
 
 module.exports = router;
 

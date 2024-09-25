@@ -1,40 +1,48 @@
 const express = require('express');
+const connectDB = require('./config/database');
+require('dotenv').config();
 const path = require('path');
 const bodyParser = require('body-parser');
-const fs = require('fs');
-const dotenv = require('dotenv');
-const connectDB = require('./config/database');
 const userRoutes = require('./routers/userRouters');
 const adminRoutes = require('./routers/adminRouters');
 
 const app = express();
 
-// Configurar middleware
-app.use(bodyParser.json());
-app.use(bodyParser.urlencoded({ extended: false }));
-app.use(express.static(path.join(__dirname, 'public')));
-
-// Configurar vistas
-app.set('views', path.join(__dirname, 'views'));
-
 // Conectar a la base de datos
 connectDB();
 
-// Rutas principales
+// Middleware para manejar el body de las solicitudes
+app.use(bodyParser.json());
+app.use(bodyParser.urlencoded({ extended: false }));
+
+// Archivos estáticos (CSS, JS, imágenes) en la carpeta 'public'
+app.use(express.static(path.join(__dirname, 'public')));
+
+// Configuración de las vistas
+app.set('views', path.join(__dirname, 'views'));
+
+// Ruta para servir archivos HTML estáticos (index.html)
 app.get('/', (req, res) => {
-    res.sendFile(path.join(__dirname, 'views', 'index.html'));
+    res.sendFile(path.resolve(__dirname, 'views', 'index.html'));
 });
-// Rutas de Admin y Usuario
+
+app.get('/nosotros',(req, res) => {
+    res.sendFile(path.join(__dirname, 'views','nosotros.html'));
+});
+
+// Rutas para las rutas de usuarios y administradores
 app.use('/user', userRoutes);
 app.use('/admin', adminRoutes);
 
-app.get('/nosotros', (req, res) => {
-    res.sendFile(path.join(__dirname, 'views', 'nosotros.html'));
-});
-
-// Manejo de errores 404
+// Manejo de errores 404 (página no encontrada)
 app.use((req, res) => {
     res.status(404).send('Página no encontrada');
+});
+
+// Manejo de errores del servidor
+app.use((err, req, res, next) => {
+    console.error(err.stack);
+    res.status(500).send('Error en el servidor');
 });
 
 // Iniciar el servidor
