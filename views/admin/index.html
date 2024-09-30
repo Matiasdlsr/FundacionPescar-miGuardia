@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MiGuardia</title>
+    <link rel="stylesheet" href="/styles - css/styleIndxAdmin.css">
+    <link rel="icon"  href="/assets/icons/favicon.png" type="image/png">
+
+</head>
+<body>
+    <header>
+            <img src="/assets/img/icon.MiGuardia.jpg" alt="MiGuardia Logo" class="logo">
+            <h1>MiGuardia</h1>
+        <nav>
+            <ul>
+                <li><a href="/">Inicio</a></li>
+                <li><a href="/nosotros">Nosotros</a></li>
+                <li><a href="#">Contacto</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        <!-- Sección de información de los hospitales -->
+        <section class="hospital-info">
+            <div><h2 id="hospital-title">Hospitales Disponibles</h2></div>
+            <div class="cards" id="hospitalCards">
+                <!-- Las tarjetas de hospitales se inyectarán dinámicamente aquí -->
+            </div>
+        </section>
+    
+        <!-- Sección de comentarios/reseñas -->
+        <section class="feedback">
+            <div  id="feedbackSection">
+                <!-- Las reseñas/comentarios se inyectarán dinámicamente aquí -->
+            </div>
+        </section>
+    
+        <!-- Sección para agregar comentarios -->
+        <section class="comments">
+            <h3>Deja tu comentario</h3>
+            <textarea id="newCommentText"></textarea>
+            <button id="submitComment">Enviar</button>
+        </section>
+    </main>
+    
+
+    <footer class="footer">
+        <div>
+            <h2>MI GUARDIA</h2>
+            <div class="iconos-web"> 
+                <a href="#"><ion-icon name="logo-facebook"></ion-icon></a>
+                <a href="#"><ion-icon name="logo-instagram"></ion-icon></a>
+                <a href="#"><ion-icon name="logo-linkedin"></ion-icon></a>
+                <a href="#"><ion-icon name="logo-youtube"></ion-icon></a>
+            </div>
+            <div class="columna">
+                <p>SAME: 555-000-555</p>
+                <p>Bomberos: 000-555-000</p>
+            </div>
+        </div>
+        </footer>
+    <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
+    <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>  
+      
+
+    <script src="/public/script - js/scriptAdmin.js"></script>
+
+  
+</body>
+</html>
