@@ -1,0 +1,94 @@
+[{
+  "name": "Hospital Garrahan",
+  "_id": {
+    "$oid": "66ec4d3f964ffbd9333c7670"
+  },
+  "hospitalId": {
+    "$oid": "66ec66b9ed645ca38036134b"
+  },
+  "typeguard": "Pediatria",
+  "state": "Libre",
+  "piso": "1"
+},
+{
+  "name": "Hospital Garrahan",
+  "_id": {
+    "$oid": "66ec4e2d964ffbd9333c7671"
+  },
+  "hospitalId": {
+    "$oid": "66ec66b9ed645ca38036134b"
+  },
+  "typeguard": "Clinica",
+  "state": "Libre",
+  "piso": "1"
+},
+{
+  "name": "Hospital Garrahan",
+  "_id": {
+    "$oid": "66ec4e5f964ffbd9333c7672"
+  },
+  "hospitalId": {
+    "$oid": "66ec66b9ed645ca38036134b"
+  },
+  "typeguard": "Ginecologia",
+  "state": "Ocupado",
+  "piso": "2"
+},
+{
+  "name": "Hospital Garrahan",
+  "_id": {
+    "$oid": "66ec4e6f964ffbd9333c7673"
+  },
+  "hospitalId": {
+    "$oid": "66ec66b9ed645ca38036134b"
+  },
+  "typeguard": "Oftalmologica",
+  "state": "Ocupado",
+  "piso": "2"
+},
+{
+  "name" :"Hospital General De Agudos Dr. Teodoro Alvarez",
+  "_id": {
+    "$oid": "66ec4f0b964ffbd9333c7674"
+  },
+  "hospitalId": {
+    "$oid": "66ec66b9ed645ca38036134c"
+  },
+  "typeguard": "Oftalmologica",
+  "state": "Libre",
+  "piso": "2"
+},
+{
+  "name" : "Hospital de Emergencias Psiquiátricas Dr. Torcuato de Alvear",
+  "_id": {
+    "$oid": "66ec563a964ffbd9333c7675"
+  },
+  "hospitalId": {
+    "$oid": "66ec66b9ed645ca38036134c"
+  },
+  "typeguard": "Ginecologia",
+  "state": "Ocupado",
+  "piso": "3"
+},
+{
+  "_id": {
+    "$oid": "66ec5648964ffbd9333c7676"
+  },
+  "hospitalId": {
+    "$oid": "66ec66b9ed645ca38036134c"
+  },
+  "typeguard": "Clinica",
+  "state": "Ocupado",
+  "piso": "1"
+},
+{
+  "_id": {
+    "$oid": "66ec566e964ffbd9333c7677"
+  },
+  "hospitalId": {
+    "$oid": "66ec66b9ed645ca38036134c"
+  },
+  "typeguard": "Pediatria",
+  "state": "Ocupado",
+  "piso": "1"
+}]
