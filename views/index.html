@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>miGuardia</title>
+    <link rel="stylesheet" href="/styles - css/styles.css">
+    <!-- Style con Swiper -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css"/>
+
+    <link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css" />
+    <!-- Typeahead.js CSS -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/typeahead.js/0.11.1/typeahead.min.css">
+    <link rel="icon"  href="/assets/icons/favicon.png" type="image/png">
+</head>
+<body>
+    <!-- Encabezado -->
+    <header>
+        <img src="/assets/img/icon.MiGuardia.jpg" alt="MiGuardia" class="logo">
+        <h1>MiGuardia</h1>
+        <nav>
+            <a href="/nosotros">Nosotros</a>
+            <a href="#">Contacto</a>
+        </nav>
+        <div class="user-options">
+            <!-- <button onclick="location.href='user/login'">Iniciar Sesión</button> -->
+            <button onclick="window.location.href='../admin/login'">Iniciar sesion</button>
+            <button onclick="location.href ='user/login'">Crear tu cuenta</button>
+        </div>
+    </header>
+
+    <!-- Mapa -->
+        <section class="map-section">
+            <div id="buscador">
+                <input type="text" id="place-input" placeholder="Busca tu Guardia/Hospital..." class="input">
+                <div id="suggestions"></div>
+                <button id="search-button">Buscar</button>
+            </div>
+            <div id="map"></div>
+        </section>
+
+    <!--Carrusel-->
+    <div class="swiper-container">
+        <div class="swiper-wrapper" id="hospitales">
+            <!-- Aquí se añaden las diapositivas dinámicamente -->
+        </div>
+        <!-- Botones de navegación personalizados -->
+        <div class="custom-button-prev">
+            <ion-icon name="chevron-back-outline"></ion-icon>
+        </div>
+        <div class="custom-button-next">
+            <ion-icon name="chevron-forward-outline"></ion-icon>
+        </div>
+
+        <!-- Paginación -->
+        <div class="swiper-pagination"></div>
+    </div>
+
+
+       <footer class="footer">
+        <div>
+            <h2>MI GUARDIA</h2>
+            <div class="iconos-web">
+                <a href="#"><ion-icon name="logo-facebook"></ion-icon></a>
+                <a href="#"><ion-icon name="logo-instagram"></ion-icon></a>
+                <a href="#"><ion-icon name="logo-linkedin"></ion-icon></a>
+                <a href="#"><ion-icon name="logo-youtube"></ion-icon></a>
+            </div>
+        </div>
+        <div class="columna">
+            <h2>Nosotros</h2>
+            <ul>
+                <li><a href="#">Descripción</a></li>
+                <li><a href="#">Equipo</a></li>
+                <li><a href="#">Herramientas</a></li>
+            </ul>
+        </div>
+        <div class="columna">
+            <h2>Acerca de</h2>
+            <ul>
+                <li><a href="#">Normas</a></li>
+                <li><a href="#">Contacto</a></li>
+            </ul>
+        </div>
+        <div class="columna">
+            <h2>Inicia sesión</h2>
+            <ul>
+                <li><a href="#">Registro</a></li>
+                <li><a href="#">Ayuda</a></li>
+                <li><a href="#">Información</a></li>
+            </ul>
+        </div>
+    </footer>
+
+    <!-- Scripts -->
+    <script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/swiper@latest/swiper-bundle.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/typeahead.js/0.11.1/typeahead.bundle.min.js"></script>
+    <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
+    <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
+    <script src="/script - js/mapaHospital.js"></script>
+    <script src="/script - js/carruselGuardia.js"></script>
+</body>
+<script>
+    window.addEventListener('load', () => {
+      document.body.classList.add('fade-in');
+    });
+  </script>  
+</html>
